@@ -1,0 +1,13 @@
+.elements__like-symbol--active { 
+  margin: auto;
+  margin-right: 15px;
+  width: 21px;
+  height: 19px;
+  background-color: inherit ;
+  background-image: url("../../../../images/like-symbol-full.svg");
+  background-size: 21px 19px;
+  background-position: center ;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+}

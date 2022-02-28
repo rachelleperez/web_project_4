@@ -1,0 +1,22 @@
+.profile__bio {
+  font-size: 18px;
+  line-height: 22px;
+
+  color: #FFFFFF;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+
+/* Mobile version. Note already responsive to minimum of 880px where component sizes are fixed */
+@media only screen and (min-device-width : 320px) and (max-device-width : 879px) {
+  .profile__bio {
+    font-size: 14px;
+    line-height: 17px;
+    margin-left: 29px;
+  }
+}
+
+
+

@@ -1,0 +1,19 @@
+@import url(./_active/elements__like-symbol--active.css);
+
+.elements__like-symbol {
+  margin: auto;
+  margin-right: 15px;
+  width: 21px;
+  height: 19px;
+  background-color: inherit ;
+  background-image: url("../../../images/like-symbol.svg");
+  background-size: 21px 19px;
+  background-position: center ;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+}
+
+.elements__like-symbol:hover {
+  opacity: 0.5;
+}

@@ -1,0 +1,20 @@
+@import url(./__logo/header__logo.css);
+
+.header {
+  display:block;
+  width: 880px;
+  min-height: 74px;
+  margin-top: 45px;
+  margin-left: auto;
+  margin-right: auto;
+  border-bottom: 1px solid rgba(255,255,255, 0.7);
+}
+
+/* Mobile version. Note already responsive to minimum of 880px where component sizes are fixed */
+@media only screen and (min-device-width : 320px) and (max-device-width : 879px) {
+  .header {
+    width: 282px;
+    min-height: 56px;
+    margin-top: 28px;
+  }
+}

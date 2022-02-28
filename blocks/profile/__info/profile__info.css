@@ -1,0 +1,21 @@
+
+.profile__info {
+  width: 415px;
+  min-height: 77px;
+  margin-left: 30px;
+  display: grid;
+  grid-template-columns: 391fr 24fr; /* 415-24 = 391 */
+}
+
+/* Mobile version. Note already responsive to minimum of 880px where component sizes are fixed */
+@media only screen and (min-device-width : 320px) and (max-device-width : 879px) {
+  .profile__info {
+    margin-top: 26.25px;
+    width: 282px;
+    min-height: 116px;
+    margin-left: auto; 
+    margin-right: auto; 
+    text-align: center;
+    
+  }
+}

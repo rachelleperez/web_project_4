@@ -1,0 +1,4 @@
+.modal__overlay.active {
+  opacity: 0.5;
+  pointer-events: all;
+}

@@ -1,0 +1,20 @@
+.modal__text-box {
+  width: 358px;
+  padding: 10px 15px;
+  margin:auto;
+  font-family: Inter, sans-serif;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+
+
+/* Mobile version. Note already responsive to minimum of 880px where component sizes are fixed */
+@media only screen and (min-device-width : 320px) and (max-device-width : 879px) {
+  .modal__text-box {
+    width: 238px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

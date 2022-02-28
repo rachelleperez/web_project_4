@@ -1,0 +1,22 @@
+.form__input {
+  margin-bottom: 30px;
+  width: 358px;
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  line-height: 27.34px;
+  color: #000000;
+  border: none; /*to remove default borders */
+  border-bottom: 1px solid #00000025;
+  outline: none;
+}
+
+
+
+/* Mobile version. Note already responsive to minimum of 880px where component sizes are fixed */
+@media only screen and (min-device-width : 320px) and (max-device-width : 879px) {
+  .form__input {
+    margin-bottom: 46px;
+    width: 238px;
+    line-height: 17px;
+  }
+}

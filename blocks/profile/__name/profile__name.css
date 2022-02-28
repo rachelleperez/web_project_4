@@ -1,0 +1,29 @@
+.profile__name {
+  width: 373px;
+  margin-bottom: 16px;
+
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 48px;
+  color: #FFFFFF;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  padding-right: 18px;
+}
+
+/* Mobile version. Note already responsive to minimum of 880px where component sizes are fixed */
+@media only screen and (min-device-width : 320px) and (max-device-width : 879px) {
+  .profile__name {
+    width: 196px;
+    margin-bottom: 14px;
+    position: relative;
+
+    font-size: 22px;
+    line-height: 27px;
+    text-align: center;
+    margin-left: 29px;
+  
+  }
+}
+

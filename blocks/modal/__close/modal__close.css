@@ -1,0 +1,29 @@
+.modal__close {
+  width: 40px;
+  min-height: 40px;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  font-size: 40px;
+  color: #ffffff;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+}
+
+.modal__close:hover {
+  opacity: 0.6;
+}
+
+
+
+/* Mobile version. Note already responsive to minimum of 880px where component sizes are fixed */
+@media only screen and (min-device-width : 320px) and (max-device-width : 879px) {
+  .modal__close {
+    /* top: -26px; */
+    right: 0px;
+    width: 26px;
+    min-height: 26px;
+    font-size: 26px;
+  }
+}

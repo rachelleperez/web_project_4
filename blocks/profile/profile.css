@@ -1,0 +1,31 @@
+@import url(./__add-button/profile__add-button.css);
+@import url(./__avatar/profile__avatar.css); 
+@import url(./__info/profile__info.css);
+
+/* profile info components */
+@import url(./__bio/profile__bio.css);
+@import url(./__container/profile__container.css);
+@import url(./__edit-button/profile__edit-button.css);
+@import url(./__name/profile__name.css);
+
+
+.profile {
+  width: 880px;
+  margin-top: 40px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: 12fr 61fr 15fr; 
+
+}
+
+/* Mobile version. Note already responsive to minimum of 880px where component sizes are fixed */
+@media only screen and (min-device-width : 320px) and (max-device-width : 879px) {
+  .profile {
+    width: 282px;
+    margin-top: 42px;
+    margin-bottom: 36px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 120px 116px 50px; 
+  }}

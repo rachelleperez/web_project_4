@@ -1,0 +1,29 @@
+/* @import url(./../../vendor/fonts/inter/inter.css); */
+
+.page {
+  position: relative;
+  max-width: 1280px;
+  min-width: 320px; /*mobile: 1 card per row */
+  background: #000000;
+
+  color: white; /* text */
+  margin: auto; /* centered in body */
+  font-family: 'Inter', arial, sans-serif;
+
+  /* for responsiveness */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+/* Mobile version. Note already responsive to minimum of 880px where component sizes are fixed */
+@media only screen and (min-device-width : 320px) and (max-device-width : 879px) {
+  .page {
+    width: 282px;    
+  } 
+}
