@@ -3,7 +3,6 @@
 .header {
   display:block;
   width: 880px;
-  min-height: 74px;
   margin-top: 45px;
   margin-left: auto;
   margin-right: auto;
@@ -13,7 +12,7 @@
 /* Mobile version. Note already responsive to minimum of 880px where component sizes are fixed */
 @media only screen and (min-device-width : 320px) and (max-device-width : 879px) {
   .header {
-    min-height: 56px;
     margin-top: 28px;
+    width: 320px;
   }
 }

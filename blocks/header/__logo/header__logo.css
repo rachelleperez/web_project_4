@@ -3,6 +3,7 @@
   height: 33px;
   background-image: url(../../../images/Vector.svg);
   background-size: cover;
+  margin-bottom: 41px;
 } 
 
 /* Mobile version. Note already responsive to minimum of 880px where component sizes are fixed */
@@ -11,5 +12,6 @@
     width: 126px;
     height: 24px;
     margin-left: 27px;
+    margin-bottom:32px;
   }
 }
