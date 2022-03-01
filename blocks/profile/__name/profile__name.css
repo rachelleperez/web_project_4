@@ -10,6 +10,7 @@
   white-space: nowrap;
   overflow: hidden;
   padding-right: 18px;
+  margin-top: 0;
 }
 
 /* Mobile version. Note already responsive to minimum of 880px where component sizes are fixed */
