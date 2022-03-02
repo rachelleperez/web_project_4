@@ -19,52 +19,51 @@
             <h1 id = "display_profile_name" class = "profile__name">Jacques Cousteau</h1>
             <p id = "display_profile_bio" class = "profile__bio">Explorer</p>
           </div>
-          <button type="button" id="button-open-edit-profile" data-modal="#modal_profile" class = "profile__edit-button"></button>
-          <!-- <button type="button" id="button-open-edit-profile" data-toggle="modal__container" data-target="#modal_profile" class = "profile__edit-button"></button> -->
+          <button type="button" id="button-open-edit-profile" aria-label = "Edit Profile Button" data-modal="#modal_profile" class = "profile__edit-button"></button>
         </div>
-        <button type="button" data-modal="#modal_add" class = "profile__add-button"></button>
+        <button type="button" data-modal="#modal_add" aria-label = "Add New Place Button" class = "profile__add-button"></button>
       </section>
       <section class="elements">
         <article class = "elements__element">
             <img class = "elements__image" src = "./images/place-img1.jpg" alt = "Picture of Place">
             <div class = "elements__container">
               <h2 class = "elements__name">Yosemite Valley</h2>
-              <button type="button" class = "elements__like-symbol"></button>
+              <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
             </div>
           </article> 
           <article class = "elements__element">
           <img class = "elements__image" src = "./images/place-img2.png" alt = "Picture of Place">
           <div class = "elements__container">
             <h2 class = "elements__name">Lake Louise</h2>
-            <button type="button" class = "elements__like-symbol"></button>
+            <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
           </div>
         </article> 
         <article class = "elements__element">
           <img class = "elements__image" src = "./images/place-img3.png" alt = "Picture of Place">
           <div class = "elements__container">
             <h2 class = "elements__name">Bald Mountains</h2>
-            <button type="button" class = "elements__like-symbol"></button>
+            <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
           </div>
         </article> 
         <article class = "elements__element">
           <img class = "elements__image" src = "./images/place-img4.png" alt = "Picture of Place">
           <div class = "elements__container">
             <h2 class = "elements__name">Latemar</h2>
-            <button type="button" class = "elements__like-symbol"></button>
+            <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
           </div>
         </article> 
         <article class = "elements__element">
           <img class = "elements__image" src = "./images/place-img5.png" alt = "Picture of Place">
           <div class = "elements__container">
             <h2 class = "elements__name">Vanoise National Park</h2>
-            <button type="button" class = "elements__like-symbol"></button>
+            <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
           </div>
         </article> 
         <article class = "elements__element">
           <img class = "elements__image" src = "./images/place-img6.png" alt = "Picture of Place">
           <div class = "elements__container">
             <h2 class = "elements__name">Lago di Braies</h2>
-            <button type="button" class = "elements__like-symbol"></button>
+            <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
           </div>
         </article> 
       </section>
@@ -79,11 +78,11 @@
     <div class = "overlay" id="overlay" ></div>
     <div class="modal__container" id="modal_profile">
       <h2 class="modal__title">Edit profile</h2>
-      <button class="modal__close" type="button">&#10005;</button>
+      <button class="modal__close" aria-label = "Close Button" type="button">&#10005;</button>
       <form id = "form_edit_profile" class="form" name="form_edit_profile" novalidate>
         <input name="profile_name" id="input_profile_name" class="form__input" type="text" placeholder="Name" minlength="2" maxlength="40" required>
         <input name="profile_bio" id="input_profile_bio" class="form__input" type="text" placeholder="About Me" minlength="2" maxlength="200" required>
-        <button type="submit" name="profile_submit" id="button-submit-edit-profile" class="form__submit">Save</button>
+        <button type="submit" name="profile_submit" aria-label = "Submit Button" id="button-submit-edit-profile" class="form__submit">Save</button>
       </form>
     </div>
 

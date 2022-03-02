@@ -1,6 +1,6 @@
 // ----------------------- TO REMOVE --------------------------
 
-window.alert("Thanks for your review Yana!\n \nI made the BEM element within element adjustment. I hope this version is closer to the required or just enough to move on to its next iteration in Project 5. Please note I'm having some issues with Github. Thanks for your help!\n \nRachelle");
+window.alert("Thanks for your review Yana!\n \nI made all the suggested edits, including improvements. I hope this version is closer to the required or just enough to move on to its next iteration in Project 5. Thanks for your help!\n \nRachelle");
 
 // -----------------------GENERAL MODAL BEHAVIOR---------------------------
 
