@@ -14,3 +14,45 @@
 @import url('../blocks/modal/modal.css');
 @import url('../blocks/form/form.css');
 @import url('../blocks/overlay/overlay.css');
+
+
+/* Elements-Specific */
+@import url(../blocks/elements/__element/elements__element.css);
+@import url(../blocks/elements/__container/elements__container.css);
+@import url(../blocks/elements/__image/elements__image.css);
+@import url(../blocks/elements/__like-symbol/elements__like-symbol.css);
+@import url(../blocks/elements/__name/elements__name.css);
+@import url(../blocks/elements/__like-symbol/_active/elements__like-symbol_active.css);
+
+
+/* Footer-Specific */
+@import url(../blocks/footer/__credit/footer__credit.css);
+
+/* Form-Specific */
+@import url(../blocks/form/__input/form__input.css);
+@import url(../blocks/form/__submit/form__submit.css);
+
+/* Header-Specific */
+@import url(../blocks/header/__logo/header__logo.css);
+
+/* Modal-Specific */
+@import url(../blocks/modal/__container/modal__container.css);
+@import url(../blocks/modal/__title/modal__title.css);
+@import url(../blocks/modal/__close/modal__close.css);
+@import url(../blocks/modal/__text-box/modal__text-box.css);
+@import url(../blocks/modal/__container/_active/modal__container_active.css);
+
+
+/* Overlay-Specific */
+@import url(../blocks/overlay/_active/overlay_active.css);
+
+
+/* Profile-Specific */
+@import url(../blocks/profile/__add-button/profile__add-button.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css); 
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__bio/profile__bio.css);
+@import url(../blocks/profile/__container/profile__container.css);
+@import url(../blocks/profile/__edit-button/profile__edit-button.css);
+@import url(../blocks/profile/__name/profile__name.css);
+
