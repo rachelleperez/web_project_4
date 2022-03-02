@@ -1,4 +1,4 @@
-.overlay.active {
+.overlay_active {
   opacity: 0.5;
   pointer-events: all;
 }
