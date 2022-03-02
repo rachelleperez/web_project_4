@@ -29,7 +29,6 @@ closeModalButtons.forEach(button => {
 
 function openModal(modal) {
   if (modal == null) return
-  // console.log(modal.className);
   modal.classList.add('modal__container_active')
   overlay.classList.add('overlay_active')
 }
