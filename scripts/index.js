@@ -4,7 +4,7 @@ window.alert("Thanks for your review Yana!\n \nI made the BEM element within ele
 
 // -----------------------GENERAL MODAL BEHAVIOR---------------------------
 
-const openModalButtons = document.querySelectorAll('.profile__add-button, .profile__edit-button')
+const openModalButtons = document.querySelectorAll('.profile__edit-button') //.profile__add-button
 const closeModalButtons = document.querySelectorAll('.modal__close')
 const overlay = document.getElementById('overlay')
 
@@ -41,36 +41,28 @@ function closeModal(modal) {
 const profileModal = document.getElementById('modal_profile');
 const profileForm = document.getElementById('form_edit_profile');
 const buttonOpenEditProfile = document.getElementById("button-open-edit-profile")
-const buttonSubmitEditProfile = document.getElementById("button-submit-edit-profile")
+// const buttonSubmitEditProfile = document.getElementById("button-submit-edit-profile")
 
 // Name Variables
 
 const displayProfileName = document.getElementById('display_profile_name')
 const inputProfileName = document.getElementById('input_profile_name')
-const defaultName = "Jacques Cousteau"
 
 // Bio Variables
 
 const displayBio = document.getElementById('display_profile_bio');
 const inputBio = document.getElementById('input_profile_bio');
-const defaultBio = "Explorer";
 
-// Set Defaults
-
-// window.onload = setDefaults;
-
-// function setDefaults() {
-// 	displayProfileName.innerHTML = defaultName;
-//   displayBio.innerHTML = defaultBio;
-// }
+// would run upon loading
+// window.onload = functionName;
 
 //Pre-fill Profile Form
 
 buttonOpenEditProfile.addEventListener("click", prefillProfileForm)
 
 function prefillProfileForm() {
-  inputProfileName.value = displayProfileName.innerHTML;
-  inputBio.value = displayBio.innerHTML;
+  inputProfileName.value = displayProfileName.textContent;
+  inputBio.value = displayBio.textContent;
 }
 
 // Update Name and Bio
@@ -86,25 +78,25 @@ profileForm.addEventListener("submit", function (evt) {
 }); 
 
 function updateName() {
-  var elementValue = inputProfileName.value;
-  displayProfileName.innerHTML = elementValue;
+  let elementValue = inputProfileName.value;
+  displayProfileName.textContent = elementValue;
 }
 
 function updateBio() {
-  var elementValue = inputBio.value;
-  displayBio.innerHTML = elementValue;
+  let elementValue = inputBio.value;
+  displayBio.textContent = elementValue;
 }
 
 
 // ------------------------ LIKING ELEMENTS ---------------------------
 
-const likeButtons = document.querySelectorAll('.elements__like-symbol')
+// const likeButtons = document.querySelectorAll('.elements__like-symbol')
 
 // When any like button is clicked, toggle between active or not
-likeButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    if (button.classList.contains("elements__like-symbol--active")) {
-      button.classList.toggle("elements__like-symbol");
-    } else button.classList.toggle("elements__like-symbol--active");
-  })
-})
+// likeButtons.forEach(button => {
+//   button.addEventListener('click', () => {
+//     if (button.classList.contains("elements__like-symbol_active")) {
+//       button.classList.toggle("elements__like-symbol");
+//     } else button.classList.toggle("elements__like-symbol_active");
+//   })
+// })
