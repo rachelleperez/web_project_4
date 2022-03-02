@@ -16,14 +16,12 @@
 /* Mobile version. Note already responsive to minimum of 880px where component sizes are fixed */
 @media only screen and (min-device-width : 320px) and (max-device-width : 879px) {
   .profile__name {
-    width: 196px;
+    max-width: 196px;
     margin-bottom: 14px;
     position: relative;
-
+    padding-right: 10px;
     font-size: 22px;
     line-height: 27px;
-    text-align: center;
-    margin-left: 29px;
-  
+    text-align: center;  
   }
 }

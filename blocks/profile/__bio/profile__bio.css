@@ -6,6 +6,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  max-width: 391px;
 }
 
 
@@ -14,6 +15,6 @@
   .profile__bio {
     font-size: 14px;
     line-height: 17px;
-    margin-left: 29px;
+    max-width: 206px;
   }
 }
