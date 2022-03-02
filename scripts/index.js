@@ -12,6 +12,11 @@ openModalButtons.forEach(button => {
   button.addEventListener('click', () => {
     const modal = document.querySelector(button.dataset.modal) // from data-modal
     openModal(modal)
+    
+    // if this is the profile-edit button, pre-fill form.
+    if (button.classList.contains("profile__edit-button")) {
+      prefillProfileForm()
+    }
   })
 })
 
@@ -24,14 +29,15 @@ closeModalButtons.forEach(button => {
 
 function openModal(modal) {
   if (modal == null) return
-  modal.classList.add('active')
-  overlay.classList.add('active')
+  // console.log(modal.className);
+  modal.classList.add('modal__container_active')
+  overlay.classList.add('overlay_active')
 }
 
 function closeModal(modal) {
   if (modal == null) return
-  modal.classList.remove('active')
-  overlay.classList.remove('active')
+  modal.classList.remove('modal__container_active')
+  overlay.classList.remove('overlay_active')
 }
 
 
@@ -40,7 +46,6 @@ function closeModal(modal) {
 // Form Variables
 const profileModal = document.getElementById('modal_profile');
 const profileForm = document.getElementById('form_edit_profile');
-const buttonOpenEditProfile = document.getElementById("button-open-edit-profile")
 // const buttonSubmitEditProfile = document.getElementById("button-submit-edit-profile")
 
 // Name Variables
@@ -57,8 +62,6 @@ const inputBio = document.getElementById('input_profile_bio');
 // window.onload = functionName;
 
 //Pre-fill Profile Form
-
-buttonOpenEditProfile.addEventListener("click", prefillProfileForm)
 
 function prefillProfileForm() {
   inputProfileName.value = displayProfileName.textContent;
