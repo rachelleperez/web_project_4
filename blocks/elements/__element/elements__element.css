@@ -1,7 +1,6 @@
 .elements__element {
   background: #FFFFFF;
   width: 282px;
-  height: 361px;
   border-radius: 10px;
   display: grid;
   grid-template-rows: 282fr 79fr; /* 361 - 282 = 282 */

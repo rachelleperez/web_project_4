@@ -1,5 +1,4 @@
 .elements__container {
-  min-height: calc(361px - 282px);
   display: flex;
   width: 282px;
   }
