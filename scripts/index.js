@@ -30,13 +30,13 @@ closeModalButtons.forEach(button => {
 function openModal(modal) {
   if (modal == null) return
   modal.classList.add('modal__container_active')
-  overlay.classList.add('overlay_active')
+  overlay.classList.add('modal__overlay_active')
 }
 
 function closeModal(modal) {
   if (modal == null) return
   modal.classList.remove('modal__container_active')
-  overlay.classList.remove('overlay_active')
+  overlay.classList.remove('modal__overlay_active')
 }
 
 

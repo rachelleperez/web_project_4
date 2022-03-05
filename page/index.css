@@ -41,10 +41,10 @@
 @import url(../blocks/modal/__close/modal__close.css);
 @import url(../blocks/modal/__text-box/modal__text-box.css);
 @import url(../blocks/modal/__container/_active/modal__container_active.css);
+@import url(../blocks/modal/__overlay/modal__overlay.css);
+@import url(../blocks/modal/__overlay/_active/modal__overlay_active.css);
 
 
-/* Overlay-Specific */
-@import url(../blocks/overlay/_active/overlay_active.css);
 
 
 /* Profile-Specific */

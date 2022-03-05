@@ -1,6 +1,6 @@
-@import url(./_active/overlay_active.css);
+@import url(./_active/modal__overlay_active.css);
 
-.overlay {
+.modal__overlay {
   position: fixed;
   opacity: 0;
   top: 0;
