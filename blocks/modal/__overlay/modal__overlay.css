@@ -1,5 +1,3 @@
-@import url(./_active/modal__overlay_active.css);
-
 .modal__overlay {
   position: fixed;
   opacity: 0;
