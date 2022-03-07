@@ -57,9 +57,6 @@ const inputProfileName = document.getElementById('input_profile_name')
 const displayBio = document.getElementById('display_profile_bio');
 const inputBio = document.getElementById('input_profile_bio');
 
-// would run upon loading
-// window.onload = functionName;
-
 //Pre-fill Profile Form
 
 function prefillProfileForm() {
@@ -89,6 +86,149 @@ function updateBio() {
   displayBio.textContent = elementValue;
 }
 
+// ------------------------ CARD MANAGEMENT---------------------------
+
+// Card Variables
+
+let elementsSection = document.querySelector('.elements');
+
+const initialCards = [
+  {
+    name: "Yosemite Valley",
+    link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
+  },
+  {
+    name: "Lake Louise",
+    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
+  },
+  {
+    name: "Bald Mountains",
+    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
+  },
+  {
+    name: "Latemar",
+    link: "https://code.s3.yandex.net/web-code/latemar.jpg"
+  },
+  {
+    name: "Vanoise National Park",
+    link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
+  },
+  {
+    name: "Lago di Braies",
+    link: "https://code.s3.yandex.net/web-code/lago.jpg"
+  }
+];
+
+
+let hardCodedCards = `
+    <article class = "elements__element">
+    <img class = "elements__image" src = "./images/place-img1.jpg" alt = "Picture of Place">
+    <div class = "elements__container">
+      <h2 class = "elements__name">Yosemite Valley</h2>
+      <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
+    </div>
+    </article> 
+    <article class = "elements__element">
+    <img class = "elements__image" src = "./images/place-img2.png" alt = "Picture of Place">
+    <div class = "elements__container">
+    <h2 class = "elements__name">Lake Louise</h2>
+    <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
+    </div>
+    </article> 
+    <article class = "elements__element">
+    <img class = "elements__image" src = "./images/place-img3.png" alt = "Picture of Place">
+    <div class = "elements__container">
+    <h2 class = "elements__name">Bald Mountains</h2>
+    <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
+    </div>
+    </article> 
+    <article class = "elements__element">
+    <img class = "elements__image" src = "./images/place-img4.png" alt = "Picture of Place">
+    <div class = "elements__container">
+    <h2 class = "elements__name">Latemar</h2>
+    <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
+    </div>
+    </article> 
+    <article class = "elements__element">
+    <img class = "elements__image" src = "./images/place-img5.png" alt = "Picture of Place">
+    <div class = "elements__container">
+    <h2 class = "elements__name">Vanoise National Park</h2>
+    <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
+    </div>
+    </article> 
+    <article class = "elements__element">
+    <img class = "elements__image" src = "./images/place-img6.png" alt = "Picture of Place">
+    <div class = "elements__container">
+    <h2 class = "elements__name">Lago di Braies</h2>
+    <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
+    </div>
+    </article>
+`;
+
+//TEST - hard coding works?
+elementsSection.innerHTML = hardCodedCards;
+
+// //elements contains nothing at first
+// let elementsContent = `
+// `;
+
+// for (var i = 0; i < initialCards.length; i++) {
+//   //code for newCard
+//   let newCardHTML = `
+//   <article class = "elements__element">
+//   <img class = "elements__image" src = "{}" alt = "Picture of Place">
+//   <div class = "elements__container">
+//     <h2 class = "elements__name">{}</h2>
+//     <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
+//   </div>
+//   </article> 
+//   `.format(initialCards[i]["link"], initialCards[i]["name"]);
+
+//   //add to content
+//   elementsContent = newCardHTML; // TODO: will only take the last one
+// } //end of for loop
+
+// elementsSection.innerHTML = `
+// is
+// this 
+// wor 
+// `;
+
+// // would run upon loading
+// window.onload = setDefaults;
+
+// // function that will include ANY function that must run upon navigating to page
+// function setDefaults() {
+//   elementsSection = elementsSection;
+// }
+
+// //elements contains nothing at first
+// let elementsContent = `
+// `;
+
+
+// for (var i = 0; i < initialCards.length; i++) {
+//   //code for newCard
+//   let newCardHTML = `
+//   <article class = "elements__element">
+//   <img class = "elements__image" src = "{}" alt = "Picture of Place">
+//   <div class = "elements__container">
+//     <h2 class = "elements__name">{}</h2>
+//     <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
+//   </div>
+//   </article> 
+//   `.format(initialCards[i]["link"], initialCards[i]["name"]);
+
+//   //add to content
+//   elementsContent += newCardHTML
+// } //end of for loop
+
+
+// put together content for elements and then add to section
+// function enterInitialCards() {
+//   elementsSection.InnerHTML = hardCodedCards;
+// }
+
 
 // ------------------------ LIKING ELEMENTS ---------------------------
 
@@ -102,3 +242,5 @@ likeButtons.forEach(button => {
     } else button.classList.add("elements__like-symbol_active");
   })
 })
+
+
