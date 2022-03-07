@@ -168,65 +168,11 @@ let hardCodedCards = `
 //TEST - hard coding works?
 elementsSection.innerHTML = hardCodedCards;
 
-// //elements contains nothing at first
-// let elementsContent = `
-// `;
-
-// for (var i = 0; i < initialCards.length; i++) {
-//   //code for newCard
-//   let newCardHTML = `
-//   <article class = "elements__element">
-//   <img class = "elements__image" src = "{}" alt = "Picture of Place">
-//   <div class = "elements__container">
-//     <h2 class = "elements__name">{}</h2>
-//     <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
-//   </div>
-//   </article> 
-//   `.format(initialCards[i]["link"], initialCards[i]["name"]);
-
-//   //add to content
-//   elementsContent = newCardHTML; // TODO: will only take the last one
-// } //end of for loop
-
-// elementsSection.innerHTML = `
-// is
-// this 
-// wor 
-// `;
-
 // // would run upon loading
 // window.onload = setDefaults;
 
 // // function that will include ANY function that must run upon navigating to page
 // function setDefaults() {
-//   elementsSection = elementsSection;
-// }
-
-// //elements contains nothing at first
-// let elementsContent = `
-// `;
-
-
-// for (var i = 0; i < initialCards.length; i++) {
-//   //code for newCard
-//   let newCardHTML = `
-//   <article class = "elements__element">
-//   <img class = "elements__image" src = "{}" alt = "Picture of Place">
-//   <div class = "elements__container">
-//     <h2 class = "elements__name">{}</h2>
-//     <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
-//   </div>
-//   </article> 
-//   `.format(initialCards[i]["link"], initialCards[i]["name"]);
-
-//   //add to content
-//   elementsContent += newCardHTML
-// } //end of for loop
-
-
-// put together content for elements and then add to section
-// function enterInitialCards() {
-//   elementsSection.InnerHTML = hardCodedCards;
 // }
 
 
