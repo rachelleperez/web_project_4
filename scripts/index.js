@@ -92,13 +92,13 @@ function updateBio() {
 
 // ------------------------ LIKING ELEMENTS ---------------------------
 
-// const likeButtons = document.querySelectorAll('.elements__like-symbol')
+const likeButtons = document.querySelectorAll('.elements__like-symbol')
 
-// When any like button is clicked, toggle between active or not
-// likeButtons.forEach(button => {
-//   button.addEventListener('click', () => {
-//     if (button.classList.contains("elements__like-symbol_active")) {
-//       button.classList.toggle("elements__like-symbol");
-//     } else button.classList.toggle("elements__like-symbol_active");
-//   })
-// })
+//When any like button is clicked, toggle between active or not
+likeButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    if (button.classList.contains("elements__like-symbol_active")) {
+      button.classList.remove("elements__like-symbol_active");
+    } else button.classList.add("elements__like-symbol_active");
+  })
+})
