@@ -86,10 +86,9 @@ function updateBio() {
   displayBio.textContent = elementValue;
 }
 
-// ------------------------ CARD MANAGEMENT---------------------------
+// ------------------------ DEFAULT CARDS ---------------------------
 
 // Card Variables
-
 let elementsSection = document.querySelector('.elements');
 
 const initialCards = [
@@ -120,61 +119,33 @@ const initialCards = [
 ];
 
 
-let hardCodedCards = `
+//empty string to collect html tags for all cards
+let initialCardsString = `
+`;
+
+//for each card, add html tags to initialCardsString
+initialCards.forEach(fillInitialCardsString);
+
+function fillInitialCardsString (cardDict) {
+  let initialCardsStringAdd = `
     <article class = "elements__element">
-    <img class = "elements__image" src = "./images/place-img1.jpg" alt = "Picture of Place">
+    <img class = "elements__image" src = "${cardDict["link"]}" alt = "Picture of Place">
     <div class = "elements__container">
-      <h2 class = "elements__name">Yosemite Valley</h2>
-      <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
-    </div>
-    </article> 
-    <article class = "elements__element">
-    <img class = "elements__image" src = "./images/place-img2.png" alt = "Picture of Place">
-    <div class = "elements__container">
-    <h2 class = "elements__name">Lake Louise</h2>
-    <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
-    </div>
-    </article> 
-    <article class = "elements__element">
-    <img class = "elements__image" src = "./images/place-img3.png" alt = "Picture of Place">
-    <div class = "elements__container">
-    <h2 class = "elements__name">Bald Mountains</h2>
-    <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
-    </div>
-    </article> 
-    <article class = "elements__element">
-    <img class = "elements__image" src = "./images/place-img4.png" alt = "Picture of Place">
-    <div class = "elements__container">
-    <h2 class = "elements__name">Latemar</h2>
-    <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
-    </div>
-    </article> 
-    <article class = "elements__element">
-    <img class = "elements__image" src = "./images/place-img5.png" alt = "Picture of Place">
-    <div class = "elements__container">
-    <h2 class = "elements__name">Vanoise National Park</h2>
-    <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
-    </div>
-    </article> 
-    <article class = "elements__element">
-    <img class = "elements__image" src = "./images/place-img6.png" alt = "Picture of Place">
-    <div class = "elements__container">
-    <h2 class = "elements__name">Lago di Braies</h2>
+    <h2 class = "elements__name">${cardDict["name"]}</h2>
     <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
     </div>
     </article>
-`;
+  `;
+  initialCardsString += initialCardsStringAdd
+}
 
-//TEST - hard coding works?
-elementsSection.innerHTML = hardCodedCards;
+// setDefaults will run upon loading
+window.onload = setDefaults;
 
-// // would run upon loading
-// window.onload = setDefaults;
-
-// // function that will include ANY function that must run upon navigating to page
-// function setDefaults() {
-// }
-
+// function that will include ANY function that must run upon navigating to page
+function setDefaults() {
+  elementsSection.innerHTML = initialCardsString; //textContent does not work
+}
 
 // ------------------------ LIKING ELEMENTS ---------------------------
 
