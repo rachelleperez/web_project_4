@@ -223,6 +223,10 @@ function addNewCard () {
 
   //add to html section // if input null
   elementsSection.innerHTML = newCardsStringAdd + elementsSection.innerHTML;
+
+  //reset values to blank
+  addForm.elements['input_place_title'].value = ""
+  addForm.elements['input_place_image'].value = ""
 }
 
 // ------------------------ LIKING ELEMENTS ---------------------------
