@@ -131,7 +131,6 @@ const initialCards = [
 
 ];
 
-
 //empty string to collect html tags for all cards
 let initialCardsString = `
 `;
@@ -162,6 +161,7 @@ function setDefaults() {
 
 // ------------------------ ADD NEW PLACE ---------------------------
 
+
 // Form Variables
 const addModal = document.getElementById('modal_add');
 const addForm = document.getElementById('form_add_place');
@@ -171,9 +171,6 @@ const buttonCreatePlace = document.getElementById("button-create-place");
 
 const inputPlaceTitle = document.getElementById('input_place_title');
 const inputPlaceImage = document.getElementById('input_place_image');
-
-// NOTE FROM BEFORE: let elementsSection = document.querySelector('.elements');
-
 
 // Update Name and Bio
 
@@ -202,7 +199,7 @@ function addNewCard () {
     </article>
   `;
 
-  //add to html section // if input null
+   //add to html section // if input null
   elementsSection.innerHTML = newCardsStringAdd + elementsSection.innerHTML;
 
   //reset values to blank
@@ -212,15 +209,35 @@ function addNewCard () {
 
 // ------------------------ LIKING ELEMENTS ---------------------------
 
-const likeButtons = document.querySelectorAll('.elements__like-symbol')
+// NEED HELP IN THIS SECTION: unsure why this doesnt work. Worked with cards in index.html but not when cards come from index.js.
+let likeButtons = document.getElementsByClassName('.elements__like-symbol');
+// const likeButtons = document.querySelectorAll('.elements__like-symbol')
 
 //When any like button is clicked, toggle between active or not
 likeButtons.forEach(button => {
   button.addEventListener('click', () => {
+    console.log("button clicked");
     if (button.classList.contains("elements__like-symbol_active")) {
       button.classList.remove("elements__like-symbol_active");
     } else button.classList.add("elements__like-symbol_active");
   })
 })
 
+// elementsSection.addEventListener("change", function (evt) {
+//   // let's cancel the default action that belongs to the event
+//   evt.preventDefault();
 
+//   //update likeButtons
+//   //const likeButtons = document.getElementsByClassName('.elements__like-symbol');
+
+//   //When any like button is clicked, toggle between active or not
+//   document.getElementsByClassName('.elements__like-symbol').forEach(button => {
+//     button.addEventListener('click', () => {
+//       console.log("button clicked");
+//       if (button.classList.contains("elements__like-symbol_active")) {
+//         button.classList.remove("elements__like-symbol_active");
+//       } else button.classList.add("elements__like-symbol_active");
+//     })
+//   })
+
+// }); 
