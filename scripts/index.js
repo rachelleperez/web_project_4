@@ -187,14 +187,34 @@ addForm.addEventListener("submit", function (evt) {
 }); 
 
 function addNewCard () {
+  // const inputPlaceTitle = document.getElementById('input_place_title');
+  // const inputPlaceImage = document.getElementById('input_place_image');
+  // let newCardsStringAdd = `
+  //   <article class = "elements__element">
+  //   <img class = "elements__image" src = "`
+  //   + "https://images.unsplash.com/photo-1577940800897-c082cd6790f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+  //   + `" alt = "Picture of Place">
+  //   <div class = "elements__container">
+  //   <h2 class = "elements__name">`
+  //   + "Big Sur"
+  //   + `</h2>
+  //   <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
+  //   </div>
+  //   </article>
+  // `;
+
+  //test
+  console.log("TITLE: " + addForm.elements['input_place_title'].value);
+  console.log("PLACE: " + addForm.elements['input_place_image'].value);
+
   let newCardsStringAdd = `
     <article class = "elements__element">
     <img class = "elements__image" src = "`
-    + "https://images.unsplash.com/photo-1577940800897-c082cd6790f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+    + addForm.elements['input_place_image'].value
     + `" alt = "Picture of Place">
     <div class = "elements__container">
     <h2 class = "elements__name">`
-    + "Big Sur"
+    + addForm.elements['input_place_title'].value
     + `</h2>
     <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
     </div>
