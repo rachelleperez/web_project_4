@@ -160,6 +160,51 @@ function setDefaults() {
   elementsSection.innerHTML = initialCardsString; //textContent does not work
 }
 
+// ------------------------ ADD NEW PLACE ---------------------------
+
+// Form Variables
+const addModal = document.getElementById('modal_add');
+const addForm = document.getElementById('form_add_place');
+const buttonCreatePlace = document.getElementById("button-create-place");
+
+// Input Variables
+
+const inputPlaceTitle = document.getElementById('input_place_title');
+const inputPlaceImage = document.getElementById('input_place_image');
+
+// NOTE FROM BEFORE: let elementsSection = document.querySelector('.elements');
+
+
+// Update Name and Bio
+
+addForm.addEventListener("submit", function (evt) {
+  // let's cancel the default action that belongs to the event
+  evt.preventDefault();
+  // add new card
+  addNewCard();
+  //close modal
+  closeModal(addModal);
+}); 
+
+function addNewCard () {
+  let newCardsStringAdd = `
+    <article class = "elements__element">
+    <img class = "elements__image" src = "`
+    + "https://images.unsplash.com/photo-1577940800897-c082cd6790f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+    + `" alt = "Picture of Place">
+    <div class = "elements__container">
+    <h2 class = "elements__name">`
+    + "Big Sur"
+    + `</h2>
+    <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
+    </div>
+    </article>
+  `;
+
+  //add to html section // if input null
+  elementsSection.innerHTML = newCardsStringAdd + elementsSection.innerHTML;
+}
+
 // ------------------------ LIKING ELEMENTS ---------------------------
 
 const likeButtons = document.querySelectorAll('.elements__like-symbol')
