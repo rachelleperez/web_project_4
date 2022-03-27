@@ -138,6 +138,8 @@ let initialCardsString = `
 //for each card, add html tags to initialCardsString
 initialCards.forEach(fillInitialCardsString);
 
+{/* <button type="button" aria-label = "Delete Button" class = "elements__delete-button">test</button> */}
+
 function fillInitialCardsString (cardDict) {
   let initialCardsStringAdd = `
     <article class = "elements__element">
@@ -199,7 +201,7 @@ function addNewCard () {
     </article>
   `;
 
-   //add to html section // if input null
+   //add to html section 
   elementsSection.innerHTML = newCardsStringAdd + elementsSection.innerHTML;
 
   //reset values to blank
@@ -211,7 +213,6 @@ function addNewCard () {
 
 // NEED HELP IN THIS SECTION: unsure why this doesnt work. Worked with cards in index.html but not when cards come from index.js.
 let likeButtons = document.getElementsByClassName('.elements__like-symbol');
-// const likeButtons = document.querySelectorAll('.elements__like-symbol')
 
 //When any like button is clicked, toggle between active or not
 likeButtons.forEach(button => {
@@ -228,16 +229,5 @@ likeButtons.forEach(button => {
 //   evt.preventDefault();
 
 //   //update likeButtons
-//   //const likeButtons = document.getElementsByClassName('.elements__like-symbol');
-
-//   //When any like button is clicked, toggle between active or not
-//   document.getElementsByClassName('.elements__like-symbol').forEach(button => {
-//     button.addEventListener('click', () => {
-//       console.log("button clicked");
-//       if (button.classList.contains("elements__like-symbol_active")) {
-//         button.classList.remove("elements__like-symbol_active");
-//       } else button.classList.add("elements__like-symbol_active");
-//     })
-//   })
 
 // }); 
