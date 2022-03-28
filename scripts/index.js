@@ -138,12 +138,11 @@ let initialCardsString = `
 //for each card, add html tags to initialCardsString
 initialCards.forEach(fillInitialCardsString);
 
-{/* <button type="button" aria-label = "Delete Button" class = "elements__delete-button">test</button> */}
-
 function fillInitialCardsString (cardDict) {
   let initialCardsStringAdd = `
     <article class = "elements__element">
-    <img class = "elements__image" src = "${cardDict["link"]}" alt = "Picture of Place">
+    <img class = "elements__image" data-modal="#modal_image" src = "${cardDict["link"]}" alt = "Picture of Place">
+    <button type="button" class = "elements_delete-button"></button>
     <div class = "elements__container">
     <h2 class = "elements__name">${cardDict["name"]}</h2>
     <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
@@ -189,7 +188,7 @@ function addNewCard () {
 
   let newCardsStringAdd = `
     <article class = "elements__element">
-    <img class = "elements__image" src = "`
+    <img class = "elements__image" data-modal="#modal_image" src = "`
     + addForm.elements['input_place_image'].value //user input
     + `" alt = "Picture of Place">
     <div class = "elements__container">
@@ -209,12 +208,28 @@ function addNewCard () {
   addForm.elements['input_place_image'].value = ""
 }
 
+// ------------------------ REMOVE PLACE ---------------------------
+
+let deleteButtons = document.querySelectorAll('.elements_delete-button');
+
+deleteButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    console.log("button clicked");
+    const card = button.closest(".elements__element");
+    deleteCard(card);
+  })
+})
+
+function deleteCard(card) {
+  card.innerHTML = "";
+}
+
 // ------------------------ LIKING ELEMENTS ---------------------------
 
 // NEED HELP IN THIS SECTION: unsure why this doesnt work. Worked with cards in index.html but not when cards come from index.js.
-let likeButtons = document.getElementsByClassName('.elements__like-symbol');
+let likeButtons = document.querySelectorAll('.elements__like-symbol');
 
-//When any like button is clicked, toggle between active or not
+// When any like button is clicked, toggle between active or not
 likeButtons.forEach(button => {
   button.addEventListener('click', () => {
     console.log("button clicked");
@@ -224,10 +239,16 @@ likeButtons.forEach(button => {
   })
 })
 
-// elementsSection.addEventListener("change", function (evt) {
-//   // let's cancel the default action that belongs to the event
-//   evt.preventDefault();
+// ------------------------ OPENING IMAGES ---------------------------
 
-//   //update likeButtons
+// NEED HELP IN THIS SECTION: unsure why this doesnt work. Worked with cards in index.html but not when cards come from index.js.
+let cardImages = document.querySelectorAll('.elements__image');
 
-// }); 
+// When any like button is clicked, toggle between active or not
+cardImages.forEach(image => {
+    image.addEventListener('click', () => {
+      console.log("image clicked");
+      const modal = document.querySelector(image.dataset.modal); // from data-modal
+      openModal(modal);
+  })
+});
