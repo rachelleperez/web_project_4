@@ -64,7 +64,7 @@
   <!-- CARD TEMPLATE -->
   <template id="card-template">
     <article class = "elements__element">
-      <span class = "elements__image" data-modal="#modal_image" aria-label="Image of Place"></span>
+      <button typ="button" data-modal="#popup-image"  aria-label="Image of Place" class = "elements__image"></button>
       <button type="button" class = "elements_delete-button"></button>
       <div class = "elements__container">
       <h2 class = "elements__name"></h2>
@@ -72,6 +72,16 @@
       </div>
       </article>
   </template>
+
+    <!-- IMAGE MODAL -->
+    <div class="modal">
+      <div class = "modal__overlay" id="overlay" ></div>
+      <div class="modal__container" id="popup-image">
+        <span class = "modal__image"  aria-label="Image of Place"></span> -->
+        <p class="modal__caption">HI</p>
+        <button class="modal__close" aria-label = "Close Button" type="button">&#10005;</button>
+      </div>
+    </div>
 
   <!-- JS SCRIPTS FOR ALL -->
   <script src="./scripts/data.js" defer ></script>

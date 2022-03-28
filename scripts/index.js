@@ -10,6 +10,7 @@ const overlay = document.getElementById('overlay')
 
 openModalButtons.forEach(button => {
   button.addEventListener('click', () => {
+    console.log("button clicked")
     const modal = document.querySelector(button.dataset.modal) // from data-modal
     openModal(modal)
     
@@ -28,6 +29,7 @@ closeModalButtons.forEach(button => {
 })
 
 function openModal(modal) {
+  console.log("open modal")
   if (modal == null) return
   modal.classList.add('modal__container_active')
   overlay.classList.add('modal__overlay_active')
@@ -101,7 +103,7 @@ function createCard(data) {
   //console.log(card.querySelector('.elements__image').style);
   card.querySelector('.elements__image').style.backgroundImage = `url('${data.link}')`
   card.querySelector('.elements__name').textContent = data.name
-  console.log(card);
+  //console.log(card);
   //add event listeners
 
   // return the created card
@@ -182,7 +184,7 @@ let deleteButtons = document.querySelectorAll('.elements_delete-button');
 
 deleteButtons.forEach(button => {
   button.addEventListener('click', () => {
-    console.log("button clicked");
+    console.log("delete button clicked");
     const card = button.closest(".elements__element");
     deleteCard(card);
   })
@@ -194,13 +196,13 @@ function deleteCard(card) {
 
 // ------------------------ LIKING ELEMENTS ---------------------------
 
-// NEED HELP IN THIS SECTION: unsure why this doesnt work. Worked with cards in index.html but not when cards come from index.js.
+
 let likeButtons = document.querySelectorAll('.elements__like-symbol');
 
 // When any like button is clicked, toggle between active or not
 likeButtons.forEach(button => {
   button.addEventListener('click', () => {
-    console.log("button clicked");
+    console.log("like button clicked");
     if (button.classList.contains("elements__like-symbol_active")) {
       button.classList.remove("elements__like-symbol_active");
     } else button.classList.add("elements__like-symbol_active");
@@ -210,13 +212,15 @@ likeButtons.forEach(button => {
 // ------------------------ OPENING IMAGES ---------------------------
 
 // NEED HELP IN THIS SECTION: unsure why this doesnt work. Worked with cards in index.html but not when cards come from index.js.
-let cardImages = document.querySelectorAll('.elements__image');
+let imageButtons = document.querySelectorAll('.elements__image');
 
 // When any like button is clicked, toggle between active or not
-cardImages.forEach(image => {
-    image.addEventListener('click', () => {
-      console.log("image clicked");
-      const modal = document.querySelector(image.dataset.modal); // from data-modal
-      openModal(modal);
+imageButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      console.log("image button clicked")
+      console.log(button.dataset.modal);
+      const modal = document.querySelector(button.dataset.modal) // from data-modal
+      console.log(modal);
+      openModal(modal)
   })
 });
