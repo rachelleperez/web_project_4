@@ -155,23 +155,26 @@ addForm.addEventListener("submit", function (evt) {
 }); 
 
 function addNewCard () {
+  const name =  addForm.elements['input_place_image'].value
+  const place = addForm.elements['input_place_title'].value
+  // outside of this function, make a current cards array to add/remove from 
 
-  let newCardsStringAdd = `
-    <article class = "elements__element">
-    <img class = "elements__image" data-modal="#modal_image" src = "`
-    + addForm.elements['input_place_image'].value //user input
-    + `" alt = "Picture of Place">
-    <div class = "elements__container">
-    <h2 class = "elements__name">`
-    + addForm.elements['input_place_title'].value //user input
-    + `</h2>
-    <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
-    </div>
-    </article>
-  `;
+  // let newCardsStringAdd = `
+  //   <article class = "elements__element">
+  //   <img class = "elements__image" data-modal="#modal_image" src = "`
+  //   + addForm.elements['input_place_image'].value //user input
+  //   + `" alt = "Picture of Place">
+  //   <div class = "elements__container">
+  //   <h2 class = "elements__name">`
+  //   + addForm.elements['input_place_title'].value //user input
+  //   + `</h2>
+  //   <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
+  //   </div>
+  //   </article>
+  // `;
 
-   //add to html section 
-  elementsSection.innerHTML = newCardsStringAdd + elementsSection.innerHTML;
+  //  //add to html section 
+  // elementsSection.innerHTML = newCardsStringAdd + elementsSection.innerHTML;
 
   //reset values to blank
   addForm.elements['input_place_title'].value = ""
@@ -217,10 +220,11 @@ let imageButtons = document.querySelectorAll('.elements__image');
 // When any like button is clicked, toggle between active or not
 imageButtons.forEach(button => {
     button.addEventListener('click', () => {
-      console.log("image button clicked")
-      console.log(button.dataset.modal);
-      const modal = document.querySelector(button.dataset.modal) // from data-modal
-      console.log(modal);
+      const modal = document.querySelector(button.dataset.modal); // from data-modal
+      const image = modal.querySelector('.modal__image');
+      const imageCaption = modal.querySelector('.modal__image-caption');
+      image.src="https://code.s3.yandex.net/web-code/lago.jpg"
+      imageCaption.textContent = "Placeholder"
       openModal(modal)
   })
 });
