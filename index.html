@@ -24,6 +24,7 @@
         <button type="button" data-modal="#modal_add" aria-label = "Add New Place Button" class = "profile__add-button"></button>
       </section>
       <section id = "elements" class="elements">
+        <!-- <ul class="places_list"></ul> -->
       </section>
     </main>
       <footer class="footer">
@@ -60,19 +61,22 @@
     </div>
   </div>
 
-    <!--IMAGE MODAL -->
-    <div class="modal">
-      <!-- <div class = "modal__overlay" id="overlay" ></div> -->
-      <!--PLACEHOLDER TO CHECK FUNCTIONALITY -->
-      <div class="modal__container" id="modal_image">
-        <button class="modal__close" aria-label = "Close Button" type="button">&#10005;</button>
-        <img class="profile__avatar" src="./images/avatar.png" alt="Profile Image"/>
+  <!-- CARD TEMPLATE -->
+  <template id="card-template">
+    <article class = "elements__element">
+      <span class = "elements__image" data-modal="#modal_image" aria-label="Image of Place"></span>
+      <button type="button" class = "elements_delete-button"></button>
+      <div class = "elements__container">
+      <h2 class = "elements__name"></h2>
+      <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
       </div>
-    </div>
-
+      </article>
+  </template>
 
   <!-- JS SCRIPTS FOR ALL -->
-  <script type="text/javascript" src="./scripts/index.js"></script>
+  <script src="./scripts/data.js" defer ></script>
+  <script src="./scripts/index.js" defer></script>
+
 
 </body>
 </html>
