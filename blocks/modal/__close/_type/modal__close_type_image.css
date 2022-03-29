@@ -1,12 +1,12 @@
 
-.modal__container_active {
-  transform: translate(-50%, -50%) scale(1);
-}
-
-
 /* Mobile version. Note already responsive to minimum of 880px where component sizes are fixed */
 @media only screen and (min-device-width : 320px) and (max-device-width : 879px) {
-  .modal__container_active {
-    max-width: 282px;
+  .modal__close_type_image {
+    right: 0px;
+    width: 30px;
+    min-height: 30px;
+    font-size: 30px;
+    top: -30px;
+    right: -30px;
   }
 }
