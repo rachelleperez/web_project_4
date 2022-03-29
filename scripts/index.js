@@ -59,7 +59,7 @@ const inputProfileName = document.getElementById('input_profile_name')
 const displayBio = document.getElementById('display_profile_bio');
 const inputBio = document.getElementById('input_profile_bio');
 
-//Pre-fill Profile Form
+// Function: Pre-fill form with current displayed name and bio
 
 function prefillProfileForm() {
   inputProfileName.value = displayProfileName.textContent;
@@ -79,19 +79,19 @@ profileForm.addEventListener("submit", function (evt) {
 }); 
 
 function updateName() {
-  let elementValue = inputProfileName.value;
+  const elementValue = inputProfileName.value;
   displayProfileName.textContent = elementValue;
 }
 
 function updateBio() {
-  let elementValue = inputBio.value;
+  const elementValue = inputBio.value;
   displayBio.textContent = elementValue;
 }
 
 // ------------------------ DEFAULT CARDS ---------------------------
 
 // Card Variables
-let elementsSection = document.querySelector('.elements');
+const elementsSection = document.querySelector('.elements');
 
 //Card Template
 const cardTemplate = document.querySelector('#card-template');
