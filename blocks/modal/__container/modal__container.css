@@ -10,12 +10,12 @@
   background-color: white;
   border-radius: 10px;
 
-  max-width: 80%; 
+  max-width: 80%;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
 }
 
 /* Mobile version. Note already responsive to minimum of 880px where component sizes are fixed */
-@media only screen and (min-device-width : 320px) and (max-device-width : 879px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 879px) {
   .modal__container {
     max-width: 282px;
   }

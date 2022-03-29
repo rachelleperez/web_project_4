@@ -1,6 +1,6 @@
 .elements__name {
   margin: auto;
-  width: calc(246px-21px);
+  width: calc(246 - 21);
   margin-left: 21px;
   font-weight: 900;
   font-size: 24px;
