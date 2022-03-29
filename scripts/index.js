@@ -103,6 +103,7 @@ function createCard(data) {
   //console.log(card.querySelector('.elements__image').style);
   card.querySelector('.elements__image').style.backgroundImage = `url('${data.link}')`
   card.querySelector('.elements__name').textContent = data.name
+  card.querySelector('.elements__image').addEventListener('click', () => handlePreviewPicture(card, data))
   //console.log(card);
   //add event listeners
 
@@ -214,31 +215,13 @@ likeButtons.forEach(button => {
 
 // ------------------------ OPENING IMAGES ---------------------------
 
-// NEED HELP IN THIS SECTION: unsure why this doesnt work. Worked with cards in index.html but not when cards come from index.js.
-let imageButtons = document.querySelectorAll('.elements__image');
+function handlePreviewPicture(card, data) {
+  button = card.querySelector('.elements__image');
+  const modal = document.querySelector(button.dataset.modal); // from data-modal
+  const image = modal.querySelector('.modal__image');
+  const imageCaption = modal.querySelector('.modal__image-caption');
+  image.src= data.link
+  imageCaption.textContent = data.name
+  openModal(modal)
 
-// When any like button is clicked, toggle between active or not
-imageButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const modal = document.querySelector(button.dataset.modal); // from data-modal
-      
-      //caption
-      const nameInput = button.closest(".elements__name"); //.textContent;
-      console.log("name:" + nameInput);
-      const imageCaption = modal.querySelector('.modal__image-caption');
-      //imageCaption.textContent = nameInput
-      imageCaption.textContent = "Placeholder"
-
-      //image
-      const url = button.style.backgroundImage.replace("url(", "").replace(")","");
-      // window.location.href = url;
-      console.log(typeof url);
-      console.log(url)
-      const image = modal.querySelector('.modal__image');
-      image.src = url //Don't understand why why this doesnt work
-      //image.src="https://code.s3.yandex.net/web-code/lago.jpg"
-
-      //open modal
-      openModal(modal)
-  })
-});
+}

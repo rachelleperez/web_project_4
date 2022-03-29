@@ -1,3 +1,4 @@
-.modal__image.css {
-  display: block;
+.modal__image {
+  max-width: 75vw;
+  max-height: 75vh;
 }
