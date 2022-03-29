@@ -100,13 +100,17 @@ const cardTemplate = document.querySelector('#card-template');
 function createCard(data) {
   // create new card
   const card = cardTemplate.content.cloneNode(true).querySelector('.elements__element');
-  card.querySelector('.elements__image').style.backgroundImage = `url('${data.link}')`
-  card.querySelector('.elements__name').textContent = data.name
+  const imageCard = card.querySelector('.elements__image')
+  imageCard.style.backgroundImage = `url('${data.link}')`
+  const nameCard = card.querySelector('.elements__name')
+  nameCard.textContent = data.name
 
   //add event listeners
-  card.querySelector('.elements__image').addEventListener('click', () => handlePreviewPicture(card, data))
-  card.querySelector('.elements_delete-button').addEventListener('click', () => handleDeleteCard(card))
-  card.querySelector('.elements__like-symbol').addEventListener('click', () => handleLike(card))
+  imageCard.addEventListener('click', () => handlePreviewPicture(card, data))
+  const DeleteButton = card.querySelector('.elements_delete-button')
+  DeleteButton.addEventListener('click', () => handleDeleteCard(card))
+  const LikeButton = card.querySelector('.elements__like-symbol')
+  LikeButton.addEventListener('click', () => handleLike(card))
 
   // return the created card
   return card
