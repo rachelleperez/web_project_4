@@ -120,7 +120,8 @@ function renderCard (data, selector) {
   // get a card
   const card = createCard(data);
   // render a card
-  document.querySelector(selector).append(card);
+  const sectionCards = document.querySelector(selector)
+  sectionCards.append(card);
   
 }
 
@@ -149,11 +150,10 @@ function addNewCard () {
     link: addForm.elements['input_place_image'].value
   }
   card = createCard(data)
-  document.querySelector('.elements').prepend(card);
+  elementsSection.prepend(card);
 
   //reset values to blank
-  addForm.elements['input_place_title'].value = ""
-  addForm.elements['input_place_image'].value = ""
+  addForm.reset()
 }
 
 // ------------------------ REMOVE PLACE ---------------------------
