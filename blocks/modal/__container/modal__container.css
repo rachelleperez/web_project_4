@@ -6,7 +6,7 @@
 
   transform: translate(-50%, -50%) scale(0);
   z-index: 10;
-  transition: 200ms ease-in-out;
+  transition: all 500ms ease-in-out;
   background-color: white;
   border-radius: 10px;
 

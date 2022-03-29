@@ -100,12 +100,12 @@ const cardTemplate = document.querySelector('#card-template');
 function createCard(data) {
   // create new card
   const card = cardTemplate.content.cloneNode(true).querySelector('.elements__element');
-  //console.log(card.querySelector('.elements__image').style);
   card.querySelector('.elements__image').style.backgroundImage = `url('${data.link}')`
   card.querySelector('.elements__name').textContent = data.name
+
+  //add event listeners
   card.querySelector('.elements__image').addEventListener('click', () => handlePreviewPicture(card, data))
   card.querySelector('.elements_delete-button').addEventListener('click', () => handleDeleteCard(card))
-  //add event listeners
 
   // return the created card
   return card
@@ -123,35 +123,18 @@ initialCards.forEach(place => {
   renderCard(place, '.elements');
 })
 
-// // setDefaults will run upon loading
-// window.onload = setDefaults;
-
-// // function that will include ANY function that must run upon navigating to page
-// function setDefaults() {
-//   
-// }
-
 // ------------------------ ADD NEW PLACE ---------------------------
-
 
 // Form Variables
 const addModal = document.getElementById('modal_add');
 const addForm = document.getElementById('form_add_place');
-const buttonCreatePlace = document.getElementById("button-create-place");
-
-// Input Variables
-
-const inputPlaceTitle = document.getElementById('input_place_title');
-const inputPlaceImage = document.getElementById('input_place_image');
 
 // Update Name and Bio
 
 addForm.addEventListener("submit", function (evt) {
   // let's cancel the default action that belongs to the event
   evt.preventDefault();
-  // add new card
   addNewCard();
-  //close modal
   closeModal(addModal);
 }); 
 
@@ -174,7 +157,6 @@ function addNewCard () {
 function handleDeleteCard(card) {
   card.remove();
 }
-
 
 // ------------------------ LIKING ELEMENTS ---------------------------
 
