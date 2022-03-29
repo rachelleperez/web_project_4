@@ -106,6 +106,7 @@ function createCard(data) {
   //add event listeners
   card.querySelector('.elements__image').addEventListener('click', () => handlePreviewPicture(card, data))
   card.querySelector('.elements_delete-button').addEventListener('click', () => handleDeleteCard(card))
+  card.querySelector('.elements__like-symbol').addEventListener('click', () => handleLike(card))
 
   // return the created card
   return card
@@ -129,7 +130,7 @@ initialCards.forEach(place => {
 const addModal = document.getElementById('modal_add');
 const addForm = document.getElementById('form_add_place');
 
-// Update Name and Bio
+// Submit Event
 
 addForm.addEventListener("submit", function (evt) {
   // let's cancel the default action that belongs to the event
@@ -160,18 +161,12 @@ function handleDeleteCard(card) {
 
 // ------------------------ LIKING ELEMENTS ---------------------------
 
-
-let likeButtons = document.querySelectorAll('.elements__like-symbol');
-
-// When any like button is clicked, toggle between active or not
-likeButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    console.log("like button clicked");
-    if (button.classList.contains("elements__like-symbol_active")) {
-      button.classList.remove("elements__like-symbol_active");
-    } else button.classList.add("elements__like-symbol_active");
-  })
-})
+function handleLike(card) {
+  button = card.querySelector('.elements__like-symbol');
+  if (button.classList.contains("elements__like-symbol_active")) {
+    button.classList.remove("elements__like-symbol_active");
+  } else button.classList.add("elements__like-symbol_active");
+}
 
 // ------------------------ OPENING IMAGES ---------------------------
 
