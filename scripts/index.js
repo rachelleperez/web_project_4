@@ -4,20 +4,22 @@
 
 // -----------------------GENERAL MODAL BEHAVIOR---------------------------
 
-const openModalButtons = document.querySelectorAll('.profile__edit-button, .profile__add-button') 
+
 const closeModalButtons = document.querySelectorAll('.modal__close')
 const overlay = document.querySelector('.modal__overlay')
+const EditButton = document.querySelector('.profile__edit-button') 
+const AddPlaceButton = document.querySelector('.profile__add-button') 
 
-openModalButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const modal = document.querySelector(button.dataset.modal) // from data-modal
-    openModal(modal)
-    
-    // if this is the profile-edit button, pre-fill form.
-    if (button.classList.contains("profile__edit-button")) {
-      prefillProfileForm()
-    }
-  })
+EditButton.addEventListener('click', () => {
+  const modal = document.querySelector(EditButton.dataset.modal) // from data-modal
+  openModal(modal)
+  prefillProfileForm()
+})
+
+AddPlaceButton.addEventListener('click', () => {
+  const modal = document.querySelector(AddPlaceButton.dataset.modal) // from data-modal
+  openModal(modal)
+  prefillProfileForm()
 })
 
 closeModalButtons.forEach(button => {
