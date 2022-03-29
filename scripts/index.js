@@ -10,7 +10,6 @@ const overlay = document.querySelector('.modal__overlay')
 
 openModalButtons.forEach(button => {
   button.addEventListener('click', () => {
-    console.log("button clicked")
     const modal = document.querySelector(button.dataset.modal) // from data-modal
     openModal(modal)
     
@@ -29,7 +28,6 @@ closeModalButtons.forEach(button => {
 })
 
 function openModal(modal) {
-  console.log("open modal")
   if (modal == null) return
   modal.classList.add('modal__container_active')
   overlay.classList.add('modal__overlay_active')
@@ -144,7 +142,6 @@ function addNewCard () {
     name: addForm.elements['input_place_title'].value,
     link: addForm.elements['input_place_image'].value
   }
-  console.log(data)
   card = createCard(data)
   document.querySelector('.elements').prepend(card);
 
