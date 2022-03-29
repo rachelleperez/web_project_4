@@ -104,7 +104,7 @@ function createCard(data) {
   card.querySelector('.elements__image').style.backgroundImage = `url('${data.link}')`
   card.querySelector('.elements__name').textContent = data.name
   card.querySelector('.elements__image').addEventListener('click', () => handlePreviewPicture(card, data))
-  //console.log(card);
+  card.querySelector('.elements_delete-button').addEventListener('click', () => handleDeleteCard(card))
   //add event listeners
 
   // return the created card
@@ -156,26 +156,13 @@ addForm.addEventListener("submit", function (evt) {
 }); 
 
 function addNewCard () {
-  const name =  addForm.elements['input_place_image'].value
-  const place = addForm.elements['input_place_title'].value
-  // outside of this function, make a current cards array to add/remove from 
-
-  // let newCardsStringAdd = `
-  //   <article class = "elements__element">
-  //   <img class = "elements__image" data-modal="#modal_image" src = "`
-  //   + addForm.elements['input_place_image'].value //user input
-  //   + `" alt = "Picture of Place">
-  //   <div class = "elements__container">
-  //   <h2 class = "elements__name">`
-  //   + addForm.elements['input_place_title'].value //user input
-  //   + `</h2>
-  //   <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
-  //   </div>
-  //   </article>
-  // `;
-
-  //  //add to html section 
-  // elementsSection.innerHTML = newCardsStringAdd + elementsSection.innerHTML;
+  data = {
+    name: addForm.elements['input_place_title'].value,
+    link: addForm.elements['input_place_image'].value
+  }
+  console.log(data)
+  card = createCard(data)
+  document.querySelector('.elements').prepend(card);
 
   //reset values to blank
   addForm.elements['input_place_title'].value = ""
@@ -184,19 +171,10 @@ function addNewCard () {
 
 // ------------------------ REMOVE PLACE ---------------------------
 
-let deleteButtons = document.querySelectorAll('.elements_delete-button');
-
-deleteButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    console.log("delete button clicked");
-    const card = button.closest(".elements__element");
-    deleteCard(card);
-  })
-})
-
-function deleteCard(card) {
-  card.innerHTML = "";
+function handleDeleteCard(card) {
+  card.remove();
 }
+
 
 // ------------------------ LIKING ELEMENTS ---------------------------
 
