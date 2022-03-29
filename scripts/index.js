@@ -221,10 +221,24 @@ let imageButtons = document.querySelectorAll('.elements__image');
 imageButtons.forEach(button => {
     button.addEventListener('click', () => {
       const modal = document.querySelector(button.dataset.modal); // from data-modal
-      const image = modal.querySelector('.modal__image');
+      
+      //caption
+      const nameInput = button.closest(".elements__name"); //.textContent;
+      console.log("name:" + nameInput);
       const imageCaption = modal.querySelector('.modal__image-caption');
-      image.src="https://code.s3.yandex.net/web-code/lago.jpg"
+      //imageCaption.textContent = nameInput
       imageCaption.textContent = "Placeholder"
+
+      //image
+      const url = button.style.backgroundImage.replace("url(", "").replace(")","");
+      // window.location.href = url;
+      console.log(typeof url);
+      console.log(url)
+      const image = modal.querySelector('.modal__image');
+      image.src = url //Don't understand why why this doesnt work
+      //image.src="https://code.s3.yandex.net/web-code/lago.jpg"
+
+      //open modal
       openModal(modal)
   })
 });
