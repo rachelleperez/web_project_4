@@ -6,7 +6,7 @@
 
 const openModalButtons = document.querySelectorAll('.profile__edit-button, .profile__add-button') 
 const closeModalButtons = document.querySelectorAll('.modal__close')
-const overlay = document.getElementById('overlay')
+const overlay = document.querySelector('.modal__overlay')
 
 openModalButtons.forEach(button => {
   button.addEventListener('click', () => {
