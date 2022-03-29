@@ -50,7 +50,7 @@
 
 /* Profile-Specific */
 @import url(../blocks/profile/__add-button/profile__add-button.css);
-@import url(../blocks/profile/__avatar/profile__avatar.css); 
+@import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__bio/profile__bio.css);
 @import url(../blocks/profile/__container/profile__container.css);

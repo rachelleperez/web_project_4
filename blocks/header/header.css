@@ -8,7 +8,7 @@
 }
 
 /* Mobile version. Note already responsive to minimum of 880px where component sizes are fixed */
-@media only screen and (min-device-width : 320px) and (max-device-width : 879px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 879px) {
   .header {
     margin-top: 28px;
     width: 320px;
