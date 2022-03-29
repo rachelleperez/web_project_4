@@ -173,6 +173,9 @@ function handleLike(card) {
 
 // ------------------------ OPENING IMAGES ---------------------------
 
+
+
+
 function handlePreviewPicture(card, data) {
   button = card.querySelector('.elements__image');
   const modal = document.querySelector(button.dataset.modal); // from data-modal
@@ -180,6 +183,7 @@ function handlePreviewPicture(card, data) {
   const imageCaption = modal.querySelector('.modal__image-caption');
   image.src= data.link
   imageCaption.textContent = data.name
+  image.alt= data.name
   openModal(modal)
 
 }
