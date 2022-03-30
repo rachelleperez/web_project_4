@@ -7,17 +7,17 @@
 
 const closeModalButtons = document.querySelectorAll('.modal__close')
 const overlay = document.querySelector('.modal__overlay')
-const EditButton = document.querySelector('.profile__edit-button') 
-const AddPlaceButton = document.querySelector('.profile__add-button') 
+const editButton = document.querySelector('.profile__edit-button') 
+const addPlaceButton = document.querySelector('.profile__add-button') 
 
-EditButton.addEventListener('click', () => {
-  const modal = document.querySelector(EditButton.dataset.modal) // from data-modal
+editButton.addEventListener('click', () => {
+  const modal = document.querySelector(editButton.dataset.modal) // from data-modal
   openModal(modal)
   prefillProfileForm()
 })
 
-AddPlaceButton.addEventListener('click', () => {
-  const modal = document.querySelector(AddPlaceButton.dataset.modal) // from data-modal
+addPlaceButton.addEventListener('click', () => {
+  const modal = document.querySelector(addPlaceButton.dataset.modal) // from data-modal
   openModal(modal)
   prefillProfileForm()
 })
@@ -107,10 +107,10 @@ function createCard(data) {
 
   //add event listeners
   imageCard.addEventListener('click', () => handlePreviewPicture(card, data))
-  const DeleteButton = card.querySelector('.elements_delete-button')
-  DeleteButton.addEventListener('click', () => handleDeleteCard(card))
-  const LikeButton = card.querySelector('.elements__like-symbol')
-  LikeButton.addEventListener('click', () => handleLike(card))
+  const deleteButton = card.querySelector('.elements_delete-button')
+  deleteButton.addEventListener('click', () => handleDeleteCard(card))
+  const likeButton = card.querySelector('.elements__like-symbol')
+  likeButton.addEventListener('click', () => handleLike(card))
 
   // return the created card
   return card
