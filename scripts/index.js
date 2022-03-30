@@ -11,14 +11,14 @@ const editButton = document.querySelector('.profile__edit-button')
 const addPlaceButton = document.querySelector('.profile__add-button') 
 
 editButton.addEventListener('click', () => {
-  const modal = document.querySelector(editButton.dataset.modal) // from data-modal
-  openModal(modal)
+  // const modal = document.querySelector(editButton.dataset.modal) // from data-modal
+  openModal(profileModal)
   prefillProfileForm()
 })
 
 addPlaceButton.addEventListener('click', () => {
-  const modal = document.querySelector(addPlaceButton.dataset.modal) // from data-modal
-  openModal(modal)
+  // const modal = document.querySelector(addPlaceButton.dataset.modal) // from data-modal
+  openModal(addModal)
   prefillProfileForm()
 })
 
@@ -166,9 +166,7 @@ function handleDeleteCard(card) {
 
 function handleLike(card) {
   button = card.querySelector('.elements__like-symbol');
-  if (button.classList.contains("elements__like-symbol_active")) {
-    button.classList.remove("elements__like-symbol_active");
-  } else button.classList.add("elements__like-symbol_active");
+  button.classList.toggle("elements__like-symbol_active");
 }
 
 // ------------------------ OPENING IMAGES ---------------------------
