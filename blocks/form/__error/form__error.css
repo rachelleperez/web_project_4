@@ -7,43 +7,12 @@
   font-size: 12px;
   line-height: 15px;
   margin-bottom: 13px;
+  width: 358px; 
 }
 
-
-/* Field 1 */
-
-/* position: absolute;
-width: 358px;
-height: 17px;
-left: 461px;
-top: 333px; */
-
-
-
-/* Line 2 */
-/* 
-position: absolute;
-width: 358px;
-height: 0px;
-left: 461px;
-top: 333px;
-
-border: 1px solid #FF0000; */
-
-
-/* Please fill out this field. */
-
-/* position: absolute;
-width: 164px;
-height: 12px;
-left: 461px;
-top: 338px;
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 12px;
-line-height: 15px;
-
-color: #FF0000;
- */
+/* Mobile version. Note already responsive to minimum of 880px where component sizes are fixed */
+@media only screen and (min-device-width: 320px) and (max-device-width: 879px) {
+  .form__error {
+    width: 238px;
+  }
+}
