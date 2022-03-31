@@ -48,12 +48,15 @@ function closeModal(modal) {
 
 // CLOSE WHEN ESCAPE IS PRESSED
 
-// array with all modal types
+// array with all modals
 const modalsList = Array.from(document.querySelectorAll('.modal__container'));
 
 document.addEventListener('keydown', (event) => {
+  //if ESC is pressed
   if (event.key === 'Escape') {
+    //loop through all modals
     modalsList.forEach((modal) => {
+      // if any are active, close it
       if (modal.classList.contains('modal__container_active')) closeModal(modal);
     })
   }
