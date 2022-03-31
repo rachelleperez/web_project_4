@@ -46,7 +46,7 @@ function closeModal(modal) {
 }
 
 
-// CLOSE WHEN ESCAPE IS PRESSED
+// CLOSE MODALS WHEN ESCAPE IS PRESSED
 
 // array with all modals
 const modalsList = Array.from(document.querySelectorAll('.modal__container'));
@@ -60,6 +60,18 @@ document.addEventListener('keydown', (event) => {
       if (modal.classList.contains('modal__container_active')) closeModal(modal);
     })
   }
+})
+
+// CLOSE OVERLAY IF PRESSED
+
+overlay.addEventListener('click', () => {
+  const modal = overlay.closest('.modal__container');
+  if (overlay.classList.contains('modal__overlay_active')) {
+    modalsList.forEach((modal) => {
+      // if any are active, close it
+      if (modal.classList.contains('modal__container_active')) closeModal(modal);
+    })
+  };
 })
 
 // ------------------------ PROFILE INFO MANAGEMENT ---------------------------
