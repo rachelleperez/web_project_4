@@ -1,14 +1,15 @@
 function showError(errorEl, inputEl, settings) {
+  
   errorEl.classList.add(settings.errorClass);
   errorEl.textContent = inputEl.validationMessage;
-  errorEl.classList.add(settings.inputErrorClass);
+  inputEl.classList.add(settings.inputErrorClass);
 }
 
 
 function hideError(errorEl, inputEl, settings) {
   errorEl.classList.remove(settings.errorClass);
   errorEl.textContent = '';
-  errorEl.classList.remove(settings.inputErrorClass);
+  inputEl.classList.remove(settings.inputErrorClass);
 }
 
 function isInvalidInput(inputEl) {
