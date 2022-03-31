@@ -40,13 +40,13 @@
       <h2 class="modal__title">Edit profile</h2>
       <button class="modal__close" aria-label = "Close Button" type="button">&#10005;</button>
       <form id = "form_edit_profile" class="form" name="form_edit_profile" novalidate>
-        <label class = "modal__label">
-          <input name="profile_name" id="input_profile_name" class="form__input" type="text" placeholder="Name" minlength="2" maxlength="40" required>
-          <span class="modal__error" id="edit-name-error"></span>
+        <label class = "form__label">
+          <input name="profile_name" id="input_profile_name" class="form__input" type="text" placeholder="Name" minlength="2" maxlength="40" required pattern="[a-zA-Z -]{1,}">
+          <span class="form__error" id="input_profile_name-error"></span>
         </label>
-        <label class = "modal__label">
+        <label class = "form__label">
           <input name="profile_bio" id="input_profile_bio" class="form__input" type="text" placeholder="About Me" minlength="2" maxlength="200" required>
-          <span class="modal__error" id="edit-bio-error"></span>
+          <span class="form__error" id="input_profile_bio-error"></span>
         </label>
         <button type="submit" name="profile_submit" aria-label = "Submit Button" id="button-submit-edit-profile" class="form__submit">Save</button>
       </form>
@@ -60,15 +60,15 @@
       <h2 class="modal__title">New Place</h2>
       <button class="modal__close" aria-label = "Close Button" type="button">&#10005;</button>
       <form id = "form_add_place" class="form" name="form_add_place" novalidate>
-        <label class = "modal__label">
+        <label class = "form__label">
           <input name="place_title" id="input_place_title" class="form__input" type="text" placeholder="Title" minlength="1" maxlength="30" required>
-          <span class="modal__error" id="place-name-error"></span>
+          <span class="form__error" id="input_place_title-error"></span>
         </label>
-        <label class = "modal__label">
-          <input name="place_image" id="input_place_image" class="form__input" type="text" placeholder="Image Link" required>
-          <span class="modal__error" id="place-link-error"></span>
+        <label class = "form__label">
+          <input name="place_image" id="input_place_image" class="form__input" type="url" placeholder="Image Link" required>
+          <span class="form__error" id="input_place_image-error"></span>
         </label>
-        <button type="submit" name="profile_submit" aria-label = "Submit Button" id="button-create-place" class="form__submit">Create</button>
+        <button type="submit" name="profile_submit" aria-label = "Submit Button" id="button-create-place" class="form__submit form__submit_disabled" disabled>Create</button>
       </form>
     </div>
   </div>
@@ -96,9 +96,9 @@
     </div>
 
   <!-- JS SCRIPTS FOR ALL -->
+  <script src="./scripts/validate.js" defer></script>
   <script src="./scripts/data.js" defer ></script>
   <script src="./scripts/index.js" defer></script>
-
 
 </body>
 </html>

@@ -31,6 +31,10 @@
 /* Form-Specific */
 @import url(../blocks/form/__input/form__input.css);
 @import url(../blocks/form/__submit/form__submit.css);
+@import url(../blocks/form/__error/form__error.css);
+@import url(../blocks/form/__label/form__label.css);
+@import url(../blocks/form/__input/_type/form__input_type_error.css);
+@import url(../blocks/form/__submit/_disabled/form__submit_disabled.css);
 
 /* Header-Specific */
 @import url(../blocks/header/__logo/header__logo.css);
@@ -47,8 +51,6 @@
 @import url(../blocks/modal/__image/modal__image.css);
 @import url(../blocks/modal/__image-caption/modal__image-caption.css);
 @import url(../blocks/modal/__close/_type/modal__close_type_image.css);
-@import url(../blocks/modal/__error/modal__error.css);
-@import url(../blocks/modal/__label/modal__label.css);
 
 /* Profile-Specific */
 @import url(../blocks/profile/__add-button/profile__add-button.css);

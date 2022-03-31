@@ -19,13 +19,17 @@ editButton.addEventListener('click', () => {
 addPlaceButton.addEventListener('click', () => {
   // const modal = document.querySelector(addPlaceButton.dataset.modal) // from data-modal
   openModal(addModal)
-  prefillProfileForm()
 })
 
 closeModalButtons.forEach(button => {
   button.addEventListener('click', () => {
     const modal = button.closest('.modal__container')
     closeModal(modal)
+    
+    resetForm(addForm, {
+      submitButtonSelector: ".form__submit", 
+      inactiveButtonClass: "form__submit_disabled"
+    })
   })
 })
 
@@ -70,7 +74,7 @@ function prefillProfileForm() {
 
 profileForm.addEventListener("submit", function (evt) {
   // let's cancel the default action that belongs to the event
-  evt.preventDefault();
+  // evt.preventDefault();
 
   // checking the user data
   updateName();
