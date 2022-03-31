@@ -47,6 +47,8 @@
 @import url(../blocks/modal/__image/modal__image.css);
 @import url(../blocks/modal/__image-caption/modal__image-caption.css);
 @import url(../blocks/modal/__close/_type/modal__close_type_image.css);
+@import url(../blocks/modal/__error/modal__error.css);
+@import url(../blocks/modal/__label/modal__label.css);
 
 /* Profile-Specific */
 @import url(../blocks/profile/__add-button/profile__add-button.css);
