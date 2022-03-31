@@ -46,6 +46,19 @@ function closeModal(modal) {
 }
 
 
+// CLOSE WHEN ESCAPE IS PRESSED
+
+// array with all modal types
+const modalsList = Array.from(document.querySelectorAll('.modal__container'));
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    modalsList.forEach((modal) => {
+      if (modal.classList.contains('modal__container_active')) closeModal(modal);
+    })
+  }
+})
+
 // ------------------------ PROFILE INFO MANAGEMENT ---------------------------
 
 // Form Variables
