@@ -77,12 +77,13 @@ function resetForm(formEl, settings) { //aleady resets if valid submission. This
   
   console.log(formEl);
   // get the button
-  const buttonEl = formEl.querySelector(settings.submitButtonSelector)
-  // disable the button
-  buttonEl.disabled=true;
-  buttonEl.classList.add(settings.inactiveButtonClass);
+  // const buttonEl = formEl.querySelector(settings.submitButtonSelector)
+  // // disable the button
+  // buttonEl.disabled=true;
+  // buttonEl.classList.add(settings.inactiveButtonClass);
   // reset the form
   formEl.reset();
+  toggleButton(inputList, buttonEl, settings);
 }
 
 // enabling validation by calling enableValidation()
