@@ -55,10 +55,8 @@ document.addEventListener('keydown', (event) => {
   //if ESC is pressed
   if (event.key === 'Escape') {
     //loop through all modals
-    modalsList.forEach((modal) => {
-      // if any are active, close it
-      if (modal.classList.contains('modal__container_active')) closeModal(modal);
-    })
+    const openedModal = document.querySelector('.modal__container_active');
+    closeModal(openedModal);
   }
 })
 
@@ -67,10 +65,8 @@ document.addEventListener('keydown', (event) => {
 overlay.addEventListener('click', () => {
   const modal = overlay.closest('.modal__container');
   if (overlay.classList.contains('modal__overlay_active')) {
-    modalsList.forEach((modal) => {
-      // if any are active, close it
-      if (modal.classList.contains('modal__container_active')) closeModal(modal);
-    })
+    const openedModal = document.querySelector('.modal__container_active');
+    closeModal(openedModal);
   };
 })
 
