@@ -73,16 +73,14 @@ function enableValidation(settings) {
   })
 }
 
-function resetForm(formEl, settings) { //aleady resets if valid submission. This makes sure invalid cleared
-  
-  console.log(formEl);
-  // get the button
-  // const buttonEl = formEl.querySelector(settings.submitButtonSelector)
-  // // disable the button
-  // buttonEl.disabled=true;
-  // buttonEl.classList.add(settings.inactiveButtonClass);
-  // reset the form
+function resetForm(formEl, buttonEl) { //already resets if valid submission. This makes sure invalid cleared
+  settings = {
+    submitButtonSelector: ".form__submit", 
+    inactiveButtonClass: "form__submit_disabled"
+  }
+
   formEl.reset();
+  const inputList = Array.from(formEl.querySelectorAll(settings.inputSelector)); // note just for formEl
   toggleButton(inputList, buttonEl, settings);
 }
 

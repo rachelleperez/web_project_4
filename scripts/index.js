@@ -18,18 +18,14 @@ editButton.addEventListener('click', () => {
 
 addPlaceButton.addEventListener('click', () => {
   // const modal = document.querySelector(addPlaceButton.dataset.modal) // from data-modal
-  openModal(addModal)
+  resetForm(addForm,addPlaceButton);
+  openModal(addModal);
 })
 
 closeModalButtons.forEach(button => {
   button.addEventListener('click', () => {
     const modal = button.closest('.modal__container')
     closeModal(modal)
-    
-    resetForm(addForm, {
-      submitButtonSelector: ".form__submit", 
-      inactiveButtonClass: "form__submit_disabled"
-    })
   })
 })
 
