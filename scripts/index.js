@@ -33,28 +33,24 @@ function openModal(modal) {
   if (modal == null) return
   modal.classList.add('modal__container_active')
   overlay.classList.add('modal__overlay_active')
+  document.addEventListener('keydown', (event) => closeModalEsc(event,modal));
 }
 
 function closeModal(modal) {
   if (modal == null) return
   modal.classList.remove('modal__container_active')
   overlay.classList.remove('modal__overlay_active')
+  document.removeEventListener('keydown', (event) => closeModalEsc(event,modal));
 }
 
 
 // CLOSE MODALS WHEN ESCAPE IS PRESSED
 
-// array with all modals
-const modalsList = Array.from(document.querySelectorAll('.modal__container'));
-
-document.addEventListener('keydown', (event) => {
-  //if ESC is pressed
+function closeModalEsc(event, modal) {
   if (event.key === 'Escape') {
-    //loop through all modals
-    const openedModal = document.querySelector('.modal__container_active');
-    closeModal(openedModal);
+    closeModal(modal);
   }
-})
+}
 
 // CLOSE OVERLAY IF PRESSED
 
