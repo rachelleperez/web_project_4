@@ -18,7 +18,8 @@ editButton.addEventListener('click', () => {
 
 addPlaceButton.addEventListener('click', () => {
   // const modal = document.querySelector(addPlaceButton.dataset.modal) // from data-modal
-  resetForm(addForm,addPlaceButton);
+  //resetForm(addForm,addPlaceButton);
+  addForm.reset()
   openModal(addModal);
 })
 
@@ -172,8 +173,6 @@ function addNewCard () {
   card = createCard(data)
   elementsSection.prepend(card);
 
-  //reset values to blank
-  addForm.reset()
 }
 
 // ------------------------ REMOVE PLACE ---------------------------
