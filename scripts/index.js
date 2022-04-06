@@ -9,6 +9,7 @@ const closeModalButtons = document.querySelectorAll('.modal__close')
 const overlay = document.querySelector('.modal__overlay')
 const editButton = document.querySelector('.profile__edit-button') 
 const addPlaceButton = document.querySelector('.profile__add-button') 
+const submitAddPlaceButton = document.getElementById("button-create-place");
 
 editButton.addEventListener('click', () => {
   // const modal = document.querySelector(editButton.dataset.modal) // from data-modal
@@ -17,9 +18,9 @@ editButton.addEventListener('click', () => {
 })
 
 addPlaceButton.addEventListener('click', () => {
-  // const modal = document.querySelector(addPlaceButton.dataset.modal) // from data-modal
-  //resetForm(addForm,addPlaceButton);
-  addForm.reset()
+  // default settings
+  resetAddForm();
+  //open modal
   openModal(addModal);
 })
 
@@ -29,6 +30,12 @@ closeModalButtons.forEach(button => {
     closeModal(modal)
   })
 })
+
+function resetAddForm() {
+  addForm.reset();
+  submitAddPlaceButton.disabled=true;
+  submitAddPlaceButton.classList.add("form__submit_disabled");
+}
 
 function openModal(modal) {
   if (modal == null) return
