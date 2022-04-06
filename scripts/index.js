@@ -41,14 +41,14 @@ function openModal(modal) {
   if (modal == null) return
   modal.classList.add('modal__container_active')
   overlay.classList.add('modal__overlay_active')
-  document.addEventListener('keydown', (event) => closeModalEsc(event,modal));
+  document.addEventListener('keydown', closeModalEsc);
 }
 
 function closeModal(modal) {
   if (modal == null) return
   modal.classList.remove('modal__container_active')
   overlay.classList.remove('modal__overlay_active')
-  document.removeEventListener('keydown', (event) => closeModalEsc(event,modal));
+  document.removeEventListener('keydown', closeModalEsc);
 }
 
 
@@ -56,7 +56,7 @@ function closeModal(modal) {
 
 function closeModalEsc(event, modal) {
   if (event.key === 'Escape') {
-    closeModal(modal);
+    findCloseAnyOpenModal();
   }
 }
 
@@ -65,10 +65,14 @@ function closeModalEsc(event, modal) {
 overlay.addEventListener('click', () => {
   const modal = overlay.closest('.modal__container');
   if (overlay.classList.contains('modal__overlay_active')) {
-    const openedModal = document.querySelector('.modal__container_active');
-    closeModal(openedModal);
+    findCloseAnyOpenModal();
   };
 })
+
+function findCloseAnyOpenModal() {
+  const openedModal = document.querySelector('.modal__container_active');
+  closeModal(openedModal);
+}
 
 // ------------------------ PROFILE INFO MANAGEMENT ---------------------------
 
