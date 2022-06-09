@@ -1,3 +1,6 @@
+// import FormValidator from "./formvalidator.js"
+
+
 // ----------------------- TO REMOVE --------------------------
 
 // window.alert("");
