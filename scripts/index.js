@@ -1,4 +1,5 @@
-// import FormValidator from "./formvalidator.js"
+import FormValidator from './FormValidator.js';
+//import Card from './Card.js';
 
 
 // ----------------------- TO REMOVE --------------------------
@@ -218,3 +219,19 @@ function handlePreviewPicture(card, data) {
   openModal(modal)
 
 }
+
+// Validation
+
+const formValidationConfig = {
+  inputSelector: ".form__input",
+  submitButtonSelector: ".form__submit", //# = id, . is clss
+  inactiveButtonClass: "form__submit_disabled", // classes
+  inputErrorClass: "form__input_type_error",
+  errorClass: "form__error_visible"
+};
+
+const addFormValidator = new FormValidator(formValidationConfig, addForm);
+addFormValidator.enableValidation();
+
+const editFormValidator = new FormValidator(formValidationConfig, profileForm);
+editFormValidator.enableValidation();

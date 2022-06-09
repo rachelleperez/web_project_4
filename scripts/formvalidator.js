@@ -32,18 +32,18 @@ class FormValidator {
   _checkInputValidity(inputEl) { //settings, formEl removed
     const errorEl = this._formElement.querySelector(`#${inputEl.id}-error`); // added "-error" to error versions
     // console.log(inputEl.validity.valid);
-    if (isInvalidInput(inputEl)) {
+    if (this._isInvalidInput(inputEl)) {
       // hide the error messages and style
-      showError(errorEl, inputEl);
+      this._showError(errorEl, inputEl);
     }
     else {
       // show error messages and style
-      hideError(errorEl, inputEl);
+      this._hideError(errorEl, inputEl);
     }
   }
 
   _toggleButton(inputList, buttonEl) { //removed settings
-    if (inputList.some(inputEl => isInvalidInput(inputEl))) { // if any of them invalid (arrow function)
+    if (inputList.some(inputEl => this._isInvalidInput(inputEl))) { // if any of them invalid (arrow function)
       // disable the button
       buttonEl.disabled=true;
       buttonEl.classList.add(this._inactiveButtonClass);
@@ -63,9 +63,9 @@ class FormValidator {
     inputList.forEach((inputEl) => {
       inputEl.addEventListener('input', () => {
         //check the input
-        checkInputValidity(inputEl); //settings, formEl removed
+        this._checkInputValidity(inputEl); //settings, formEl removed
         // update the button (if input is valid, enable. if not, disabled)
-        toggleButton(inputList, buttonEl);
+        this._toggleButton(inputList, buttonEl);
       })
     })
 
@@ -77,19 +77,10 @@ class FormValidator {
       evt.preventDefault();
     })
     //setup validation
-    _setEventListeners(); //settings (config) to be passed to form via constructor
+    this._setEventListeners(); //settings (config) to be passed to form via constructor
   }
 
 }
-
-//move this
-// const formValidationConfig = {
-//   inputSelector: ".form__input",
-//   submitButtonSelector: ".form__submit", //# = id, . is clss
-//   inactiveButtonClass: "form__submit_disabled", // classes
-//   inputErrorClass: "form__input_type_error",
-//   errorClass: "form__error_visible"
-// }
 
 //keep
 export default FormValidator;
