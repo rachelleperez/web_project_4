@@ -81,5 +81,5 @@ class FormValidator {
 
 }
 
-//keep
+//export for index.js
 export default FormValidator;

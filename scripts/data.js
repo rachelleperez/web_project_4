@@ -37,3 +37,6 @@ const initialCards = [
   // }
 
 ];
+
+//export for index.js
+export default initialCards;
