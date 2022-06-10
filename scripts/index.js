@@ -1,11 +1,7 @@
 import initialCards from './data.js';
 import FormValidator from './FormValidator.js';
-//import Card from './Card.js';
-
-
-// ----------------------- TO REMOVE --------------------------
-
-// window.alert("");
+import Card from './Card.js';
+import * as utils from './utils.js';
 
 // -----------------------GENERAL MODAL BEHAVIOR---------------------------
 
@@ -18,7 +14,7 @@ const submitAddPlaceButton = document.getElementById("button-create-place");
 
 editButton.addEventListener('click', () => {
   // const modal = document.querySelector(editButton.dataset.modal) // from data-modal
-  openModal(profileModal)
+  utils.openModal(profileModal)
   prefillProfileForm()
 })
 
@@ -26,13 +22,13 @@ addPlaceButton.addEventListener('click', () => {
   // default settings
   resetAddForm();
   //open modal
-  openModal(addModal);
+  utils.openModal(addModal);
 })
 
 closeModalButtons.forEach(button => {
   button.addEventListener('click', () => {
     const modal = button.closest('.modal__container')
-    closeModal(modal)
+    utils.closeModal(modal)
   })
 })
 
@@ -42,42 +38,14 @@ function resetAddForm() {
   submitAddPlaceButton.classList.add("form__submit_disabled");
 }
 
-function openModal(modal) {
-  if (modal == null) return
-  modal.classList.add('modal__container_active')
-  overlay.classList.add('modal__overlay_active')
-  document.addEventListener('keydown', closeModalEsc);
-}
-
-function closeModal(modal) {
-  if (modal == null) return
-  modal.classList.remove('modal__container_active')
-  overlay.classList.remove('modal__overlay_active')
-  document.removeEventListener('keydown', closeModalEsc);
-}
-
-
-// CLOSE MODALS WHEN ESCAPE IS PRESSED
-
-function closeModalEsc(event, modal) {
-  if (event.key === 'Escape') {
-    findCloseAnyOpenModal();
-  }
-}
-
 // CLOSE OVERLAY IF PRESSED
 
 overlay.addEventListener('click', () => {
   const modal = overlay.closest('.modal__container');
   if (overlay.classList.contains('modal__overlay_active')) {
-    findCloseAnyOpenModal();
+    utils.findCloseAnyOpenModal();
   };
 })
-
-function findCloseAnyOpenModal() {
-  const openedModal = document.querySelector('.modal__container_active');
-  closeModal(openedModal);
-}
 
 // ------------------------ PROFILE INFO MANAGEMENT ---------------------------
 
@@ -112,7 +80,7 @@ profileForm.addEventListener("submit", function (evt) {
   // checking the user data
   updateName();
   updateBio();
-  closeModal(profileModal);
+  utils.closeModal(profileModal);
 }); 
 
 function updateName() {
@@ -133,37 +101,9 @@ const elementsSection = document.querySelector('.elements');
 //Card Template
 const cardTemplate = document.querySelector('#card-template');
 
-// Render Card
-function createCard(data) {
-  // create new card
-  const card = cardTemplate.content.cloneNode(true).querySelector('.elements__element');
-  const imageCard = card.querySelector('.elements__image')
-  imageCard.style.backgroundImage = `url('${data.link}')`
-  const nameCard = card.querySelector('.elements__name')
-  nameCard.textContent = data.name
-
-  //add event listeners
-  imageCard.addEventListener('click', () => handlePreviewPicture(card, data))
-  const deleteButton = card.querySelector('.elements_delete-button')
-  deleteButton.addEventListener('click', () => handleDeleteCard(card))
-  const likeButton = card.querySelector('.elements__like-symbol')
-  likeButton.addEventListener('click', () => handleLike(card))
-
-  // return the created card
-  return card
-}
-
-// 1 card at a time
-function renderCard (data) {
-  // get a card
-  const card = createCard(data);
-  // render a card
+initialCards.forEach(data => {
+  const card = new Card(data, cardTemplate).createCard();
   elementsSection.append(card);
-  
-}
-
-initialCards.forEach(place => {
-  renderCard(place);
 })
 
 // ------------------------ ADD NEW PLACE ---------------------------
@@ -178,7 +118,7 @@ addForm.addEventListener("submit", function (evt) {
   // let's cancel the default action that belongs to the event
   evt.preventDefault();
   addNewCard();
-  closeModal(addModal);
+  utils.closeModal(addModal);
 }); 
 
 function addNewCard () {
@@ -186,41 +126,11 @@ function addNewCard () {
     name: addForm.elements['input_place_title'].value,
     link: addForm.elements['input_place_image'].value
   }
-  const card = createCard(data)
+  //const card = createCard(data)
+  const card = new Card(data, cardTemplate).createCard();
   elementsSection.prepend(card);
 
 }
-
-// ------------------------ REMOVE PLACE ---------------------------
-
-function handleDeleteCard(card) {
-  card.remove();
-}
-
-// ------------------------ LIKING ELEMENTS ---------------------------
-
-function handleLike(card) {
-  button = card.querySelector('.elements__like-symbol');
-  button.classList.toggle("elements__like-symbol_active");
-}
-
-// ------------------------ OPENING IMAGES ---------------------------
-
-
-
-
-function handlePreviewPicture(card, data) {
-  button = card.querySelector('.elements__image');
-  const modal = document.querySelector(button.dataset.modal); // from data-modal
-  const image = modal.querySelector('.modal__image');
-  const imageCaption = modal.querySelector('.modal__image-caption');
-  image.src= data.link
-  imageCaption.textContent = data.name
-  image.alt= data.name
-  openModal(modal)
-
-}
-
 
 // ------------------------ FORM VALIDATION ---------------------------
 
