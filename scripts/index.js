@@ -222,7 +222,7 @@ function handlePreviewPicture(card, data) {
 }
 
 
-// Validation
+// ------------------------ FORM VALIDATION ---------------------------
 
 const formValidationConfig = {
   inputSelector: ".form__input",
