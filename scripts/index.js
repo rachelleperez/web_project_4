@@ -153,17 +153,17 @@ function createCard(data) {
   return card
 }
 
-function renderCard (data, selector) {
+// 1 card at a time
+function renderCard (data) {
   // get a card
   const card = createCard(data);
   // render a card
-  const sectionCards = document.querySelector(selector)
-  sectionCards.append(card);
+  elementsSection.append(card);
   
 }
 
 initialCards.forEach(place => {
-  renderCard(place, '.elements');
+  renderCard(place);
 })
 
 // ------------------------ ADD NEW PLACE ---------------------------
