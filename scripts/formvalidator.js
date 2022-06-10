@@ -31,7 +31,6 @@ class FormValidator {
 
   _checkInputValidity(inputEl) { //settings, formEl removed
     const errorEl = this._formElement.querySelector(`#${inputEl.id}-error`); // added "-error" to error versions
-    // console.log(inputEl.validity.valid);
     if (this._isInvalidInput(inputEl)) {
       // hide the error messages and style
       this._showError(errorEl, inputEl);
@@ -56,7 +55,7 @@ class FormValidator {
 
   _setEventListeners() {
     // select all inputs and buttons
-    const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelectorr)); // note just for formEl
+    const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector)); // note just for formEl
     const buttonEl = this._formElement.querySelector(this._submitButtonSelector);
 
     // loop through the inputs and add validation

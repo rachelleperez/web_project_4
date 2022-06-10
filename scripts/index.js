@@ -181,11 +181,11 @@ addForm.addEventListener("submit", function (evt) {
 }); 
 
 function addNewCard () {
-  data = {
+  const data = {
     name: addForm.elements['input_place_title'].value,
     link: addForm.elements['input_place_image'].value
   }
-  card = createCard(data)
+  const card = createCard(data)
   elementsSection.prepend(card);
 
 }
@@ -219,6 +219,7 @@ function handlePreviewPicture(card, data) {
   openModal(modal)
 
 }
+
 
 // Validation
 
