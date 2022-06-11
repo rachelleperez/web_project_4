@@ -9,6 +9,8 @@ class FormValidator {
     this._errorClass = config.errorClass;
 
     this._formElement = formElement;
+
+    this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector)); 
   }
 
     //done
@@ -42,8 +44,7 @@ class FormValidator {
   }
 
   toggleButton(buttonEl) { //removed settings
-    const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector)); // note just for formEl
-    if (inputList.some(inputEl => this._isInvalidInput(inputEl))) { // if any of them invalid (arrow function)
+    if (this._inputList.some(inputEl => this._isInvalidInput(inputEl))) { // if any of them invalid (arrow function)
       // disable the button
       buttonEl.disabled=true;
       buttonEl.classList.add(this._inactiveButtonClass);
@@ -56,11 +57,11 @@ class FormValidator {
 
   _setEventListeners() {
     // select all inputs and buttons
-    const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector)); // note just for formEl
+   
     const buttonEl = this._formElement.querySelector(this._submitButtonSelector);
 
     // loop through the inputs and add validation
-    inputList.forEach((inputEl) => {
+    this._inputList.forEach((inputEl) => {
       inputEl.addEventListener('input', () => {
         //check the input
         this._checkInputValidity(inputEl); //settings, formEl removed
