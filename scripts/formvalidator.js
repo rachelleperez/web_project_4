@@ -41,7 +41,7 @@ class FormValidator {
     }
   }
 
-  _toggleButton(inputList, buttonEl) { //removed settings
+  toggleButton(inputList, buttonEl) { //removed settings
     if (inputList.some(inputEl => this._isInvalidInput(inputEl))) { // if any of them invalid (arrow function)
       // disable the button
       buttonEl.disabled=true;
@@ -64,7 +64,7 @@ class FormValidator {
         //check the input
         this._checkInputValidity(inputEl); //settings, formEl removed
         // update the button (if input is valid, enable. if not, disabled)
-        this._toggleButton(inputList, buttonEl);
+        this.toggleButton(inputList, buttonEl);
       })
     })
 
