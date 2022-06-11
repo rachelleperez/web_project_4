@@ -34,7 +34,7 @@ closeModalButtons.forEach(button => {
 
 function resetAddForm() {
   addForm.reset();
-  addFormValidator.toggleButton(submitAddPlaceButton);
+  addFormValidator.toggleButton();
 }
 
 // CLOSE OVERLAY IF PRESSED
