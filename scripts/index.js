@@ -34,8 +34,7 @@ closeModalButtons.forEach(button => {
 
 function resetAddForm() {
   addForm.reset();
-  submitAddPlaceButton.disabled=true;
-  submitAddPlaceButton.classList.add("form__submit_disabled");
+  addFormValidator.toggleButton(submitAddPlaceButton);
 }
 
 // CLOSE OVERLAY IF PRESSED
