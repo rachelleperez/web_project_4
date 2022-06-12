@@ -120,16 +120,21 @@ addForm.addEventListener("submit", function (evt) {
   utils.closeModal(addModal);
 }); 
 
+function createCard(data) {
+  const card = new Card(data, cardTemplate)
+  return card.createCard()
+}
+
 function addNewCard () {
   const data = {
     name: addForm.elements['input_place_title'].value,
     link: addForm.elements['input_place_image'].value
   }
-  //const card = createCard(data)
-  const card = new Card(data, cardTemplate).createCard();
-  elementsSection.prepend(card);
+  elementsSection.prepend(createCard(data));
 
 }
+
+
 
 // ------------------------ FORM VALIDATION ---------------------------
 
