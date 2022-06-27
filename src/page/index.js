@@ -1,3 +1,4 @@
+import './index.css' // importing here for webpack
 import initialCards from '../components/data.js';
 import FormValidator from '../components/FormValidator.js';
 import Card from '../components/Card.js';
