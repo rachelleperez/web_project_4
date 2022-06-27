@@ -1,0 +1,27 @@
+{
+  "name": "web_project_4",
+  "version": "0.0.1",
+  "description": "practicum project 4",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rachelleperez/web_project_4.git"
+  },
+  "keywords": [
+    "practicum",
+    "js"
+  ],
+  "author": "Rachelle Perez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rachelleperez/web_project_4/issues"
+  },
+  "homepage": "https://github.com/rachelleperez/web_project_4#readme",
+  "devDependencies": {
+    "webpack": "^5.73.0"
+  }
+}
