@@ -6,10 +6,10 @@ class Card {
 
 
   // just 1 card
-  constructor (data, cardTemplate) {
+  constructor (data, cardTemplateSelector) {
     this._name = data.name;
     this._link = data.link;
-    this._cardTemplate = cardTemplate;
+    this._cardTemplate = document.querySelector(cardTemplateSelector);
     this._element = null;
   }
 

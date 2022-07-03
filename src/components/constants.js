@@ -1,4 +1,4 @@
-const initialCards = [
+export const initialCards = [
   {
     name: "Yosemite Valley",
     link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
@@ -38,5 +38,7 @@ const initialCards = [
 
 ];
 
-//export for index.js
-export default initialCards;
+export const selectors = {
+  cardSection: '#elements', //id
+  cardTemplate: '#card-template' //id
+}
