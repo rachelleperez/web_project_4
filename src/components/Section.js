@@ -9,27 +9,7 @@ export default class Section {
     this._initialArray.forEach(item => this._renderer(item));
   }
 
-  addItem(renderedItem) { //element from initialCards, format: dictionary
+  addItem(renderedItem) { 
     this._element.prepend(renderedItem);
   }
 } 
-
-// // Card Variables
-// const elementsSection = document.querySelector('.elements');
-
-// //Card Template
-// const cardTemplate = document.querySelector('#card-template');
-
-// initialCards.forEach(data => {
-//   const card = new Card(data, cardTemplate).createCard();
-//   elementsSection.append(card);
-// })
-
-// function addNewCard () {
-//   const data = {
-//     name: addForm.elements['input_place_title'].value,
-//     link: addForm.elements['input_place_image'].value
-//   }
-//   elementsSection.prepend(createCard(data));
-
-// }
