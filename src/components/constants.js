@@ -42,6 +42,14 @@ export const selectors = {
   cardSection: '#elements', //id
   cardTemplate: '#card-template', //id
   popupClassName: '.modal__container',
-  overlayClassName: '.modal__overlay'
+  overlayClassName: '.modal__overlay',
+  profileModalId: 'modal_profile',
+  profileFormId: 'form_edit_profile',
+  profileEditButtonClass: '.profile__edit-button',
+  addPlaceButtonClass: '.profile__add-button',
+  addModalId: 'modal_add',
+  addFormId: 'form_add_place',
+
+
 
 }

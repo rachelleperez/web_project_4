@@ -3,17 +3,17 @@ export default class Popup {
   constructor(popupSelector) { 
     this._element = document.getElementById(popupSelector);
     this._closeButton = this._element.querySelector('.modal__close')
-    this._setEventListeners()
+    
   }
 
   overlay = document.querySelector('.modal__overlay')
   
   open() {
     if (this._element == null) return
-    console.log(this._element.classList);
     this._element.classList.add('modal__container_active')
-    console.log(this._element.classList);
     this.overlay.classList.add('modal__overlay_active')
+    document.addEventListener('keydown', this._closeEsc);
+    
   }
 
   //close()
@@ -31,19 +31,15 @@ export default class Popup {
     }
   }
 
-  //setEventListeners
+  //set standard EventListeners
 
-  _setEventListeners() {    
-
-    // listener to close by pressing ESC
-    document.addEventListener('keydown', this._closeEsc);
+  setEventListeners() {    
 
     //close by clicking the closeButton
     this._closeButton.addEventListener('click', () => {
       this.close()
     })
 
-    //TODO: clicking on overlay closes window
     //close when overlay clicked
     this.overlay.addEventListener('click', () => {
       if (this.overlay.classList.contains('modal__overlay_active')) {

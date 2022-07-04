@@ -11,6 +11,7 @@ class Card {
     this._link = data.link;
     this._cardTemplate = document.querySelector(cardTemplateSelector);
     this._element = null;
+    this._setEventListeners();
   }
 
   _handleDeleteCard() {
@@ -39,13 +40,13 @@ class Card {
 
   //instance variables
   
-  _setEventListeners (imageCard) {
+  _setEventListeners () {
     // this is where we set up the events
     //imageCard.addEventListener('click', () => this._handlePreviewPictures())
-    const deleteButton = this._element.querySelector('.elements_delete-button')
-    deleteButton.addEventListener('click', () => this._handleDeleteCard())
-    const likeButton = this._element.querySelector('.elements__like-symbol')
-    likeButton.addEventListener('click', () => this._handleLike())
+    // const deleteButton = this._element.querySelector('.elements_delete-button')
+    // deleteButton.addEventListener('click', () => this._handleDeleteCard())
+    // const likeButton = this._element.querySelector('.elements__like-symbol')
+    // likeButton.addEventListener('click', () => this._handleLike())
     
   }
 
