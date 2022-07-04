@@ -1,4 +1,4 @@
-import { openModal } from './utils.js';
+import { open } from './PopupWithImage';
 
 class Card {
 // can I get template from here?
@@ -24,23 +24,24 @@ class Card {
     button.classList.toggle("elements__like-symbol_active");
   }
 
-  _handlePreviewPicture() {
-    const button = this._element.querySelector('.elements__image');
-    const modal = document.querySelector(button.dataset.modal); // from data-modal
-    const image = modal.querySelector('.modal__image');
-    const imageCaption = modal.querySelector('.modal__image-caption');
-    image.src= this._link
-    imageCaption.textContent = this._name
-    image.alt= this._name
-    openModal(modal)
+  // //updates the attributes only
+  // _handlePreviewPicture() {
+  //   const button = this._element.querySelector('.elements__image');
+  //   const modal = document.querySelector(button.dataset.modal); // from data-modal
+  //   const image = modal.querySelector('.modal__image');
+  //   const imageCaption = modal.querySelector('.modal__image-caption');
+  //   image.src= this._link
+  //   imageCaption.textContent = this._name
+  //   image.alt= this._name
+  //   open(modal)
   
-  }
+  // }
 
   //instance variables
   
   _setEventListeners (imageCard) {
     // this is where we set up the events
-    imageCard.addEventListener('click', () => this._handlePreviewPicture())
+    //imageCard.addEventListener('click', () => this._handlePreviewPictures())
     const deleteButton = this._element.querySelector('.elements_delete-button')
     deleteButton.addEventListener('click', () => this._handleDeleteCard())
     const likeButton = this._element.querySelector('.elements__like-symbol')

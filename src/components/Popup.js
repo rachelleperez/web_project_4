@@ -10,12 +10,14 @@ export default class Popup {
   
   open() {
     if (this._element == null) return
+    console.log(this._element.classList);
     this._element.classList.add('modal__container_active')
+    console.log(this._element.classList);
     this.overlay.classList.add('modal__overlay_active')
   }
 
   //close()
-  _close() {
+  close() {
     if (this._element == null) return
     this._element.classList.remove('modal__container_active')
     this.overlay.classList.remove('modal__overlay_active')
@@ -25,7 +27,7 @@ export default class Popup {
   // close by pressing escape
   _closeEsc(event) {
     if (event.key === 'Escape') {
-      this._close();
+      this.close();
     }
   }
 
@@ -38,17 +40,17 @@ export default class Popup {
 
     //close by clicking the closeButton
     this._closeButton.addEventListener('click', () => {
-      this._close()
+      this.close()
     })
 
     //TODO: clicking on overlay closes window
     //close when overlay clicked
     this.overlay.addEventListener('click', () => {
-      //evt.preventDefault();
       if (this.overlay.classList.contains('modal__overlay_active')) {
-        close()
-      };
+        this.close()
+      }
     })
+
   }
 
 }

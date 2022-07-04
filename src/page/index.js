@@ -28,7 +28,7 @@ const CardSection = new Section (
 // all modal types
 const profileModal = new Popup('modal_profile') 
 const addModal = new Popup('modal_add')  
-const imageModal = new Popup('popup-image') 
+const imageModal = new PopupWithImage('popup-image') 
 
 // Initialize all my instances
 
