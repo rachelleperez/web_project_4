@@ -61,11 +61,11 @@
       <button class="modal__close" aria-label = "Close Button" type="button">&#10005;</button>
       <form id = "form_add_place" class="form" name="form_add_place" novalidate>
         <label class = "form__label">
-          <input name="place_title" id="input_place_title" class="form__input" type="text" placeholder="Title" minlength="1" maxlength="30" required>
+          <input name="name" id="input_place_title" class="form__input" type="text" placeholder="Title" minlength="1" maxlength="30" required>
           <span class="form__error" id="input_place_title-error"></span>
         </label>
         <label class = "form__label">
-          <input name="place_image" id="input_place_image" class="form__input" type="url" placeholder="Image Link" required>
+          <input name="link" id="input_place_image" class="form__input" type="url" placeholder="Image Link" required>
           <span class="form__error" id="input_place_image-error"></span>
         </label>
         <button type="submit" name="profile_submit" aria-label = "Submit Button" id="button-create-place" class="form__submit form__submit_disabled" disabled>Create</button>

@@ -18,7 +18,7 @@ const cardSection = new Section (
   initialCards,
   {
   renderer:(item) => { //item = data in Card.js
-    const cardEl = new Card(item, selectors.cardTemplate).createCard();
+    let cardEl = new Card(item, selectors.cardTemplate).createCard();
     cardSection.addItem(cardEl) //appends to section
     } //no getView right?}
   }
@@ -32,9 +32,6 @@ cardSection.renderItems(initialCards.reverse()); //first pass needs a reverse to
 // Create Modal instances
 const profileModal = new PopupWithForm(selectors.profileModalId, handleEditProfileFormSubmit) 
 const addModal = new PopupWithForm(selectors.addModalId, handleAddPlaceFormSubmit)  
-
-// const profileModal = new Popup(selectors.profileModalId) 
-// const addModal = new Popup(selectors.addModalId)  
 
 const imageModal = new PopupWithImage(selectors.imageModalId) 
 
@@ -82,7 +79,8 @@ imageButtons.forEach(imageButton => {
 // Handle for submit events (post validation)
 
 function handleAddPlaceFormSubmit(inputValuesMap) {
-  return 0;
+  let cardEl = new Card(inputValuesMap, selectors.cardTemplate).createCard();
+  cardSection.addItem(cardEl) 
 }
 
 function handleEditProfileFormSubmit(inputValuesMap) {
