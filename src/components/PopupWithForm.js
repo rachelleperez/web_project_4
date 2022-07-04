@@ -28,6 +28,11 @@ export default class PopupWithForm extends Popup {
     this._form.reset();
   }
 
+  //return form element (for validation)
+  getFormEl() {
+    return this._form;
+  }
+
   // collects data from all the input fields and returns that data as an object
 
   _getInputValues() {
