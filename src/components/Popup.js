@@ -18,12 +18,12 @@ export default class Popup {
 // close by pressing escape
   _handleEscClose(event) {
     if (event.key === 'Escape') {
-      this._closePopup();
+      this.close();
     }
   }
 
   //close()
-  _closePopup() {
+  close() {
     this._element.classList.remove('modal__container_active')
     this.overlay.classList.remove('modal__overlay_active')
     document.removeEventListener('keydown', this._handleEscClose);
@@ -35,12 +35,12 @@ export default class Popup {
     
     //close by clicking the closeButton
     this._closeButton.addEventListener('click', () => {
-      this._closePopup()
+      this.close()
     })
 
     //close when overlay clicked
     this.overlay.addEventListener('click', () => {
-      this._closePopup()
+      this.close()
     })
 
   }
