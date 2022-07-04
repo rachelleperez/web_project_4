@@ -30,8 +30,8 @@ const cardSection = new Section (
 cardSection.renderItems(initialCards.reverse()); //first pass needs a reverse to maintain order desired
 
 // Create Modal instances
-const profileModal = new Popup(selectors.profileModalId) 
-const addModal = new Popup(selectors.addModalId)  
+const profileModal = new PopupWithForm(selectors.profileModalId) 
+const addModal = new PopupWithForm(selectors.addModalId)  
 const imageModal = new PopupWithImage(selectors.imageModalId) 
 
 //Set Event Listeners for Modals
