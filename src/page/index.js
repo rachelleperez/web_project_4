@@ -32,24 +32,6 @@ CardSection.renderItems(initialCards.reverse()); //first pass needs a reverse to
 // all the rest
 
 
-// //Card Template
-// const cardTemplate = document.querySelector('#card-template');
-
-// initialCards.forEach(data => {
-//   const card = new Card(data, cardTemplate).createCard();
-//   elementsSection.append(card);
-// })
-
-// function addNewCard () {
-//   const data = {
-//     name: addForm.elements['input_place_title'].value,
-//     link: addForm.elements['input_place_image'].value
-//   }
-//   elementsSection.prepend(createCard(data));
-
-// }
-
-
 // **************************** OLD - FOR REFERENCE
 
 // // -----------------------GENERAL MODAL BEHAVIOR---------------------------
@@ -141,7 +123,7 @@ CardSection.renderItems(initialCards.reverse()); //first pass needs a reverse to
 //   displayBio.textContent = elementValue;
 // }
 
-// // ------------------------ DEFAULT CARDS ---------------------------
+// // ------------------------ DEFAULT CARDS - DONE ---------------------------
 
 // // Card Variables
 // const elementsSection = document.querySelector('.elements');

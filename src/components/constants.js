@@ -40,5 +40,8 @@ export const initialCards = [
 
 export const selectors = {
   cardSection: '#elements', //id
-  cardTemplate: '#card-template' //id
+  cardTemplate: '#card-template', //id
+  popupClassName: '.modal__container',
+  overlayClassName: '.modal__overlay'
+
 }
