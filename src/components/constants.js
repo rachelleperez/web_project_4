@@ -49,6 +49,7 @@ export const selectors = {
   addPlaceButtonClass: '.profile__add-button',
   addModalId: 'modal_add',
   addFormId: 'form_add_place',
+  imageModalId: 'popup-image'
 
 
 

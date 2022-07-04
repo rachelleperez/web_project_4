@@ -32,16 +32,17 @@ cardSection.renderItems(initialCards.reverse()); //first pass needs a reverse to
 // Create Modal instances
 const profileModal = new Popup(selectors.profileModalId) 
 const addModal = new Popup(selectors.addModalId)  
-//const imageModal = new PopupWithImage(selectors.imageModal) 
+const imageModal = new PopupWithImage(selectors.imageModalId) 
 
 //Set Event Listeners for Modals
 profileModal.setEventListeners();
 addModal.setEventListeners();
-//imageModal.setEventListeners();
+imageModal.setEventListeners();
 
 // Isolate buttons outside Popup and Card elements
 const editButton = document.querySelector(selectors.profileEditButtonClass) 
 const addPlaceButton = document.querySelector(selectors.addPlaceButtonClass) 
+const imageButtons = document.querySelectorAll('.elements__image')
 
 // Set event listeners for buttons
 
@@ -56,3 +57,24 @@ addPlaceButton.addEventListener('click', () => {
   //open modal
   addModal.open();
 })
+
+// imageButtons.addEventListener('click', () => {
+//   console.log(imageButtons.classList)
+//   //imageModal.open(?, ?);
+// })
+
+imageButtons.forEach(imageButton => {
+  imageButton.addEventListener('click', () => {
+    let link = imageButton.style.backgroundImage.match(/\((.*?)\)/)[1].replace(/('|")/g,'');
+    let parent = imageButton.parentElement;
+    let caption = parent.querySelector(".elements__name").textContent
+    imageModal.open(link, caption) //link, caption
+  })
+})
+
+// closeModalButtons.forEach(button => {
+//   button.addEventListener('click', () => {
+//     const modal = button.closest('.modal__container')
+//     utils.closeModal(modal)
+//   })
+// })
