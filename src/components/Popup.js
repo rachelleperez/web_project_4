@@ -17,17 +17,13 @@ export default class Popup {
 
 // close by pressing escape
   _closeEsc(event) {
-    console.log("escape pressed")
     if (event.key === 'Escape') {
-      console.log("yes, it was escape");
       this._closePopup();
-      console.log("post 'closed'");
     }
   }
 
   //close()
   _closePopup() {
-    console.log("reached close")
     this._element.classList.remove('modal__container_active')
     this.overlay.classList.remove('modal__overlay_active')
     document.removeEventListener('keydown', this._closeEsc);
