@@ -30,8 +30,12 @@ const cardSection = new Section (
 cardSection.renderItems(initialCards.reverse()); //first pass needs a reverse to maintain order desired
 
 // Create Modal instances
-const profileModal = new PopupWithForm(selectors.profileModalId) 
-const addModal = new PopupWithForm(selectors.addModalId)  
+const profileModal = new PopupWithForm(selectors.profileModalId, handleEditProfileFormSubmit) 
+const addModal = new PopupWithForm(selectors.addModalId, handleAddPlaceFormSubmit)  
+
+// const profileModal = new Popup(selectors.profileModalId) 
+// const addModal = new Popup(selectors.addModalId)  
+
 const imageModal = new PopupWithImage(selectors.imageModalId) 
 
 //Set Event Listeners for Modals
@@ -44,7 +48,7 @@ const editButton = document.querySelector(selectors.profileEditButtonClass)
 const addPlaceButton = document.querySelector(selectors.addPlaceButtonClass) 
 const imageButtons = document.querySelectorAll('.elements__image')
 
-// Set event listeners for buttons
+// Set event listeners for clicks > open modal
 
 editButton.addEventListener('click', () => {
   profileModal.open();
@@ -66,4 +70,23 @@ imageButtons.forEach(imageButton => {
     imageModal.open(link, caption) //link, caption
   })
 })
+
+
+
+//form validations?
+
+//handleFormSubmit(cardId, formImputsMap)
+
+
+
+// Handle for submit events (post validation)
+
+function handleAddPlaceFormSubmit(inputValuesMap) {
+  return 0;
+}
+
+function handleEditProfileFormSubmit(inputValuesMap) {
+  return 0;
+}
+
 
