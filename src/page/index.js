@@ -25,6 +25,11 @@ const CardSection = new Section (
   , selectors.cardSection
 )
 
+// all modal types
+const profileModal = new Popup('modal_profile') 
+const addModal = new Popup('modal_add')  
+const imageModal = new Popup('popup-image') 
+
 // Initialize all my instances
 
 CardSection.renderItems(initialCards.reverse()); //first pass needs a reverse to maintain order desired

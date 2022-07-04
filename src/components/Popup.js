@@ -1,9 +1,9 @@
 export default class Popup {
 
-  constructor(popupSelector) { // popupClassName = '.modal__container'
-    this._element = document.querySelector(popupSelector);
+  constructor(popupSelector) { 
+    this._element = document.getElementById(popupSelector);
     this._closeButton = this._element.querySelector('.modal__close')
-    setEventListeners()
+    this._setEventListeners()
   }
 
   overlay = document.querySelector('.modal__overlay')
@@ -11,39 +11,41 @@ export default class Popup {
   open() {
     if (this._element == null) return
     this._element.classList.add('modal__container_active')
-    overlay.classList.add('modal__overlay_active')
+    this.overlay.classList.add('modal__overlay_active')
   }
 
   //close()
-  close() {
+  _close() {
     if (this._element == null) return
     this._element.classList.remove('modal__container_active')
-    overlay.classList.remove('modal__overlay_active')
-    document.removeEventListener('keydown', closeEsc);
+    this.overlay.classList.remove('modal__overlay_active')
+    document.removeEventListener('keydown', this._closeEsc);
   }
 
   // close by pressing escape
-  closeEsc(event) {
+  _closeEsc(event) {
     if (event.key === 'Escape') {
-      close();
+      this._close();
     }
   }
 
   //setEventListeners
 
-  setEventListeners() {    
+  _setEventListeners() {    
 
     // listener to close by pressing ESC
-    document.addEventListener('keydown', closeEsc);
+    document.addEventListener('keydown', this._closeEsc);
 
     //close by clicking the closeButton
     this._closeButton.addEventListener('click', () => {
-      close()
+      this._close()
     })
 
+    //TODO: clicking on overlay closes window
     //close when overlay clicked
-    overlay.addEventListener('click', () => {
-      if (overlay.classList.contains('modal__overlay_active')) {
+    this.overlay.addEventListener('click', () => {
+      //evt.preventDefault();
+      if (this.overlay.classList.contains('modal__overlay_active')) {
         close()
       };
     })
