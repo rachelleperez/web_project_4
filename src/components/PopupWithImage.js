@@ -12,7 +12,7 @@ export default class PopupWithImage extends Popup{
   open(link, caption) {
     this._element.classList.add('modal__container_active')
     this.overlay.classList.add('modal__overlay_active')
-    document.addEventListener('keydown', this._closeEsc);
+    document.addEventListener('keydown', this._handleEscClose);
 
     this._element.querySelector('.modal__image').src = link; 
     this._element.querySelector('.modal__image').alt = caption;

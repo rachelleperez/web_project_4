@@ -12,11 +12,11 @@ export default class Popup {
     if (this._element == null) return
     this._element.classList.add('modal__container_active')
     this.overlay.classList.add('modal__overlay_active')
-    document.addEventListener('keydown', this._closeEsc);    
+    document.addEventListener('keydown', this._handleEscClose);    
   }
 
 // close by pressing escape
-  _closeEsc(event) {
+  _handleEscClose(event) {
     if (event.key === 'Escape') {
       this._closePopup();
     }
@@ -26,7 +26,7 @@ export default class Popup {
   _closePopup() {
     this._element.classList.remove('modal__container_active')
     this.overlay.classList.remove('modal__overlay_active')
-    document.removeEventListener('keydown', this._closeEsc);
+    document.removeEventListener('keydown', this._handleEscClose);
   }
 
   //set standard EventListeners
