@@ -39,7 +39,7 @@ profileModal.setEventListeners();
 addModal.setEventListeners();
 imageModal.setEventListeners();
 
-// Isolate buttons outside Popup and Card elements
+// Isolate buttons outside Popups
 const editButton = document.querySelector(selectors.profileEditButtonClass) 
 const addPlaceButton = document.querySelector(selectors.addPlaceButtonClass) 
 const imageButtons = document.querySelectorAll('.elements__image')
@@ -58,11 +58,6 @@ addPlaceButton.addEventListener('click', () => {
   addModal.open();
 })
 
-// imageButtons.addEventListener('click', () => {
-//   console.log(imageButtons.classList)
-//   //imageModal.open(?, ?);
-// })
-
 imageButtons.forEach(imageButton => {
   imageButton.addEventListener('click', () => {
     let link = imageButton.style.backgroundImage.match(/\((.*?)\)/)[1].replace(/('|")/g,'');
@@ -72,9 +67,3 @@ imageButtons.forEach(imageButton => {
   })
 })
 
-// closeModalButtons.forEach(button => {
-//   button.addEventListener('click', () => {
-//     const modal = button.closest('.modal__container')
-//     utils.closeModal(modal)
-//   })
-// })
