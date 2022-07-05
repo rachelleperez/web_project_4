@@ -25,21 +25,7 @@ class Card {
     const button = this._element.querySelector('.elements__like-symbol');
     button.classList.toggle("elements__like-symbol_active");
   }
-
-  //updates the attributes only
-  _handlePreviewPicture() {
-    // console.log("handle_preview")
-    // const button = this._element.querySelector('.elements__image');
-    // const modal = document.querySelector(button.dataset.modal); // from data-modal
-    // const image = modal.querySelector('.modal__image');
-    // const imageCaption = modal.querySelector('.modal__image-caption');
-    // image.src= this._link
-    // imageCaption.textContent = this._name
-    // image.alt= this._name
-    // open(modal)
   
-  }
-
   //instance variables
   
   _setEventListeners () {
