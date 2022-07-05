@@ -17,7 +17,6 @@ export default class PopupWithForm extends Popup {
     this._cardId = popupSelector;
     this._form = this._element.querySelector('.form');
     this._handleFormSubmit = handleFormSubmitFunction;
-
   }
 
   // updated do that it sets the form once popup is closed.
@@ -38,7 +37,7 @@ export default class PopupWithForm extends Popup {
   _getInputValues() {
     this._formInputs = this._form.querySelectorAll(".form__input");
     this._formMap = {}
-    this._formInput.forEach(input => this._formMap[input.name] = input.value);
+    this._formInputs.forEach(input => this._formMap[input.name] = input.value);
     return this._formMap;
   }
 

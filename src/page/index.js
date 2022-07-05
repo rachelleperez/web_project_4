@@ -68,7 +68,7 @@ imageButtons.forEach(imageButton => {
   })
 })
 
-//form validations?
+// Form Validations
 
 const formValidationConfig = {
   inputSelector: ".form__input",
