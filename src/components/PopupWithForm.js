@@ -47,6 +47,7 @@ export default class PopupWithForm extends Popup {
 
     // add submit event handler to the form
     this._form.addEventListener("submit", function (evt) {
+      "submit pressed"
       // let's cancel the default action that belongs to the event
       evt.preventDefault();
       this._handleFormSubmitFunction(this._getInputValues())

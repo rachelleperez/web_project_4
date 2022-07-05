@@ -41,11 +41,11 @@
       <button class="modal__close" aria-label = "Close Button" type="button">&#10005;</button>
       <form id = "form_edit_profile" class="form" name="form_edit_profile" novalidate>
         <label class = "form__label">
-          <input name="profile_name" id="input_profile_name" class="form__input" type="text" placeholder="Name" minlength="2" maxlength="40" required pattern="[a-zA-Z -]{1,}">
+          <input name="name" id="input_profile_name" class="form__input" type="text" placeholder="Name" minlength="2" maxlength="40" required pattern="[a-zA-Z -]{1,}">
           <span class="form__error" id="input_profile_name-error"></span>
         </label>
         <label class = "form__label">
-          <input name="profile_bio" id="input_profile_bio" class="form__input" type="text" placeholder="About Me" minlength="2" maxlength="200" required>
+          <input name="bio" id="input_profile_bio" class="form__input" type="text" placeholder="About Me" minlength="2" maxlength="200" required>
           <span class="form__error" id="input_profile_bio-error"></span>
         </label>
         <button type="submit" name="profile_submit" aria-label = "Submit Button" id="button-submit-edit-profile" class="form__submit">Save</button>

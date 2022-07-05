@@ -1,3 +1,4 @@
+/*
 import './index.css' // importing here for webpack
 import initialCards from '../components/constants.js';
 import FormValidator from '../components/FormValidator.js';
@@ -152,3 +153,4 @@ addFormValidator.enableValidation();
 
 const editFormValidator = new FormValidator(formValidationConfig, profileForm);
 editFormValidator.enableValidation();
+*/

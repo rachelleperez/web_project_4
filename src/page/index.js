@@ -1,7 +1,7 @@
 import './index.css' // importing here for webpack
 
 //import constants and utils
-import {initialCards, selectors, formValidationConfig} from '../components/constants.js'; //use to be import initialCards
+import {initialCards, selectors, formValidationConfig, defaultName, defaultBio} from '../components/constants.js'; //use to be import initialCards
 //import * as utils from '../components/utils.js';
 
 //import all the classes
@@ -32,8 +32,11 @@ cardSection.renderItems(initialCards.reverse()); //first pass needs a reverse to
 // Create Modal instances
 const profileModal = new PopupWithForm(selectors.profileModalId, handleEditProfileFormSubmit) 
 const addModal = new PopupWithForm(selectors.addModalId, handleAddPlaceFormSubmit)  
-
 const imageModal = new PopupWithImage(selectors.imageModalId) 
+
+//Create User Info Instance and set to default
+
+const userInfo = new UserInfo(defaultName, defaultBio)
 
 //Set Event Listeners for Modals
 profileModal.setEventListeners();
@@ -85,7 +88,7 @@ function handleAddPlaceFormSubmit(inputValuesMap) {
 }
 
 function handleEditProfileFormSubmit(inputValuesMap) {
-  return 0;
+  userInfo.setUserInfo(inputValuesMap.name, inputValuesMap.bio);
 }
 
 

@@ -55,7 +55,6 @@ export const selectors = {
 
 }
 
-
 export const formValidationConfig = {
   inputSelector: ".form__input",
   submitButtonSelector: ".form__submit", //# = id, . is clss
@@ -63,3 +62,7 @@ export const formValidationConfig = {
   inputErrorClass: "form__input_type_error",
   errorClass: "form__error_visible"
 };
+
+// for userInfo constructor
+export const defaultName = "Jacques Cousteau"
+export const defaultBio = "Explorer"

@@ -1,29 +1,32 @@
-// //  INDIVIDUAL MODAL BEHAVIOR (needed for card)
+// TODO: delete if not needed
 
-// const overlay = document.querySelector('.modal__overlay')
+/*
+//  INDIVIDUAL MODAL BEHAVIOR (needed for card)
 
-// export function openModal(modal) {
-//   if (modal == null) return
-//   modal.classList.add('modal__container_active')
-//   overlay.classList.add('modal__overlay_active')
-//   document.addEventListener('keydown', closeModalEsc);
-// }
+const overlay = document.querySelector('.modal__overlay')
 
-// function closeModalEsc(event, modal) {
-//   if (event.key === 'Escape') {
-//     findCloseAnyOpenModal();
-//   }
-// }
+export function openModal(modal) {
+  if (modal == null) return
+  modal.classList.add('modal__container_active')
+  overlay.classList.add('modal__overlay_active')
+  document.addEventListener('keydown', closeModalEsc);
+}
 
-// export function closeModal(modal) {
-//   if (modal == null) return
-//   modal.classList.remove('modal__container_active')
-//   overlay.classList.remove('modal__overlay_active')
-//   document.removeEventListener('keydown', closeModalEsc);
-// }
+function closeModalEsc(event, modal) {
+  if (event.key === 'Escape') {
+    findCloseAnyOpenModal();
+  }
+}
 
-// export function findCloseAnyOpenModal() {
-//   const openedModal = document.querySelector('.modal__container_active');
-//   closeModal(openedModal);
-// }
+export function closeModal(modal) {
+  if (modal == null) return
+  modal.classList.remove('modal__container_active')
+  overlay.classList.remove('modal__overlay_active')
+  document.removeEventListener('keydown', closeModalEsc);
+}
 
+export function findCloseAnyOpenModal() {
+  const openedModal = document.querySelector('.modal__container_active');
+  closeModal(openedModal);
+}
+*/

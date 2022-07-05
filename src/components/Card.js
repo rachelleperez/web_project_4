@@ -62,7 +62,7 @@ class Card {
     nameCard.textContent = this._name
 
     //set event listeners 
-    //this._setEventListeners();
+    this._setEventListeners();
     
     // return the created card
     return this._element
