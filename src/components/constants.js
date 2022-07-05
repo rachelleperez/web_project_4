@@ -54,3 +54,12 @@ export const selectors = {
 
 
 }
+
+
+export const formValidationConfig = {
+  inputSelector: ".form__input",
+  submitButtonSelector: ".form__submit", //# = id, . is clss
+  inactiveButtonClass: "form__submit_disabled", // classes
+  inputErrorClass: "form__input_type_error",
+  errorClass: "form__error_visible"
+};

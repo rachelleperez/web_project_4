@@ -1,7 +1,7 @@
 import './index.css' // importing here for webpack
 
 //import constants and utils
-import {initialCards, selectors} from '../components/constants.js'; //use to be import initialCards
+import {initialCards, selectors, formValidationConfig} from '../components/constants.js'; //use to be import initialCards
 //import * as utils from '../components/utils.js';
 
 //import all the classes
@@ -69,14 +69,6 @@ imageButtons.forEach(imageButton => {
 })
 
 // Form Validations
-
-const formValidationConfig = {
-  inputSelector: ".form__input",
-  submitButtonSelector: ".form__submit", //# = id, . is clss
-  inactiveButtonClass: "form__submit_disabled", // classes
-  inputErrorClass: "form__input_type_error",
-  errorClass: "form__error_visible"
-};
 
 const addFormValidator = new FormValidator(formValidationConfig, addModal.getFormEl());
 addFormValidator.enableValidation();
