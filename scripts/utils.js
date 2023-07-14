@@ -1,5 +1,6 @@
 //  INDIVIDUAL MODAL BEHAVIOR (needed for card)
 
+
 const overlay = document.querySelector('.modal__overlay')
 
 export function openModal(modal) {
