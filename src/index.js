@@ -1,7 +1,7 @@
-import initialCards from './data.js';
-import FormValidator from './FormValidator.js';
-import Card from './Card.js';
-import * as utils from './utils.js';
+import initialCards from './scripts/data.js';
+import FormValidator from './scripts/FormValidator.js';
+import Card from './scripts/Card.js';
+import * as utils from './scripts/utils.js';
 
 // -----------------------GENERAL MODAL BEHAVIOR---------------------------
 
