@@ -5,7 +5,7 @@ module.exports = {
             {
                 targets: "> 0.25%, not dead",
                 useBuiltIns: "entry",
-                corejs = "3",
+                corejs: "3",
             },
         ],
     ],
