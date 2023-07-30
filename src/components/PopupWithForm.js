@@ -1,11 +1,13 @@
 import Popup from './Popup';
 
 export default class PopupWithForm extends Popup {
-    constructor(popupSelector, handleFormSubmit) { // callback function that gets invoked when you submit the form
+    constructor({popupSelector, handleFormSubmit}) { // callback function that gets invoked when you submit the form
         super(popupSelector); // for Popup
         this._popupForm = this._modal.querySelector('.form'); // <form id = "form_add_place" class="form" name="form_add_place" novalidate>
+        
         this._handleFormSubmit = handleFormSubmit;
         this._inputs = this._popupForm.querySelectorAll(".form__input");
+
     }
 
     close() {
@@ -23,12 +25,12 @@ export default class PopupWithForm extends Popup {
     setEventListeners() {
         
         // add sumit event handler
-        this._popupForm.addEventListener("submit", function (evt) {
+        this._popupForm.addEventListener("submit", (evt) => {
             // let's cancel the default action that belongs to the event
             evt.preventDefault();
-            this._handleFormSubmit(this._getInputValues);
+            this._handleFormSubmit(this._getInputValues());
             this.close();
-          }); 
+        }); 
 
 
         // maintains parent settings, closing upon pressing close button, Esc, and click overlay

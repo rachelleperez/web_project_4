@@ -11,13 +11,13 @@ export default class Section {
         });
     }
 
-    addItem(item) {
+    addItem(item, appendBool) {
 
-        if (this._element === null) {
-            console.error('".elements" was not found in the DOM.');
+        if (appendBool) {
+            this._element.append(item) // initial cards only
         }
         else {
-            this._element.append(item)
+            this._element.prepend(item) 
         }
     }
 

@@ -7,8 +7,14 @@ class Card {
 
   // just 1 card
   constructor ({data, handleImageClick}, cardTemplateSelector) {
+
     this._name = data.name;
     this._link = data.link;
+
+    // to match index.html
+    if (data.name === undefined) {this._name = data.input_place_title;}
+    if (data.link === undefined) {this._link = data.input_place_image;}
+    
     this._cardTemplate = document.querySelector(cardTemplateSelector);
     this._element = null;
 
