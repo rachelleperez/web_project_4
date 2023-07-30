@@ -12,4 +12,9 @@ export default class UserInfo {
         return user
     }
 
+    setUserInfo(nameText, bioText) {
+        this._name.textContent = nameText;
+        this._bio.textContent = bioText;
+    }
+
 }
