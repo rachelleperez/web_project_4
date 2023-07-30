@@ -78,6 +78,15 @@ class FormValidator {
     this._setEventListeners(); //settings (config) to be passed to form via constructor
   }
 
+  // no errors upon opening a form.
+  clearValidationErrors() {
+    this._inputList.forEach(inputEl => {
+      const errorEl = this._formElement.querySelector(`#${inputEl.id}-error`);
+      this._hideError(errorEl, inputEl);
+    });
+  }
+
+
 }
 
 //export for index.js
