@@ -17,7 +17,6 @@ export default class Popup {
 
     close() {
         // closes popup
-        console.log("reaches close")
         this._modal.classList.remove('modal__container_active')
         this._overlay.classList.remove('modal__overlay_active')
         document.removeEventListener('keydown', this._handleEscEscape);
@@ -27,10 +26,9 @@ export default class Popup {
         // listens for esc button
         if (event.key === 'Escape') {
             this.close();
-            console.log("reaches handleesp close")
+
         }
     }
-
     // sets event listeners
     setEventListeners() {
         

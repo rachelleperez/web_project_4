@@ -6,11 +6,13 @@ class Card {
 
 
   // just 1 card
-  constructor (data, cardTemplateSelector) {
+  constructor ({data, handleImageClick}, cardTemplateSelector) {
     this._name = data.name;
     this._link = data.link;
     this._cardTemplate = document.querySelector(cardTemplateSelector);
     this._element = null;
+
+    this._handleImageClick = handleImageClick;
   }
 
   _handleDeleteCard() {
@@ -24,23 +26,11 @@ class Card {
     button.classList.toggle("elements__like-symbol_active");
   }
 
-  _handlePreviewPicture() {
-    const button = this._element.querySelector('.elements__image');
-    const modal = document.querySelector(button.dataset.modal); // from data-modal
-    const image = modal.querySelector('.modal__image');
-    const imageCaption = modal.querySelector('.modal__image-caption');
-    image.src= this._link
-    imageCaption.textContent = this._name
-    image.alt= this._name
-    openModal(modal)
-  
-  }
-
   //instance variables
   
   _setEventListeners (imageCard) {
     // this is where we set up the events
-    imageCard.addEventListener('click', () => this._handlePreviewPicture())
+    imageCard.addEventListener('click', () => this._handleImageClick({link: this._link, name: this._name}))
     const deleteButton = this._element.querySelector('.elements_delete-button')
     deleteButton.addEventListener('click', () => this._handleDeleteCard())
     const likeButton = this._element.querySelector('.elements__like-symbol')
