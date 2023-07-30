@@ -11,7 +11,7 @@ class Card {
     this._name = data.name;
     this._link = data.link;
 
-    // to match index.html
+    // to match indx.html
     if (data.name === undefined) {this._name = data.input_place_title;}
     if (data.link === undefined) {this._link = data.input_place_image;}
     
