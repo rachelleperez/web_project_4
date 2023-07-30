@@ -1,5 +1,3 @@
-import { openModal } from './utils.js';
-
 class Card {
 // can I get template from here?
 // should never reference "card" here. This is just MVP
