@@ -1,152 +1,100 @@
 import "./index.css";
 
+// Import all the classes
 import initialCards from '../components/data';
 import FormValidator from '../components/FormValidator';
 import Card from '../components/Card';
-import * as utils from '../components/utils';
 
-// -----------------------GENERAL MODAL BEHAVIOR---------------------------
+import Section from '../components/Section';
+import PopupWithImage from '../components/PopupWithImage';
+import PopupWithForm from '../components/PopupWithForm';
+import UserInfo from '../components/UserInfo';
 
+import {selectors, overlay} from '../components/constants';
 
-const closeModalButtons = document.querySelectorAll('.modal__close')
-const overlay = document.querySelector('.modal__overlay')
-const editButton = document.querySelector('.profile__edit-button') 
-const addPlaceButton = document.querySelector('.profile__add-button') 
-const submitAddPlaceButton = document.getElementById("button-create-place");
-
-editButton.addEventListener('click', () => {
-  // const modal = document.querySelector(editButton.dataset.modal) // from data-modal
-  utils.openModal(profileModal)
-  prefillProfileForm()
-})
-
-addPlaceButton.addEventListener('click', () => {
-  // default settings
-  resetAddForm();
-  //open modal
-  utils.openModal(addModal);
-})
-
-closeModalButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const modal = button.closest('.modal__container')
-    utils.closeModal(modal)
-  })
-})
-
-function resetAddForm() {
-  addForm.reset();
-  addFormValidator.toggleButton();
-}
-
-// CLOSE OVERLAY IF PRESSED
-
-overlay.addEventListener('click', () => {
-  const modal = overlay.closest('.modal__container');
-  if (overlay.classList.contains('modal__overlay_active')) {
-    utils.findCloseAnyOpenModal();
-  };
-})
-
-// ------------------------ PROFILE INFO MANAGEMENT ---------------------------
-
-// Form Variables
-const profileModal = document.getElementById('modal_profile');
-const profileForm = document.getElementById('form_edit_profile');
-// const buttonSubmitEditProfile = document.getElementById("button-submit-edit-profile")
-
-// Name Variables
-
-const displayProfileName = document.getElementById('display_profile_name')
-const inputProfileName = document.getElementById('input_profile_name')
-
-// Bio Variables
-
-const displayBio = document.getElementById('display_profile_bio');
-const inputBio = document.getElementById('input_profile_bio');
-
-// Function: Pre-fill form with current displayed name and bio
-
-function prefillProfileForm() {
-  inputProfileName.value = displayProfileName.textContent;
-  inputBio.value = displayBio.textContent;
-}
-
-// Update Name and Bio
-
-profileForm.addEventListener("submit", function (evt) {
-  // let's cancel the default action that belongs to the event
-  // evt.preventDefault();
-
-  // checking the user data
-  updateName();
-  updateBio();
-  utils.closeModal(profileModal);
-}); 
-
-function updateName() {
-  const elementValue = inputProfileName.value;
-  displayProfileName.textContent = elementValue;
-}
-
-function updateBio() {
-  const elementValue = inputBio.value;
-  displayBio.textContent = elementValue;
-}
 
 // ------------------------ DEFAULT CARDS ---------------------------
 
-// Card Variables
-const elementsSection = document.querySelector('.elements');
+const CardSection = new Section(
+    {
+        renderer: (data) => {
+            const card = new Card({data, handleImageClick: (imgData) => {
+                CardPreviewPopup.open(imgData);
+            }}, selectors.cardTemplate).createCard();;
+            CardSection.addItem(card, true);
+        },
+        selector: selectors.cardSection,
+    }
+);
 
-//Card Template
-const cardTemplate = document.querySelector('#card-template');
+CardSection.renderItems(initialCards);
 
-initialCards.forEach(data => {
-  const card = new Card(data, cardTemplate).createCard();
-  elementsSection.append(card);
+// ------------------------ CARD PREVIEW ---------------------------
+
+const CardPreviewPopup = new PopupWithImage (selectors.imagePreview);
+CardPreviewPopup.setEventListeners();
+
+// ------------------------ NEW CARD ---------------------------
+
+const AddCardPopup = new PopupWithForm ({popupSelector:'modal_add', 
+    handleFormSubmit: (data) => { 
+        const card = new Card({data, handleImageClick: (imgData) => {
+            CardPreviewPopup.open(imgData);
+        }}, selectors.cardTemplate).createCard();;
+        CardSection.addItem(card, false);
+    }
+});
+
+const addCardButton = document.querySelector('.profile__add-button');
+
+addCardButton.addEventListener('click', () => {
+    addFormValidator.clearValidationErrors();
+    AddCardPopup.open();
 })
 
-// ------------------------ ADD NEW PLACE ---------------------------
+// ------------------------ PROFILE INFO STORAGE ---------------------------
 
-// Form Variables
-const addModal = document.getElementById('modal_add');
-const addForm = document.getElementById('form_add_place');
+const CurrentUserProfile = new UserInfo ({name:'display_profile_name', bio: 'display_profile_bio'})
 
-// Submit Event
+// ------------------------ PROFILE INFO MANAGEMENT ---------------------------
 
-addForm.addEventListener("submit", function (evt) {
-  // let's cancel the default action that belongs to the event
-  evt.preventDefault();
-  addNewCard();
-  utils.closeModal(addModal);
-}); 
+const EditProfilePopup = new PopupWithForm ({popupSelector:'modal_profile', 
+    handleFormSubmit: (data) => { 
+        CurrentUserProfile.setUserInfo(data.input_profile_name, data.input_profile_bio);
+    }
+});
 
-function createCard(data) {
-  const card = new Card(data, cardTemplate)
-  return card.createCard()
+const editProfileButton = document.querySelector('.profile__edit-button');
+
+editProfileButton.addEventListener('click', () => {
+    editFormValidator.clearValidationErrors();
+    prefillProfileForm();
+    EditProfilePopup.open();
+})
+
+// To prefill Edit Profile Form
+
+const inputProfileName = document.getElementById('input_profile_name')
+const inputBio = document.getElementById('input_profile_bio');
+
+function prefillProfileForm() {
+    inputProfileName.value = CurrentUserProfile.getUserInfo().name;
+    inputBio.value = CurrentUserProfile.getUserInfo().bio;
 }
-
-function addNewCard () {
-  const data = {
-    name: addForm.elements['input_place_title'].value,
-    link: addForm.elements['input_place_image'].value
-  }
-  elementsSection.prepend(createCard(data));
-
-}
-
-
 
 // ------------------------ FORM VALIDATION ---------------------------
 
+
+const addForm = document.getElementById('form_add_place');
+const profileForm = document.getElementById('form_edit_profile');
+
 const formValidationConfig = {
-  inputSelector: ".form__input",
-  submitButtonSelector: ".form__submit", //# = id, . is clss
-  inactiveButtonClass: "form__submit_disabled", // classes
-  inputErrorClass: "form__input_type_error",
-  errorClass: "form__error_visible"
-};
+    inputSelector: ".form__input",
+    submitButtonSelector: ".form__submit", //# = id, . is clss
+    inactiveButtonClass: "form__submit_disabled", // classes
+    inputErrorClass: "form__input_type_error",
+    errorClass: "form__error_visible"
+  };
 
 const addFormValidator = new FormValidator(formValidationConfig, addForm);
 addFormValidator.enableValidation();
