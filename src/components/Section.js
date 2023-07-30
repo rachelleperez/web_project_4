@@ -12,12 +12,7 @@ export default class Section {
     }
 
     addItem(item) {
-        //console.log(item);
-        //console.log(this._element); // NULL
-        //console.log(document.querySelector('.elements')); // NOT NULL
-        // take the item and render it into this._element
-        //this._element.append(item)
-        //console.log(this._element);
+
         if (this._element === null) {
             console.error('".elements" was not found in the DOM.');
         }
