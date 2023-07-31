@@ -74,8 +74,9 @@ const inputProfileName = document.getElementById('input_profile_name')
 const inputBio = document.getElementById('input_profile_bio');
 
 function prefillProfileForm() {
-    inputProfileName.value = currentUserProfile.getUserInfo().name;
-    inputBio.value = currentUserProfile.getUserInfo().bio;
+    const currentUser = currentUserProfile.getUserInfo();
+    inputProfileName.value = currentUser.name;
+    inputBio.value = currentUser.bio;
 }
 
 // ------------------------ FORM VALIDATION ---------------------------
