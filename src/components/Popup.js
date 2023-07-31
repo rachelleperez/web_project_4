@@ -50,9 +50,9 @@ export default class Popup {
     }
 
     _removeEventListeners() {
-        this._closeButton.removeEventListener('click', this._closeButtonListener);
-        document.removeEventListener('keydown', this._handleEscEscapeListener);
-        this._overlay.removeEventListener('click', this._overlayListener);
+        this._closeButton.removeEventListener('click', this.close);
+        document.removeEventListener('keydown', this._handleEscEscape);
+        this._overlay.removeEventListener('click', this.close);
     }
 
 
