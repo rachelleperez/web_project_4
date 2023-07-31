@@ -45,7 +45,8 @@ class FormValidator {
   }
 
   toggleButton() { //removed settings
-    if (this._inputList.some(inputEl => this._isInvalidInput(inputEl))) { // if any of them invalid (arrow function)
+
+    if (this._hasInvalidInputs()) {
       // disable the button
       this._submitButton.disabled=true;
       this._submitButton.classList.add(this._inactiveButtonClass);
@@ -54,6 +55,11 @@ class FormValidator {
       this._submitButton.disabled=false;
       this._submitButton.classList.remove(this._inactiveButtonClass);
     } 
+  }
+
+  // returns true if some invalid input
+  _hasInvalidInputs () {
+    return this._inputList.some(inputEl => this._isInvalidInput(inputEl));
   }
 
   _setEventListeners() {
