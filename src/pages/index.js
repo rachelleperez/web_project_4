@@ -42,7 +42,7 @@ const cardPreviewPopup = new PopupWithImage(selectors.imagePreview);
 
 const addCardPopup = new PopupWithForm({
   popupSelector: "modal_add",
-  handleFormSubmit: (data) => renderCard(data, false),
+  handleFormInputs: (data) => renderCard(data, false),
 });
 
 const addCardButton = document.querySelector(".profile__add-button");
