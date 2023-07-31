@@ -17,15 +17,17 @@ import {selectors, overlay} from '../components/constants';
 
 const cardSection = new Section(
     {
-        renderer: (data) => {
-            const card = new Card({data, handleImageClick: (imgData) => {
-                cardPreviewPopup.open(imgData);
-            }}, selectors.cardTemplate).createCard();;
-            cardSection.addItem(card, true);
-        },
+        renderer: (data) => renderCard(data, true),
         selector: selectors.cardSection,
     }
 );
+
+function renderCard(data, shouldAppend) {
+    const card = new Card({data, handleImageClick: (imgData) => {
+        cardPreviewPopup.open(imgData);
+    }}, selectors.cardTemplate).createCard();;
+    cardSection.addItem(card, shouldAppend);
+}
 
 cardSection.renderItems(initialCards);
 
@@ -37,12 +39,7 @@ cardPreviewPopup.setEventListeners();
 // ------------------------ NEW CARD ---------------------------
 
 const addCardPopup = new PopupWithForm ({popupSelector:'modal_add', 
-    handleFormSubmit: (data) => { 
-        const card = new Card({data, handleImageClick: (imgData) => {
-            cardPreviewPopup.open(imgData);
-        }}, selectors.cardTemplate).createCard();;
-        cardSection.addItem(card, false);
-    }
+    handleFormSubmit: (data) => renderCard(data, false)
 });
 
 const addCardButton = document.querySelector('.profile__add-button');
