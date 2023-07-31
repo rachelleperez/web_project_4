@@ -34,7 +34,6 @@ cardSection.renderItems(initialCards);
 // ------------------------ CARD PREVIEW ---------------------------
 
 const cardPreviewPopup = new PopupWithImage (selectors.imagePreview);
-cardPreviewPopup.setEventListeners();
 
 // ------------------------ NEW CARD ---------------------------
 
