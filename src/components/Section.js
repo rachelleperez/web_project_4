@@ -11,9 +11,9 @@ export default class Section {
         });
     }
 
-    addItem(item, appendBool) {
+    addItem(item, shouldAppend) {
 
-        if (appendBool) {
+        if (shouldAppend) {
             this._element.append(item) // initial cards only
         }
         else {
