@@ -1,7 +1,7 @@
 import "./index.css";
 
 // Import all the classes
-import initialCards from '../components/data';
+import initialCards from '../utils/data';
 import FormValidator from '../components/FormValidator';
 import Card from '../components/Card';
 
