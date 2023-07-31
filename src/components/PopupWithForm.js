@@ -12,18 +12,20 @@ export default class PopupWithForm extends Popup {
 
     this._inputs = this._popupForm.querySelectorAll(".form__input");
 
-    this._handleSubmit = (evt) => {
-      evt.preventDefault();
+    this._handleSubmit = this._handleSubmit.bind(this); // bind to constructor
 
-      this._handleFormSubmit(this._getInputValues());
-
-      this.close();
-    };
   }
 
   close() {
     this._popupForm.reset();
     super.close(); // calls parent's close()
+  }
+
+  // handles submit event
+  _handleSubmit(evt) {
+    evt.preventDefault();
+    this._handleFormSubmit(this._getInputValues()); // handle form inputs
+    this.close();
   }
 
   _getInputValues() {
