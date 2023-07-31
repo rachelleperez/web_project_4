@@ -10,7 +10,7 @@ import PopupWithImage from '../components/PopupWithImage';
 import PopupWithForm from '../components/PopupWithForm';
 import UserInfo from '../components/UserInfo';
 
-import {selectors, overlay} from '../components/constants';
+import {selectors, overlay} from '../utils/constants';
 
 
 // ------------------------ DEFAULT CARDS ---------------------------
