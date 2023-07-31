@@ -7,6 +7,7 @@ export default class Popup {
         this._closeButton = this._modal.querySelector('.modal__close');
         this._handleEscEscape = this._handleEscEscape.bind(this); // to make sure correct context for this in this function.
         this._closeFunc = this.close.bind(this); // binding close() to the constructor
+        this._handleOverlayClick = this._handleOverlayClick.bind(this); // bind to constructor
     }
 
     open() {
@@ -27,9 +28,16 @@ export default class Popup {
         // listens for esc button
         if (event.key === 'Escape') {
             this.close();
-
         }
     }
+
+    _handleOverlayClick () {
+        if (this._overlay.classList.contains('modal__overlay_active')) {
+            this.close();
+        };
+    }
+
+
     // sets event listeners
     setEventListeners() {
         
@@ -40,13 +48,11 @@ export default class Popup {
         document.addEventListener('keydown', this._handleEscEscape);
 
         // if overlay is clicked, close
-        this._overlay.addEventListener('click', () => {
-            if (this._overlay.classList.contains('modal__overlay_active')) {
-                this._closeFunc;
-            };
-        })
+        this._overlay.addEventListener('click', this._handleOverlayClick)
 
     }
+
+
 
     removeEventListeners() {
         this._closeButton.removeEventListener('click', this.close);
