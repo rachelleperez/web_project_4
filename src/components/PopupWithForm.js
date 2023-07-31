@@ -1,55 +1,53 @@
-import Popup from './Popup';
+import Popup from "./Popup";
 
 export default class PopupWithForm extends Popup {
-    constructor({popupSelector, handleFormSubmit}) { // callback function that gets invoked when you submit the form
-        super(popupSelector); // for Popup
-        this._popupForm = this._modal.querySelector('.form'); // <form id = "form_add_place" class="form" name="form_add_place" novalidate>
-        
-        this._handleFormSubmit = handleFormSubmit;
-        this._inputs = this._popupForm.querySelectorAll(".form__input");
+  constructor({ popupSelector, handleFormSubmit }) {
+    // callback function that gets invoked when you submit the form
 
-        this._submitHandler = (evt) => {
-            evt.preventDefault();
-            this._handleFormSubmit(this._getInputValues());
-            this.close();
-        };
+    super(popupSelector); // for Popup
 
-    }
+    this._popupForm = this._modal.querySelector(".form"); // <form id = "form_add_place" class="form" name="form_add_place" novalidate>
 
-    close() {
-        this._popupForm.reset();
-        this.removeEventListeners();
-        super.close(); // calls parent's close()
-    }
+    this._handleFormSubmit = handleFormSubmit;
 
-    _getInputValues() {
-        //collects data from all input fields and returns that data as an object
-        const inputMap = {};
-        this._inputs.forEach(input => {inputMap[input.id] = input.value;})
-        return inputMap
-    }
+    this._inputs = this._popupForm.querySelectorAll(".form__input");
 
-    setEventListeners() {
-        
-        // add submit event handler
-        this._popupForm.addEventListener("submit", this._submitHandler); 
+    this._handleSubmit = (evt) => {
+      evt.preventDefault();
 
-        // maintains parent settings, closing upon pressing close button, Esc, and click overlay
-        super.setEventListeners();
+      this._handleFormSubmit(this._getInputValues());
 
-    }
+      this.close();
+    };
+  }
 
-    removeEventListeners() {
-        
-        // adds submit eventlistener only once
-        this._popupForm.removeEventListener("submit", this._submitHandler);
+  close() {
+    this._popupForm.reset();
+    super.close(); // calls parent's close()
+  }
 
-        // maintains parent settings, closing upon pressing close button, Esc, and click overlay
-        super.removeEventListeners();
+  _getInputValues() {
+    //collects data from all input fields and returns that data as an object
+    const inputMap = {};
+    this._inputs.forEach((input) => {
+      inputMap[input.id] = input.value;
+    });
+    return inputMap;
+  }
 
-    }
+  setEventListeners() {
+    // add submit event handler
+    this._popupForm.addEventListener("submit", this._handleSubmit);
 
+    // maintains parent settings, closing upon pressing close button, Esc, and click overlay
+    super.setEventListeners();
+  }
 
+  removeEventListeners() {
+    // adds submit eventlistener only once
+    this._popupForm.removeEventListener("submit", this._handleSubmit);
 
+    // maintains parent settings, closing upon pressing close button, Esc, and click overlay
+    super.removeEventListeners();
+  }
 }
-
