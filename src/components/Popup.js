@@ -12,14 +12,14 @@ export default class Popup {
         // opens popup
         this._modal.classList.add('modal__container_active')
         this._overlay.classList.add('modal__overlay_active')
-        this._setEventListeners();
+        this.setEventListeners();
     }
 
     close() {
         // closes popup
         this._modal.classList.remove('modal__container_active')
         this._overlay.classList.remove('modal__overlay_active')
-        this._removeEventListeners();
+        this.removeEventListeners();
     }
 
     _handleEscEscape(event) {
@@ -30,7 +30,7 @@ export default class Popup {
         }
     }
     // sets event listeners
-    _setEventListeners() {
+    setEventListeners() {
         
         // close button
         this._closeButton.addEventListener('click', () => {
@@ -49,7 +49,7 @@ export default class Popup {
 
     }
 
-    _removeEventListeners() {
+    removeEventListeners() {
         this._closeButton.removeEventListener('click', this.close);
         document.removeEventListener('keydown', this._handleEscEscape);
         this._overlay.removeEventListener('click', this.close);

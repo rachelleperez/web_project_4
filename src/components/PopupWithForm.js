@@ -8,12 +8,17 @@ export default class PopupWithForm extends Popup {
         this._handleFormSubmit = handleFormSubmit;
         this._inputs = this._popupForm.querySelectorAll(".form__input");
 
-        this._submitEventListenerOn = false; // to make sure only set once.
+        this._submitHandler = (evt) => {
+            evt.preventDefault();
+            this._handleFormSubmit(this._getInputValues());
+            this.close();
+        };
 
     }
 
     close() {
         this._popupForm.reset();
+        this.removeEventListeners();
         super.close(); // calls parent's close()
     }
 
@@ -26,25 +31,24 @@ export default class PopupWithForm extends Popup {
 
     setEventListeners() {
         
-        // adds submit eventlistener only once
-
-        if (!this._submitEventListenerOn) {
-
-            // add sumit event handler
-            this._popupForm.addEventListener("submit", (evt) => {
-                // let's cancel the default action that belongs to the event
-                evt.preventDefault();
-                this._handleFormSubmit(this._getInputValues());
-                this.close();
-            }); 
-
-            this._submitEventListenerOn = true;
-        }
+        // add submit event handler
+        this._popupForm.addEventListener("submit", this._submitHandler); 
 
         // maintains parent settings, closing upon pressing close button, Esc, and click overlay
         super.setEventListeners();
 
     }
+
+    removeEventListeners() {
+        
+        // adds submit eventlistener only once
+        this._popupForm.removeEventListener("submit", this._submitHandler);
+
+        // maintains parent settings, closing upon pressing close button, Esc, and click overlay
+        super.removeEventListeners();
+
+    }
+
 
 
 }
