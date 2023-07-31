@@ -15,33 +15,33 @@ import {selectors, overlay} from '../components/constants';
 
 // ------------------------ DEFAULT CARDS ---------------------------
 
-const CardSection = new Section(
+const cardSection = new Section(
     {
         renderer: (data) => {
             const card = new Card({data, handleImageClick: (imgData) => {
-                CardPreviewPopup.open(imgData);
+                cardPreviewPopup.open(imgData);
             }}, selectors.cardTemplate).createCard();;
-            CardSection.addItem(card, true);
+            cardSection.addItem(card, true);
         },
         selector: selectors.cardSection,
     }
 );
 
-CardSection.renderItems(initialCards);
+cardSection.renderItems(initialCards);
 
 // ------------------------ CARD PREVIEW ---------------------------
 
-const CardPreviewPopup = new PopupWithImage (selectors.imagePreview);
-CardPreviewPopup.setEventListeners();
+const cardPreviewPopup = new PopupWithImage (selectors.imagePreview);
+cardPreviewPopup.setEventListeners();
 
 // ------------------------ NEW CARD ---------------------------
 
-const AddCardPopup = new PopupWithForm ({popupSelector:'modal_add', 
+const addCardPopup = new PopupWithForm ({popupSelector:'modal_add', 
     handleFormSubmit: (data) => { 
         const card = new Card({data, handleImageClick: (imgData) => {
-            CardPreviewPopup.open(imgData);
+            cardPreviewPopup.open(imgData);
         }}, selectors.cardTemplate).createCard();;
-        CardSection.addItem(card, false);
+        cardSection.addItem(card, false);
     }
 });
 
@@ -49,18 +49,18 @@ const addCardButton = document.querySelector('.profile__add-button');
 
 addCardButton.addEventListener('click', () => {
     addFormValidator.clearValidationErrors();
-    AddCardPopup.open();
+    addCardPopup.open();
 })
 
 // ------------------------ PROFILE INFO STORAGE ---------------------------
 
-const CurrentUserProfile = new UserInfo ({name:'display_profile_name', bio: 'display_profile_bio'})
+const currentUserProfile = new UserInfo ({name:'display_profile_name', bio: 'display_profile_bio'})
 
 // ------------------------ PROFILE INFO MANAGEMENT ---------------------------
 
-const EditProfilePopup = new PopupWithForm ({popupSelector:'modal_profile', 
+const editProfilePopup = new PopupWithForm ({popupSelector:'modal_profile', 
     handleFormSubmit: (data) => { 
-        CurrentUserProfile.setUserInfo(data.input_profile_name, data.input_profile_bio);
+        currentUserProfile.setUserInfo(data.input_profile_name, data.input_profile_bio);
     }
 });
 
@@ -69,7 +69,7 @@ const editProfileButton = document.querySelector('.profile__edit-button');
 editProfileButton.addEventListener('click', () => {
     editFormValidator.clearValidationErrors();
     prefillProfileForm();
-    EditProfilePopup.open();
+    editProfilePopup.open();
 })
 
 // To prefill Edit Profile Form
@@ -78,8 +78,8 @@ const inputProfileName = document.getElementById('input_profile_name')
 const inputBio = document.getElementById('input_profile_bio');
 
 function prefillProfileForm() {
-    inputProfileName.value = CurrentUserProfile.getUserInfo().name;
-    inputBio.value = CurrentUserProfile.getUserInfo().bio;
+    inputProfileName.value = currentUserProfile.getUserInfo().name;
+    inputBio.value = currentUserProfile.getUserInfo().bio;
 }
 
 // ------------------------ FORM VALIDATION ---------------------------
