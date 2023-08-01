@@ -1,14 +1,14 @@
 import Popup from "./Popup";
 
 export default class PopupWithForm extends Popup {
-  constructor({ popupSelector, handleFormInputs }) {
+  constructor({ popupSelector, handleFormSubmit }) {
     // callback function that gets invoked when you submit the form
 
     super(popupSelector); // for Popup
 
     this._popupForm = this._modal.querySelector(".form"); // <form id = "form_add_place" class="form" name="form_add_place" novalidate>
 
-    this._handleFormInputs = handleFormInputs;
+    this._handleFormSubmit = handleFormSubmit;
 
     this._inputs = this._popupForm.querySelectorAll(".form__input");
 
@@ -21,10 +21,10 @@ export default class PopupWithForm extends Popup {
     super.close(); // calls parent's close()
   }
 
-  // handleSubmit = handles submit event | handleFormInputs = takes action on inputs
+  // handleSubmit = handles submit event | handleFormSubmit = takes action on inputs
   _handleSubmit(evt) {
     evt.preventDefault();
-    this._handleFormInputs(this._getInputValues()); 
+    this._handleFormSubmit(this._getInputValues()); 
     this.close();
   }
 
