@@ -4,6 +4,7 @@ export default class Popup {
     constructor(popupSelector) {
         this._modal = document.getElementById(`${popupSelector}`); // modal-profile
         this._overlay = document.querySelector('.modal__overlay'); // note, right above
+        //this.overlay = document.querySelector(`.modal #${popupSelector} ~ .modal__overlay`);
         this._closeButton = this._modal.querySelector('.modal__close');
         this._handleEscEscape = this._handleEscEscape.bind(this); // to make sure correct context for this in this function.
         this._close = this.close.bind(this); // binding close() to the constructor
@@ -52,11 +53,11 @@ export default class Popup {
 
     }
 
-
-
     removeEventListeners() {
-        
+
+        this._closeButton.removeEventListener('click', this._close);
         document.removeEventListener('keydown', this._handleEscEscape);
+        this._overlay.removeEventListener('click', this._handleOverlayClick); 
 
     }
 
