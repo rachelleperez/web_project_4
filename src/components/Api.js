@@ -4,21 +4,21 @@ export default class Api {
         this.headers = headers
     }
 
-    _handleFetch (destinationUrl, method) {
+    _handleFetch (destinationUrl, method, body) {
 
         return fetch(destinationUrl, {
             method: method,
             headers: this.headers,
-            //body: JSON.stringify(data)
+            body: body
         })
         .then(res => {
             if (res.ok) {
                 return res.json()
                 // test return
-                    .then(data => {
-                        console.log('API Response Data:', data);
-                        return data;
-                    });
+                    // .then(data => {
+                    //     console.log('API Response Data:', data);
+                    //     return data;
+                    // });
             }
             // if the server returns an error, reject the promise
             return Promise.reject(`Error: ${res.status}`);
@@ -35,20 +35,9 @@ export default class Api {
     getUserInfo() {
         return this._handleFetch (`${this.baseUrl}/users/me`, "GET");
     }
- 
 
-
-  // other methods for working with the API
-
-  // Promise.all
+    addCard(data) {
+        return this._handleFetch (`${this.baseUrl}/cards`, "POST", JSON.stringify({name: data.input_place_title ,link: data.input_place_image}));
+    }
 
 }
-
-// template > how to use this class
-// const api = new Api({
-//   baseUrl: "https://around-api.en.tripleten-services.com/v1",
-//   headers: {
-//     authorization: "1412012d-ba61-4d75-b55a-14504d6e23ae",
-//     "Content-Type": "application/json"
-//   }
-// });

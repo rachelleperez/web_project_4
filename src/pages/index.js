@@ -1,7 +1,6 @@
 import "./index.css";
 
 // Import all the classes
-import initialCards from "../utils/data";
 import FormValidator from "../components/FormValidator";
 import Card from "../components/Card";
 
@@ -46,7 +45,7 @@ function renderCard(data, shouldAppend) {
 }
 
 api.getInitialCards().then((data) => {
-  cardSection.renderItems(data);
+    if (typeof data !== "undefined") cardSection.renderItems(data); // only attempt rendering if there is data to display
   }
 );
 
@@ -58,7 +57,12 @@ const cardPreviewPopup = new PopupWithImage(selectors.imagePreview);
 
 const addCardPopup = new PopupWithForm({
   popupSelector: "modal_add",
-  handleFormSubmit: (data) => renderCard(data, false),
+  handleFormSubmit: (data) => {
+    // console.log(data.input_place_title);
+    // console.log(data.input_place_image);
+    api.addCard(data);
+    renderCard(data, false)
+  },
 });
 
 const addCardButton = document.querySelector(".profile__add-button");
