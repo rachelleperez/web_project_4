@@ -40,11 +40,13 @@ function renderCard(data, shouldAppend) {
       },
     },
     selectors.cardTemplate,
-  ).createCard();
-  cardSection.addItem(card, shouldAppend);
+  )
+  const cardElem = card.createCard(); // an html element
 
-  // delete behavior
-  card.querySelector('.elements_delete-button').addEventListener('click', () => handleDeleteCardRequest(card));
+  cardSection.addItem(cardElem , shouldAppend);
+
+  // delete button listener
+  cardElem .querySelector('.elements_delete-button').addEventListener('click', () => handleDeleteCardRequest(card));
 }
 
 // ------------------------ FETCH CURRENT CARDS ---------------------------
@@ -55,16 +57,14 @@ api.getInitialCards().then((data) => {
 );
 
 
-
 // ------------------------ NEW CARD ---------------------------
 
 const addCardPopup = new PopupWithForm({
   popupSelector: "modal_add",
-  handleFormSubmit: (data) => {
-    // console.log(data.input_place_title);
-    // console.log(data.input_place_image);
-    api.addCard(data);
-    renderCard(data, false)
+  handleFormSubmit: (dataIn) => {
+    api.addCard(dataIn).then((dataOut) => {
+      renderCard(dataOut, false)
+    });  
   },
 });
 
@@ -79,13 +79,16 @@ addCardButton.addEventListener("click", () => {
 
 
 function handleDeleteCardRequest(card) {
+  
   const deleteCardConfirmationPopup = new PopupWithForm({
     popupSelector: "delete_card_confirmation",
-    handleFormSubmit: (data) => {
-      card.remove();
-      card = null;
+    handleFormSubmit: () => {
+      //console.log(card.constructor === Card);
+      api.deleteCard(card.getCardInfo().id);
+      card.deleteCard();
     },
   });
+
   deleteCardConfirmationPopup.open();
 }
 

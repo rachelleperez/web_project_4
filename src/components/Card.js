@@ -1,4 +1,4 @@
-class Card {
+export default class Card {
 // can I get template from here?
 // should never reference "card" here. This is just MVP
 
@@ -8,6 +8,7 @@ class Card {
 
     this._name = data.name;
     this._link = data.link;
+    this._id = data._id;
 
     // to match indx.html
     if (data.name === undefined) {this._name = data.input_place_title;}
@@ -57,7 +58,14 @@ class Card {
     return this._element
   }
 
+  // return card info
+  getCardInfo() {
+    const cardInfo = {
+        name: this._name,
+        link: this._link,
+        id: this._id,
+    }
+    return cardInfo
+  }
 
 }
-
-export default Card;
