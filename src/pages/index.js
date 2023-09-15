@@ -45,22 +45,16 @@ function renderCard(data, shouldAppend) {
   cardSection.addItem(card, shouldAppend);
 }
 
-// function renderCard(data, shouldAppend) {
+// // extract data to pass to cardSection
+// function renderInitialCards () {
+//   console.log('reached RenderInitialCards')
 //   const getInitialCards = api.getInitialCards().then((data) => {
-//     const card = new Card(
-//       {
-//         data,
-//         handleImageClick: (imgData) => {
-//           cardPreviewPopup.open(imgData);
-//         },
-//       },
-//       selectors.cardTemplate,
-//     ).createCard();
-//     cardSection.addItem(card, shouldAppend);
+//     console.log(data);
+//     cardSection.renderItems(data);
 //   });
-
 // }
 
+// renderInitialCards();
 
 cardSection.renderItems(initialCards);
 
@@ -87,7 +81,15 @@ addCardButton.addEventListener("click", () => {
 const currentUserProfile = new UserInfo({
   name: "display_profile_name",
   bio: "display_profile_bio",
-});
+  avatar: "display_profile_avatar"
+})
+
+api.getUserInfo().then((data) => {
+  currentUserProfile.setUserInfo(data.name, data.about, data.avatar);
+  }
+);
+
+
 
 // ------------------------ PROFILE INFO MANAGEMENT ---------------------------
 

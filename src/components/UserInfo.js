@@ -1,7 +1,8 @@
 export default class UserInfo {
-    constructor({ name, bio }) { // OR className instead of selector
+    constructor({ name, bio, avatar }) { // OR className instead of selector
         this._name = document.getElementById(`${name}`);
         this._bio = document.getElementById(`${bio}`);
+        this._avatar = document.getElementById(`${avatar}`);
     }
 
     getUserInfo() {
@@ -12,9 +13,10 @@ export default class UserInfo {
         return user
     }
 
-    setUserInfo(nameText, bioText) {
+    setUserInfo(nameText, bioText, avatar) {
         this._name.textContent = nameText;
         this._bio.textContent = bioText;
+        this._avatar.src = avatar;
     }
 
 }

@@ -4,14 +4,35 @@ export default class Api {
         this.headers = headers
     }
 
-    getInitialCards() {
-        return fetch(`${this.baseUrl}/cards`, {
-            method: 'GET',
-            headers: this.headers
+    _handleFetch (destinationUrl, method) {
+
+        // //an api works
+        // const url = 'https://api.kanye.rest/';
+        // fetch(url)
+        // .then(response => response.json())
+        // .then(data => {
+        //     console.log(data.quote);
+        // })
+        // .catch(error => console.error(error));
+
+        // // test - correct destination url and method
+        // console.log(destinationUrl);
+        // console.log(method);
+
+
+        return fetch(destinationUrl, {
+            method: method,
+            headers: this.headers,
+            //body: JSON.stringify(data)
         })
         .then(res => {
             if (res.ok) {
-                return res.json();
+                return res.json()
+                // test return
+                    .then(data => {
+                        console.log('API Response Data:', data);
+                        return data;
+                    });
             }
             // if the server returns an error, reject the promise
             return Promise.reject(`Error: ${res.status}`);
@@ -19,6 +40,14 @@ export default class Api {
         .catch((err) => {
             console.error(err); // log the error to the console
             });
+    }
+
+    getInitialCards() {
+        return this._handleFetch (`${this.baseUrl}/cards`, "GET");
+    }
+
+    getUserInfo() {
+        return this._handleFetch (`${this.baseUrl}/users/me`, "GET");
     }
  
 
