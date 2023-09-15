@@ -45,8 +45,12 @@ function renderCard(data, shouldAppend) {
 
   cardSection.addItem(cardHTML , shouldAppend);
 
-  // delete button listener
+  // listen for delete button click
   cardHTML.querySelector('.elements_delete-button').addEventListener('click', () => handleDeleteCardRequest(card));
+
+  // listen for like button click
+  cardHTML.querySelector('.elements__like-symbol').addEventListener('click', () => handleLikeClick(card))
+
 }
 
 // ------------------------ FETCH CURRENT CARDS ---------------------------
@@ -92,6 +96,24 @@ function handleDeleteCardRequest(card) {
   deleteCardConfirmationPopup.open();
 }
 
+// ------------------------ LIKE BEHAVIOR ---------------------------
+
+function handleLikeClick(card) {
+  
+  // if liked already, unlike in api and make heart empty
+  if (card.getCardInfo().isliked) {
+    console.log("unlike card");
+    api.unlikeCard(card.getCardInfo().id);
+    card.updateLikeHeart(); // toggle to alternative
+  }
+  // else = currently unlikes, like in api and fill the heart
+  else {
+    console.log("like card");
+    api.likeCard(card.getCardInfo().id);
+    card.updateLikeHeart(); // toggle to alternative
+  }
+}
+
 // ------------------------ PROFILE INFO STORAGE ---------------------------
 
 const currentUserProfile = new UserInfo({
@@ -101,7 +123,6 @@ const currentUserProfile = new UserInfo({
 })
 
 api.getUserInfo().then((data) => {
-  console.log(data);
     currentUserProfile.setUserInfo(data.name, data.about, data.avatar);
   }
 );

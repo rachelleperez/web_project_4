@@ -11,6 +11,8 @@ export default class Card {
     this._id = data._id;
     this._isLiked = data.isLiked;
 
+    console.log(this._isLiked);
+
     // to match indx.html
     if (data.name === undefined) {this._name = data.input_place_title;}
     if (data.link === undefined) {this._link = data.input_place_image;}
@@ -19,24 +21,36 @@ export default class Card {
     this._element = null;
 
     this._handleImageClick = handleImageClick;
+
   }
+
 
   deleteCard() {
     this._element.remove();
     this._element = null;
   }
 
-  _handleLike() {
-    const button = this._element.querySelector('.elements__like-symbol');
-    button.classList.toggle("elements__like-symbol_active");
+  // when constructing, audit like color to make sure it is correct. otherwise, just update to alternative.
+  updateLikeHeart(fromConstructor) {
+
+    // contructing new card, make sure status reflects correct color
+    if (fromConstructor) {
+      const isButtonLiked = this._likeButton.classList.contains("elements__like-symbol_active");
+      if (this._isLiked & !isButtonLiked) this.updateLikeHeart(false); // like = like
+      if (!this._isLiked & isButtonLiked) this.updateLikeHeart(false); // dislike = dislike
+
+    }
+    // updating due to user action, toggle to alternative.
+    else {
+      this._likeButton.classList.toggle("elements__like-symbol_active");
+    }
   }
 
   //instance variables
   
   _setEventListeners (imageCard) {
     imageCard.addEventListener('click', () => this._handleImageClick({link: this._link, name: this._name}))
-    const likeButton = this._element.querySelector('.elements__like-symbol')
-    likeButton.addEventListener('click', () => this._handleLike())
+
   }
 
   // create new card
@@ -47,9 +61,13 @@ export default class Card {
     imageCard.style.backgroundImage = `url('${this._link}')`
     const nameCard = this._element.querySelector('.elements__name')
     nameCard.textContent = this._name
+    this._likeButton = this._element.querySelector('.elements__like-symbol')
 
     //set event listeners
     this._setEventListeners(imageCard);
+
+    // like button shown must reflect status
+    this.updateLikeHeart(true);
     
     // return the created card
     return this._element
@@ -61,6 +79,7 @@ export default class Card {
         name: this._name,
         link: this._link,
         id: this._id,
+        isLiked: this._isLiked
     }
     return cardInfo
   }
