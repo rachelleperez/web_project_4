@@ -95,6 +95,7 @@ const editProfilePopup = new PopupWithForm({
       data.input_profile_name,
       data.input_profile_bio,
     );
+    api.updateProfile(data);
   },
 });
 

@@ -40,4 +40,8 @@ export default class Api {
         return this._handleFetch (`${this.baseUrl}/cards`, "POST", JSON.stringify({name: data.input_place_title ,link: data.input_place_image}));
     }
 
+    updateProfile(data) {
+        return this._handleFetch (`${this.baseUrl}/users/me`, "PATCH", JSON.stringify({name: data.input_profile_name ,about: data.input_profile_bio}));
+    }
+
 }
