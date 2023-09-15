@@ -52,4 +52,12 @@ export default class Api {
         return this._handleFetch (`${this.baseUrl}/users/me/avatar`, "PATCH", JSON.stringify({avatar: avatarLink}));
     }
 
+    likeCard(cardId) {
+        return this._handleFetch (`${this.baseUrl}/cards/${cardId}/likes`, "PUT");
+    }
+
+    unlikeCard(cardId) {
+        return this._handleFetch (`${this.baseUrl}/cards/${cardId}/likes`, "DELETE");
+    }
+
 }
