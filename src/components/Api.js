@@ -60,4 +60,8 @@ export default class Api {
         return this._handleFetch (`${this.baseUrl}/cards/${cardId}/likes`, "DELETE");
     }
 
+    getCard(cardId) {
+        return this._handleFetch (`${this.baseUrl}/cards/${cardId}`, "GET");
+    }
+
 }

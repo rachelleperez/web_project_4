@@ -27,21 +27,10 @@ export default class Card {
     this._element = null;
   }
 
-  // when constructing, audit like color to make sure it is correct. otherwise, just update to alternative.
-  updateLikeHeart(fromConstructor) {
+  updateLikeHeart() {
 
-    // contructing new card, make sure status reflects correct color
-    if (fromConstructor) {
-      const isButtonLiked = this._likeButton.classList.contains("elements__like-symbol_active");
-      if (this._isLiked & !isButtonLiked) this.updateLikeHeart(false); // like = like
-      if (!this._isLiked & isButtonLiked) this.updateLikeHeart(false); // dislike = dislike
-
-    }
-    // updating due to user action, toggle to alternative.
-    else {
-      this._isLiked = !this._isLiked;
-      this._likeButton.classList.toggle("elements__like-symbol_active");
-    }
+    this._isLiked = !this._isLiked;
+    this._likeButton.classList.toggle("elements__like-symbol_active");
   }
 
   //instance variables
@@ -60,12 +49,21 @@ export default class Card {
     const nameCard = this._element.querySelector('.elements__name')
     nameCard.textContent = this._name
     this._likeButton = this._element.querySelector('.elements__like-symbol')
+    console.log(this._isLiked);
 
     //set event listeners
     this._setEventListeners(imageCard);
 
-    // like button shown must reflect status
-    this.updateLikeHeart(true);
+    // like button shown must reflect status. if button color and like status dont match, toggle like color
+    const isButtonLiked = this._likeButton.classList.contains("elements__like-symbol_active");
+    
+    if (isButtonLiked) {
+      if (!this._isLiked) this.updateLikeHeart();
+    }
+    // !isButtonLiked
+    else {
+      if (this._isLiked) this.updateLikeHeart();
+    }
     
     // return the created card
     return this._element
