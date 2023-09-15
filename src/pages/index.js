@@ -141,10 +141,12 @@ function prefillProfileForm() {
 
 // ------------------------ AVATAR MANAGEMENT ---------------------------
 
-// const testImageLink = "https://fastly.picsum.photos/id/40/4106/2806.jpg?hmac=MY3ra98ut044LaWPEKwZowgydHZ_rZZUuOHrc3mL5mI"
+// MVP functionality
+const testImageLink = "https://fastly.picsum.photos/id/40/4106/2806.jpg?hmac=MY3ra98ut044LaWPEKwZowgydHZ_rZZUuOHrc3mL5mI"
+const testImageLink2 = "https://fastly.picsum.photos/id/91/3504/2336.jpg?hmac=tK6z7RReLgUlCuf4flDKeg57o6CUAbgklgLsGL0UowU"
 
-// api.updateAvatar(testImageLink);
-// currentUserProfile.setAvatar(testImageLink);
+api.updateAvatar(testImageLink2);
+currentUserProfile.setAvatar(testImageLink2);
 
 // ------------------------ IMAGE CARD PREVIEW ---------------------------
 
