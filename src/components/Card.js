@@ -27,10 +27,10 @@ export default class Card {
     this._element = null;
   }
 
-  updateLikeHeart() {
-
-    this._isLiked = !this._isLiked;
+  // changes color, nothing else.
+  updateLikeHeart(toggleIsLiked) {
     this._likeButton.classList.toggle("elements__like-symbol_active");
+    if (toggleIsLiked) this._isLiked = !this._isLiked;
   }
 
   //instance variables
@@ -42,27 +42,26 @@ export default class Card {
 
   // create new card
   createCard() {
-  
+    
     this._element = this._cardTemplate.content.cloneNode(true).querySelector('.elements__element');
     const imageCard = this._element.querySelector('.elements__image')
     imageCard.style.backgroundImage = `url('${this._link}')`
     const nameCard = this._element.querySelector('.elements__name')
     nameCard.textContent = this._name
     this._likeButton = this._element.querySelector('.elements__like-symbol')
-    console.log(this._isLiked);
 
     //set event listeners
     this._setEventListeners(imageCard);
 
     // like button shown must reflect status. if button color and like status dont match, toggle like color
     const isButtonLiked = this._likeButton.classList.contains("elements__like-symbol_active");
-    
-    if (isButtonLiked) {
-      if (!this._isLiked) this.updateLikeHeart();
+
+    if (this._isLiked) {
+      if (!isButtonLiked) this.updateLikeHeart(false);
     }
-    // !isButtonLiked
+    // Card not liked
     else {
-      if (this._isLiked) this.updateLikeHeart();
+      if (isButtonLiked) this.updateLikeHeart(false);
     }
     
     // return the created card

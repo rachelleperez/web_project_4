@@ -100,17 +100,16 @@ function handleDeleteCardRequest(card) {
 
 
 function handleLikeClick(card) {
-
-  card.updateLikeHeart(); // toggle to alternative
-
   // if liked already, unlike in api and make heart empty
   if (card.getCardInfo().isLiked) { // Can the like status be retrieved from API rather than maintain a second version here?
-    api.unlikeCard(card.getCardInfo().id); 
+    api.unlikeCard(card.getCardInfo().id);  
   }
   // else = currently unlikes, like in api and fill the heart
   else {
     api.likeCard(card.getCardInfo().id);
   }
+
+  card.updateLikeHeart(true); // toggle to alternative color and update isLiked card property
 }
 
 // ------------------------ PROFILE INFO STORAGE ---------------------------
