@@ -9,6 +9,7 @@ export default class Card {
     this._name = data.name;
     this._link = data.link;
     this._id = data._id;
+    this._isLiked = data.isLiked;
 
     // to match indx.html
     if (data.name === undefined) {this._name = data.input_place_title;}
@@ -33,18 +34,14 @@ export default class Card {
   //instance variables
   
   _setEventListeners (imageCard) {
-    // this is where we set up the events
     imageCard.addEventListener('click', () => this._handleImageClick({link: this._link, name: this._name}))
-    // const deleteButton = this._element.querySelector('.elements_delete-button')
-    // deleteButton.addEventListener('click', () => this._handleDeleteCard())
     const likeButton = this._element.querySelector('.elements__like-symbol')
     likeButton.addEventListener('click', () => this._handleLike())
-    
   }
 
-  // only public function
+  // create new card
   createCard() {
-    // create new card
+  
     this._element = this._cardTemplate.content.cloneNode(true).querySelector('.elements__element');
     const imageCard = this._element.querySelector('.elements__image')
     imageCard.style.backgroundImage = `url('${this._link}')`

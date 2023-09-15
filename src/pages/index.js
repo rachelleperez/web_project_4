@@ -41,12 +41,12 @@ function renderCard(data, shouldAppend) {
     },
     selectors.cardTemplate,
   )
-  const cardElem = card.createCard(); // an html element
+  const cardHTML = card.createCard(); // an html element
 
-  cardSection.addItem(cardElem , shouldAppend);
+  cardSection.addItem(cardHTML , shouldAppend);
 
   // delete button listener
-  cardElem .querySelector('.elements_delete-button').addEventListener('click', () => handleDeleteCardRequest(card));
+  cardHTML.querySelector('.elements_delete-button').addEventListener('click', () => handleDeleteCardRequest(card));
 }
 
 // ------------------------ FETCH CURRENT CARDS ---------------------------
