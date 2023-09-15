@@ -49,7 +49,6 @@ export default class Api {
     }
 
     updateAvatar(avatarLink) {
-        console.log("reached updateAvatar");
         return this._handleFetch (`${this.baseUrl}/users/me/avatar`, "PATCH", JSON.stringify({avatar: avatarLink}));
     }
 
