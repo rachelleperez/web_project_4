@@ -10,7 +10,20 @@ import PopupWithImage from "../components/PopupWithImage";
 import PopupWithForm from "../components/PopupWithForm";
 import UserInfo from "../components/UserInfo";
 
+import Api from "../components/Api";
+
 import { selectors, overlay } from "../utils/constants";
+
+
+// ------------------------ API SETTINGS ---------------------------
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "1412012d-ba61-4d75-b55a-14504d6e23ae",
+    "Content-Type": "application/json"
+  }
+});
 
 // ------------------------ DEFAULT CARDS ---------------------------
 
@@ -31,6 +44,23 @@ function renderCard(data, shouldAppend) {
   ).createCard();
   cardSection.addItem(card, shouldAppend);
 }
+
+// function renderCard(data, shouldAppend) {
+//   const getInitialCards = api.getInitialCards().then((data) => {
+//     const card = new Card(
+//       {
+//         data,
+//         handleImageClick: (imgData) => {
+//           cardPreviewPopup.open(imgData);
+//         },
+//       },
+//       selectors.cardTemplate,
+//     ).createCard();
+//     cardSection.addItem(card, shouldAppend);
+//   });
+
+// }
+
 
 cardSection.renderItems(initialCards);
 
