@@ -48,4 +48,9 @@ export default class Api {
         return this._handleFetch (`${this.baseUrl}/cards/${cardId}`, "DELETE");
     }
 
+    updateAvatar(avatarLink) {
+        console.log("reached updateAvatar");
+        return this._handleFetch (`${this.baseUrl}/users/me/avatar`, "PATCH", JSON.stringify({avatar: avatarLink}));
+    }
+
 }

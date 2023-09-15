@@ -9,13 +9,19 @@ export default class UserInfo {
         const user = {
             name: this._name.textContent,
             bio: this._bio.textContent,
+            avatar: this._avatar
         }
         return user
     }
 
-    setUserInfo(nameText, bioText) {
+    setUserInfo(nameText, bioText, avatarLink) {
         this._name.textContent = nameText;
         this._bio.textContent = bioText;
+        this._avatar = avatarLink;
+    }
+
+    setAvatar(avatarLink) {
+        this._avatar = avatarLink;
     }
 
 }

@@ -138,6 +138,12 @@ function prefillProfileForm() {
   inputBio.value = currentUser.bio;
 }
 
+// ------------------------ AVATAR MANAGEMENT ---------------------------
+
+const testImageLink = "https://fastly.picsum.photos/id/40/4106/2806.jpg?hmac=MY3ra98ut044LaWPEKwZowgydHZ_rZZUuOHrc3mL5mI"
+
+api.updateAvatar(testImageLink);
+currentUserProfile.setAvatar(testImageLink);
 
 // ------------------------ IMAGE CARD PREVIEW ---------------------------
 
