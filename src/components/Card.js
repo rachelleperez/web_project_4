@@ -11,8 +11,6 @@ export default class Card {
     this._id = data._id;
     this._isLiked = data.isLiked;
 
-    console.log(this._isLiked);
-
     // to match indx.html
     if (data.name === undefined) {this._name = data.input_place_title;}
     if (data.link === undefined) {this._link = data.input_place_image;}
@@ -23,7 +21,6 @@ export default class Card {
     this._handleImageClick = handleImageClick;
 
   }
-
 
   deleteCard() {
     this._element.remove();
@@ -42,6 +39,7 @@ export default class Card {
     }
     // updating due to user action, toggle to alternative.
     else {
+      this._isLiked = !this._isLiked;
       this._likeButton.classList.toggle("elements__like-symbol_active");
     }
   }

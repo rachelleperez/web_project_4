@@ -99,18 +99,15 @@ function handleDeleteCardRequest(card) {
 // ------------------------ LIKE BEHAVIOR ---------------------------
 
 function handleLikeClick(card) {
-  
   // if liked already, unlike in api and make heart empty
-  if (card.getCardInfo().isliked) {
-    console.log("unlike card");
+  if (card.getCardInfo().isLiked) {
     api.unlikeCard(card.getCardInfo().id);
-    card.updateLikeHeart(); // toggle to alternative
+    card.updateLikeHeart(false); // toggle to alternative
   }
   // else = currently unlikes, like in api and fill the heart
   else {
-    console.log("like card");
     api.likeCard(card.getCardInfo().id);
-    card.updateLikeHeart(); // toggle to alternative
+    card.updateLikeHeart(false); // toggle to alternative
   }
 }
 
