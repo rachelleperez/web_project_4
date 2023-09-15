@@ -45,18 +45,10 @@ function renderCard(data, shouldAppend) {
   cardSection.addItem(card, shouldAppend);
 }
 
-// // extract data to pass to cardSection
-// function renderInitialCards () {
-//   console.log('reached RenderInitialCards')
-//   const getInitialCards = api.getInitialCards().then((data) => {
-//     console.log(data);
-//     cardSection.renderItems(data);
-//   });
-// }
-
-// renderInitialCards();
-
-cardSection.renderItems(initialCards);
+api.getInitialCards().then((data) => {
+  cardSection.renderItems(data);
+  }
+);
 
 // ------------------------ CARD PREVIEW ---------------------------
 
@@ -88,7 +80,6 @@ api.getUserInfo().then((data) => {
   currentUserProfile.setUserInfo(data.name, data.about, data.avatar);
   }
 );
-
 
 
 // ------------------------ PROFILE INFO MANAGEMENT ---------------------------

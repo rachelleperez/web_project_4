@@ -6,20 +6,6 @@ export default class Api {
 
     _handleFetch (destinationUrl, method) {
 
-        // //an api works
-        // const url = 'https://api.kanye.rest/';
-        // fetch(url)
-        // .then(response => response.json())
-        // .then(data => {
-        //     console.log(data.quote);
-        // })
-        // .catch(error => console.error(error));
-
-        // // test - correct destination url and method
-        // console.log(destinationUrl);
-        // console.log(method);
-
-
         return fetch(destinationUrl, {
             method: method,
             headers: this.headers,
