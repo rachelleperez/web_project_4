@@ -24,7 +24,7 @@ const api = new Api({
   }
 });
 
-// ------------------------ DEFAULT CARDS ---------------------------
+// ------------------------ CARD RENDERER ---------------------------
 
 const cardSection = new Section({
   renderer: (data) => renderCard(data, true),
@@ -42,16 +42,19 @@ function renderCard(data, shouldAppend) {
     selectors.cardTemplate,
   ).createCard();
   cardSection.addItem(card, shouldAppend);
+
+  // delete behavior
+  card.querySelector('.elements_delete-button').addEventListener('click', () => handleDeleteCardRequest(card));
 }
+
+// ------------------------ FETCH CURRENT CARDS ---------------------------
 
 api.getInitialCards().then((data) => {
     if (typeof data !== "undefined") cardSection.renderItems(data); // only attempt rendering if there is data to display
   }
 );
 
-// ------------------------ CARD PREVIEW ---------------------------
 
-const cardPreviewPopup = new PopupWithImage(selectors.imagePreview);
 
 // ------------------------ NEW CARD ---------------------------
 
@@ -71,6 +74,20 @@ addCardButton.addEventListener("click", () => {
   addFormValidator.clearValidationErrors();
   addCardPopup.open();
 });
+
+// ------------------------ DELETE CARD CONFIRMATION ---------------------------
+
+
+function handleDeleteCardRequest(card) {
+  const deleteCardConfirmationPopup = new PopupWithForm({
+    popupSelector: "delete_card_confirmation",
+    handleFormSubmit: (data) => {
+      card.remove();
+      card = null;
+    },
+  });
+  deleteCardConfirmationPopup.open();
+}
 
 // ------------------------ PROFILE INFO STORAGE ---------------------------
 
@@ -117,6 +134,11 @@ function prefillProfileForm() {
   inputProfileName.value = currentUser.name;
   inputBio.value = currentUser.bio;
 }
+
+
+// ------------------------ IMAGE CARD PREVIEW ---------------------------
+
+const cardPreviewPopup = new PopupWithImage(selectors.imagePreview);
 
 // ------------------------ FORM VALIDATION ---------------------------
 

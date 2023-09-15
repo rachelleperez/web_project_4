@@ -16,7 +16,7 @@ export default class Api {
                 return res.json()
                 // test return
                     // .then(data => {
-                    //     console.log('API Response Data:', data);
+                    //     console.log('Data from API:', data);
                     //     return data;
                     // });
             }

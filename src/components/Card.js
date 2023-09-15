@@ -19,11 +19,10 @@ class Card {
     this._handleImageClick = handleImageClick;
   }
 
-  _handleDeleteCard() {
+  deleteCard() {
     this._element.remove();
     this._element = null;
   }
-
 
   _handleLike() {
     const button = this._element.querySelector('.elements__like-symbol');
@@ -35,8 +34,8 @@ class Card {
   _setEventListeners (imageCard) {
     // this is where we set up the events
     imageCard.addEventListener('click', () => this._handleImageClick({link: this._link, name: this._name}))
-    const deleteButton = this._element.querySelector('.elements_delete-button')
-    deleteButton.addEventListener('click', () => this._handleDeleteCard())
+    // const deleteButton = this._element.querySelector('.elements_delete-button')
+    // deleteButton.addEventListener('click', () => this._handleDeleteCard())
     const likeButton = this._element.querySelector('.elements__like-symbol')
     likeButton.addEventListener('click', () => this._handleLike())
     
@@ -57,6 +56,7 @@ class Card {
     // return the created card
     return this._element
   }
+
 
 }
 

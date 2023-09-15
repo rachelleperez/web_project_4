@@ -79,7 +79,7 @@
       <button type="button" class = "elements_delete-button"></button>
       <div class = "elements__container">
       <h2 class = "elements__name"></h2>
-      <button type="button" aria-label = "Like Button" class = "elements__like-symbol"></button>
+      <button type="button" data-modal="#delete_card_confirmation" aria-label = "Like Button" class = "elements__like-symbol"></button>
       </div>
       </article>
   </template>
@@ -94,6 +94,17 @@
       </div>
     </div>
 
+  <!-- DELETE CARD CONFIRMATION MODAL-->
+  <div class="modal">
+    <div class = "modal__overlay"></div>
+    <div class="modal__container" id="delete_card_confirmation">
+      <h2 class="modal__title">Are you sure?</h2>
+      <button class="modal__close" aria-label = "Close Button" type="button">&#10005;</button>
+      <form id = "form_delete_card" class="form" name="form_delete_card" novalidate>
+        <button type="submit" name="delete_confirmation" aria-label = "Submit Button" id="button-delete-card" class="form__submit" >Yes</button>
+      </form>
+    </div>
+  </div>
 
 </body>
 </html>
