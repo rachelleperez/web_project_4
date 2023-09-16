@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Around the U.S.</title>
+<script defer src="bundle.js"></script><link href="main.css" rel="stylesheet"></head>
+<body class="body">
+  <div class="page">
+    <header class="header"> 
+      <div class = "header__logo"></div>
+    </header>
+    <main>
+      <section class="profile">
+        <!-- <a href="https://www.google.com/"> -->
+        <button type="button" data-modal="#modal_update_avatar" aria-label = "Update Avatar Picture" class = "profile__avatar-button">
+          <img class="profile__avatar" id = "display_profile_avatar" src="4b160972545ef3a41984.png" alt="Profile Image"/>
+        </button>
+        <div class = "profile__info">
+          <div class = "profile__container">
+            <h1 id = "display_profile_name" class = "profile__name">Jacques Cousteau</h1>
+            <p id = "display_profile_bio" class = "profile__bio">Explorer</p>
+          </div>
+          <button type="button" id="button-open-edit-profile" aria-label = "Edit Profile Button" data-modal="#modal_profile" class = "profile__edit-button"></button>
+        </div>
+        <button type="button" data-modal="#modal_add" aria-label = "Add New Place Button" class = "profile__add-button"></button>
+      </section>
+      <section id = "elements" class="elements">
+        <!-- <ul class="places_list"></ul> -->
+      </section>
+    </main>
+      <footer class="footer">
+        <p class = "footer__credit">&copy; 2023 Rachelle Perez</p>
+      </footer>
+  </div>
+  <!-- END OF PAGE -->
+
+  <!-- EDIT FORM MODAL-->
+  <div class="modal">
+    <div class = "modal__overlay"></div>
+    <div class="modal__container" id="modal_profile">
+      <h2 class="modal__title">Edit profile</h2>
+      <button class="modal__close" aria-label = "Close Button" type="button">&#10005;</button>
+      <form id = "form_edit_profile" class="form" name="form_edit_profile" novalidate>
+        <label class = "form__label">
+          <input name="profile_name" id="input_profile_name" class="form__input" type="text" placeholder="Name" minlength="2" maxlength="40" required pattern="[a-zA-Z -]{1,}">
+          <span class="form__error" id="input_profile_name-error"></span>
+        </label>
+        <label class = "form__label">
+          <input name="profile_bio" id="input_profile_bio" class="form__input" type="text" placeholder="About Me" minlength="2" maxlength="200" required>
+          <span class="form__error" id="input_profile_bio-error"></span>
+        </label>
+        <button type="submit" name="profile_submit" aria-label = "Submit Button" id="button-submit-edit-profile" class="form__submit">Save</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ADD FORM MODAL-->
+  <div class="modal">
+    <div class = "modal__overlay"></div>
+    <div class="modal__container" id="modal_add">
+      <h2 class="modal__title">New Place</h2>
+      <button class="modal__close" aria-label = "Close Button" type="button">&#10005;</button>
+      <form id = "form_add_place" class="form" name="form_add_place" novalidate>
+        <label class = "form__label">
+          <input name="place_title" id="input_place_title" class="form__input" type="text" placeholder="Title" minlength="1" maxlength="30" required>
+          <span class="form__error" id="input_place_title-error"></span>
+        </label>
+        <label class = "form__label">
+          <input name="place_image" id="input_place_image" class="form__input" type="url" placeholder="Image Link" required>
+          <span class="form__error" id="input_place_image-error"></span>
+        </label>
+        <button type="submit" name="profile_submit" aria-label = "Submit Button" id="button-create-place" class="form__submit form__submit_disabled" disabled>Create</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- CARD TEMPLATE -->
+  <template id="card-template">
+    <article class = "elements__element">
+      <button typ="button" data-modal="#popup-image"  aria-label="Image of Place" class = "elements__image"></button>
+      <button type="button" class = "elements_delete-button"></button>
+      <div class = "elements__container">
+      <h2 class = "elements__name"></h2>
+      <button type="button" data-modal="#delete_card_confirmation" aria-label = "Like Button" class = "elements__like-symbol"></button>
+      </div>
+      </article>
+  </template>
+
+    <!-- IMAGE MODAL -->
+    <div class="modal">
+      <div class = "modal__overlay" ></div>
+      <div class="modal__container modal__container_type_image" id="popup-image"> 
+        <img class = "modal__image"  alt="Image of Place" src="https://code.s3.yandex.net/web-code/yosemite.jpg">
+        <p class="modal__image-caption">The image modal is working!</p>
+        <button class="modal__close modal__close_type_image" aria-label = "Close Button" type="button">&#10005;</button>
+      </div>
+    </div>
+
+  <!-- DELETE CARD CONFIRMATION MODAL-->
+  <div class="modal">
+    <div class = "modal__overlay"></div>
+    <div class="modal__container" id="delete_card_confirmation">
+      <h2 class="modal__title">Are you sure?</h2>
+      <button class="modal__close" aria-label = "Close Button" type="button">&#10005;</button>
+      <form id = "form_delete_card" class="form" name="form_delete_card" novalidate>
+        <button type="submit" name="delete_confirmation" aria-label = "Submit Button" id="button-delete-card" class="form__submit" >Yes</button>
+      </form>
+    </div>
+  </div>
+
+    <!-- UPDATE AVATAR-->
+
+  <div class="modal">
+    <div class = "modal__overlay"></div>
+    <div class="modal__container" id="modal_update_avatar">
+      <h2 class="modal__title">Change profile picture</h2>
+      <button class="modal__close" aria-label = "Close Button" type="button">&#10005;</button>
+      <form id = "form_update_avatar" class="form" name="form_update_avatar" novalidate>
+        <label class = "form__label">
+          <input name="avatar__link" id="input_avatar_link" class="form__input" type="url" placeholder="Profile Image Link" required>
+          <span class="form__error" id="input_avatar_link-error"></span>
+        </label>
+        <button type="submit" name="avatar_picture_submit" aria-label = "Submit Button" id="button-update-avatar" class="form__submit" >Save</button>
+      </form>
+    </div>
+  </div>
+
+
+</body>
+</html>
+
+
+
