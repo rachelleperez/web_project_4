@@ -63,16 +63,23 @@ api.getInitialCards().then((data) => {
 
 // ------------------------ NEW CARD ---------------------------
 
+const addCardButton = document.querySelector(".profile__add-button");
+const addCardSubmitButton = document.getElementById("button-create-place");
+
 const addCardPopup = new PopupWithForm({
   popupSelector: "modal_add",
   handleFormSubmit: (dataIn) => {
-    api.addCard(dataIn).then((dataOut) => {
-      renderCard(dataOut, false)
-    });  
+    addCardSubmitButton.textContent = "Saving..."
+    api.addCard(dataIn)
+      .then((dataOut) => {
+        renderCard(dataOut, false)
+      })
+      .finally(() => {
+        addCardSubmitButton.textContent = "Create"
+      })
+
   },
 });
-
-const addCardButton = document.querySelector(".profile__add-button");
 
 addCardButton.addEventListener("click", () => {
   addFormValidator.clearValidationErrors();
@@ -128,14 +135,23 @@ api.getUserInfo().then((data) => {
 
 // ------------------------ PROFILE INFO MANAGEMENT ---------------------------
 
+const editProfileSubmitButton = document.getElementById("button-submit-edit-profile");
+
 const editProfilePopup = new PopupWithForm({
   popupSelector: "modal_profile",
   handleFormSubmit: (data) => {
-    currentUserProfile.setUserInfo(
-      data.input_profile_name,
-      data.input_profile_bio,
-    );
-    api.updateProfile(data);
+    editProfileSubmitButton.textContent = "Saving..."
+    api.updateProfile(data)
+      .then((dataIn) => {
+        currentUserProfile.setUserInfo(
+          dataIn.name,
+          dataIn.about,
+        );
+      })
+      .finally(() => {
+        editProfileSubmitButton.textContent = "Save"
+      })
+
   },
 });
 
@@ -167,14 +183,21 @@ function prefillProfileForm() {
 
 const updateAvatarButton = document.querySelector(".profile__avatar-button");
 const inputAvatarLink = document.getElementById("input_avatar_link");
+const updateAvatarSubmitButton = document.getElementById("button-update-avatar");
+
 
 const updateAvatarPopup = new PopupWithForm({
   popupSelector: "modal_update_avatar",
   handleFormSubmit: (data) => {
-    console.log("update avatar submitted");
-    console.log(data.input_avatar_link);
-    currentUserProfile.setAvatar(data.input_avatar_link);
-    api.updateAvatar(data.input_avatar_link);
+    updateAvatarSubmitButton.textContent = "Saving..."
+    api.updateAvatar(data.input_avatar_link)
+      .then(() => {
+        currentUserProfile.setAvatar(data.input_avatar_link);
+      })
+      .finally(() => {
+        updateAvatarSubmitButton.textContent = "Save"
+      })
+
   },
 });
 
