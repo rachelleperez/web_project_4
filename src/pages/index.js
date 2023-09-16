@@ -168,6 +168,7 @@ function prefillProfileForm() {
 // currentUserProfile.setAvatar(testImageLink);
 
 const updateAvatarButton = document.querySelector(".profile__avatar-button");
+const inputAvatarLink = document.getElementById("input_avatar_link");
 
 const updateAvatarPopup = new PopupWithForm({
   popupSelector: "modal_update_avatar",
@@ -181,10 +182,16 @@ const updateAvatarPopup = new PopupWithForm({
   },
 });
 
+function prefillAvatarForm() {
+  const currentUser = currentUserProfile.getUserInfo();
+  inputAvatarLink.value = currentUser.avatar.src;
+}
+
 updateAvatarButton.addEventListener("click", () => {
   console.log("avatar pic linked");
   //editFormValidator.clearValidationErrors();
   //prefillProfileForm();
+  prefillAvatarForm();
   updateAvatarPopup.open();
 });
 
