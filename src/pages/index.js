@@ -160,12 +160,33 @@ function prefillProfileForm() {
 
 // ------------------------ AVATAR MANAGEMENT ---------------------------
 
-// MVP functionality
-const testImageLink = "https://fastly.picsum.photos/id/40/4106/2806.jpg?hmac=MY3ra98ut044LaWPEKwZowgydHZ_rZZUuOHrc3mL5mI"
-const testImageLink2 = "https://fastly.picsum.photos/id/91/3504/2336.jpg?hmac=tK6z7RReLgUlCuf4flDKeg57o6CUAbgklgLsGL0UowU"
+// // MVP functionality
+// const testImageLink = "https://fastly.picsum.photos/id/40/4106/2806.jpg?hmac=MY3ra98ut044LaWPEKwZowgydHZ_rZZUuOHrc3mL5mI"
+// const testImageLink2 = "https://fastly.picsum.photos/id/91/3504/2336.jpg?hmac=tK6z7RReLgUlCuf4flDKeg57o6CUAbgklgLsGL0UowU"
 
-api.updateAvatar(testImageLink);
-currentUserProfile.setAvatar(testImageLink);
+// api.updateAvatar(testImageLink);
+// currentUserProfile.setAvatar(testImageLink);
+
+const updateAvatarButton = document.querySelector(".profile__avatar-button");
+
+const updateAvatarPopup = new PopupWithForm({
+  popupSelector: "modal_update_avatar",
+  handleFormSubmit: (data) => {
+    console.log("update avatar submitted");
+    // currentUserProfile.setUserInfo(
+    //   data.input_profile_name,
+    //   data.input_profile_bio,
+    // );
+    // api.updateProfile(data);
+  },
+});
+
+updateAvatarButton.addEventListener("click", () => {
+  console.log("avatar pic linked");
+  //editFormValidator.clearValidationErrors();
+  //prefillProfileForm();
+  updateAvatarPopup.open();
+});
 
 // ------------------------ IMAGE CARD PREVIEW ---------------------------
 

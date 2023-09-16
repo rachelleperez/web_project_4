@@ -12,9 +12,10 @@
     </header>
     <main>
       <section class="profile">
-        <a href="https://www.google.com/">
+        <!-- <a href="https://www.google.com/"> -->
+        <button type="button" data-modal="#modal_update_avatar" aria-label = "Update Avatar Picture" class = "profile__avatar-button">
           <img class="profile__avatar" id = "display_profile_avatar" src="<%=require('./images/avatar.png')%>" alt="Profile Image"/>
-        </a>
+        </button>
         <div class = "profile__info">
           <div class = "profile__container">
             <h1 id = "display_profile_name" class = "profile__name">Jacques Cousteau</h1>
@@ -107,6 +108,24 @@
       </form>
     </div>
   </div>
+
+    <!-- UPDATE AVATAR-->
+
+  <div class="modal">
+    <div class = "modal__overlay"></div>
+    <div class="modal__container" id="modal_update_avatar">
+      <h2 class="modal__title">Change profile picture</h2>
+      <button class="modal__close" aria-label = "Close Button" type="button">&#10005;</button>
+      <form id = "form_update_avatar" class="form" name="form_update_avatar" novalidate>
+        <label class = "form__label">
+          <input name="avatar__link" id="input_avatar_link" class="form__input" type="url" placeholder="Profile Image Link" required>
+          <span class="form__error" id="input_avatar_link-error"></span>
+        </label>
+        <button type="submit" name="avatar_picture_submit" aria-label = "Submit Button" id="button-update-avatar" class="form__submit" >Save</button>
+      </form>
+    </div>
+  </div>
+
 
 </body>
 </html>
