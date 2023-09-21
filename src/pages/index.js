@@ -257,11 +257,22 @@ const cardPreviewPopup = new PopupWithImage(selectors.imagePreview);
 
 // ------------------------ FORM VALIDATION ---------------------------
 
-const addForm = document.getElementById(selectors.addPlaceForm);
-const profileForm = document.getElementById(selectors.editProfileForm);
+const addForm = document.forms[selectors.addPlaceForm];
+const profileForm = document.forms[selectors.editProfileForm];
 
 const addFormValidator = new FormValidator(formValidationConfig, addForm);
 addFormValidator.enableValidation();
 
 const editFormValidator = new FormValidator(formValidationConfig, profileForm);
 editFormValidator.enableValidation();
+
+// 1 - do I need to call enableValidation here, prefer this was within FormValidator?
+// 2 - do I want validation for ALL forms? if not, create array of forms to validate
+// 3 - test how validation looks in new forms?
+// 4 - if all work as expected, change to function that adds validation to all forms
+
+// console.log(document.forms)
+// form_add_place
+// form_update_avatar
+// form_delete_card
+// form_edit_profile
