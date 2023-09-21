@@ -88,14 +88,14 @@ const addCardPopup = new PopupWithForm({
     addCardSubmitButton.textContent = "Saving..."
     api.addCard(dataIn)
       .then((dataOut) => {
-        renderCard(dataOut, false)
+        renderCard(dataOut, false);
+        closePopup(addCardPopup);
       })
       .catch((err) => {
         handleApiError(err);
       })
       .finally(() => {
         addCardSubmitButton.textContent = "Create";
-        closePopup(addCardPopup);
       })
 
   },
@@ -119,12 +119,10 @@ function handleDeleteCardRequest(card) {
         .catch((err) => {
           handleApiError(err);
         })
-        .then (
-          card.deleteCard()
-        )
-        .finally(
-          closePopup(deleteCardConfirmationPopup)
-        );
+        .then (() => {
+          card.deleteCard();
+          closePopup(deleteCardConfirmationPopup);
+        })
     },
   });
 
@@ -184,13 +182,13 @@ const editProfilePopup = new PopupWithForm({
           dataIn.name,
           dataIn.about,
         );
+        closePopup(editProfilePopup);
       })
       .catch((err) => {
         handleApiError(err);
       })
       .finally(() => {
         editProfileSubmitButton.textContent = "Save";
-        closePopup(editProfilePopup);
       })
 
   },
@@ -229,13 +227,13 @@ const updateAvatarPopup = new PopupWithForm({
     api.updateAvatar(data.input_avatar_link)
       .then(() => {
         currentUserProfile.setAvatar(data.input_avatar_link);
+        closePopup(updateAvatarPopup);
       })
       .catch((err) => {
         handleApiError(err);
       })
       .finally(() => {
         updateAvatarSubmitButton.textContent = "Save";
-        closePopup(updateAvatarPopup);
       })
 
   },
