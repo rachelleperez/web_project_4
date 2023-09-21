@@ -261,10 +261,10 @@ const addForm = document.forms[selectors.addPlaceForm];
 const profileForm = document.forms[selectors.editProfileForm];
 
 const addFormValidator = new FormValidator(formValidationConfig, addForm);
-addFormValidator.enableValidation();
+//addFormValidator.enableValidation();
 
 const editFormValidator = new FormValidator(formValidationConfig, profileForm);
-editFormValidator.enableValidation();
+//editFormValidator.enableValidation();
 
 // 1 - do I need to call enableValidation here, prefer this was within FormValidator?
 // 2 - do I want validation for ALL forms? if not, create array of forms to validate
