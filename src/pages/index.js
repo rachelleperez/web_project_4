@@ -102,7 +102,7 @@ const addCardPopup = new PopupWithForm({
 });
 
 addCardButton.addEventListener("click", () => {
-  clearAllValidationErrors();
+  formValidators.get(selectors.addPlaceForm).clearValidationErrors(); // retrieve correct FormValidator from map
   addCardPopup.open();
 });
 
@@ -197,7 +197,7 @@ const editProfilePopup = new PopupWithForm({
 const editProfileButton = document.querySelector(selectors.editProfileButton);
 
 editProfileButton.addEventListener("click", () => {
-  clearAllValidationErrors();
+  formValidators.get(selectors.editProfileForm).clearValidationErrors();
   prefillProfileForm();
   editProfilePopup.open();
 });
@@ -245,7 +245,7 @@ function prefillAvatarForm() {
 }
 
 updateAvatarButton.addEventListener("click", () => {
-  clearAllValidationErrors();
+  formValidators.get(selectors.updateAvatarForm).clearValidationErrors();
   prefillAvatarForm();
   updateAvatarPopup.open();
 });
@@ -256,15 +256,10 @@ const cardPreviewPopup = new PopupWithImage(selectors.imagePreview);
 
 // ------------------------ FORM VALIDATION ---------------------------
 
-// creates form validator for every form and saves it so formValidators.
-const formValidators = [];
-for (const form of document.forms) {
-  formValidators.push(new FormValidator(formValidationConfig, form));
-}  
+// creates form validator for every form and saves it so formValidators map
 
-// clears all existing validation errors.
-function clearAllValidationErrors () {
-  for (const formValidator of formValidators) {
-    formValidator.clearValidationErrors()
-  }  
-}
+const formValidators = new Map();
+
+for (const form of document.forms) {
+  formValidators.set(form.name, new FormValidator(formValidationConfig, form)); // create FormValidator instance and track in map form_name: formValidator
+}  
