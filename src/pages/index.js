@@ -119,10 +119,12 @@ function handleDeleteCardRequest(card) {
         .catch((err) => {
           handleApiError(err);
         })
-        .finally(
+        .then (
+          card.deleteCard()
+        )
+        .finally (
           closePopup(deleteCardConfirmationPopup)
         );
-      card.deleteCard();
     },
   });
 
