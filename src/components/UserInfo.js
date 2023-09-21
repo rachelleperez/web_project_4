@@ -17,7 +17,7 @@ export default class UserInfo {
     setUserInfo(nameText, bioText, avatarLink) {
         this._name.textContent = nameText;
         this._bio.textContent = bioText;
-        if (avatarLink != null) setAvatar(avatarLink);
+        if (avatarLink != null) this.setAvatar(avatarLink);
     }
 
     setAvatar(avatarLink) {

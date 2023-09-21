@@ -11,7 +11,7 @@ import UserInfo from "../components/UserInfo";
 
 import Api from "../components/Api";
 
-import { selectors, overlay } from "../utils/constants";
+import { selectors, formValidationConfig } from "../utils/constants";
 
 
 // ------------------------ API SETTINGS ---------------------------
@@ -79,11 +79,11 @@ api.getInitialCards()
 
 // ------------------------ NEW CARD ---------------------------
 
-const addCardButton = document.querySelector(".profile__add-button");
-const addCardSubmitButton = document.getElementById("button-create-place");
+const addCardButton = document.querySelector(selectors.addCardButton);
+const addCardSubmitButton = document.getElementById(selectors.addCardSubmitButton);
 
 const addCardPopup = new PopupWithForm({
-  popupSelector: "modal_add",
+  popupSelector: selectors.addCardPopup,
   handleFormSubmit: (dataIn) => {
     addCardSubmitButton.textContent = "Saving..."
     api.addCard(dataIn)
@@ -112,7 +112,7 @@ addCardButton.addEventListener("click", () => {
 function handleDeleteCardRequest(card) {
   
   const deleteCardConfirmationPopup = new PopupWithForm({
-    popupSelector: "delete_card_confirmation",
+    popupSelector: selectors.deleteCardPopup,
     handleFormSubmit: () => {
       //console.log(card.constructor === Card);
       api.deleteCard(card.getCardInfo().id)
@@ -154,9 +154,9 @@ function handleLikeClick(card) {
 // ------------------------ PROFILE INFO STORAGE ---------------------------
 
 const currentUserProfile = new UserInfo({
-  name: "display_profile_name",
-  bio: "display_profile_bio",
-  avatar: "display_profile_avatar"
+  name: selectors.userName,
+  bio: selectors.userBio,
+  avatar: selectors.userAvatar
 })
 
 api.getUserInfo()
@@ -170,10 +170,10 @@ api.getUserInfo()
 
 // ------------------------ PROFILE INFO MANAGEMENT ---------------------------
 
-const editProfileSubmitButton = document.getElementById("button-submit-edit-profile");
+const editProfileSubmitButton = document.getElementById(selectors.editProfileSubmitButton);
 
 const editProfilePopup = new PopupWithForm({
-  popupSelector: "modal_profile",
+  popupSelector: selectors.editProfilePopup,
   handleFormSubmit: (data) => {
     editProfileSubmitButton.textContent = "Saving..."
     api.updateProfile(data)
@@ -194,7 +194,7 @@ const editProfilePopup = new PopupWithForm({
   },
 });
 
-const editProfileButton = document.querySelector(".profile__edit-button");
+const editProfileButton = document.querySelector(selectors.editProfileButton);
 
 editProfileButton.addEventListener("click", () => {
   editFormValidator.clearValidationErrors();
@@ -204,8 +204,8 @@ editProfileButton.addEventListener("click", () => {
 
 // To prefill Edit Profile Form
 
-const inputProfileName = document.getElementById("input_profile_name");
-const inputBio = document.getElementById("input_profile_bio");
+const inputProfileName = document.getElementById(selectors.inputUserName);
+const inputBio = document.getElementById(selectors.inputUserBio);
 
 function prefillProfileForm() {
   const currentUser = currentUserProfile.getUserInfo();
@@ -215,18 +215,13 @@ function prefillProfileForm() {
 
 // ------------------------ AVATAR MANAGEMENT ---------------------------
 
-// // MVP functionality
-// const testImageLink = "https://fastly.picsum.photos/id/40/4106/2806.jpg?hmac=MY3ra98ut044LaWPEKwZowgydHZ_rZZUuOHrc3mL5mI"
-// const testImageLink2 = "https://fastly.picsum.photos/id/91/3504/2336.jpg?hmac=tK6z7RReLgUlCuf4flDKeg57o6CUAbgklgLsGL0UowU"
-
-
-const updateAvatarButton = document.querySelector(".profile__avatar-button");
-const inputAvatarLink = document.getElementById("input_avatar_link");
-const updateAvatarSubmitButton = document.getElementById("button-update-avatar");
+const updateAvatarButton = document.querySelector(selectors.updateAvatarButton);
+const inputAvatarLink = document.getElementById(selectors.inputAvatarLink);
+const updateAvatarSubmitButton = document.getElementById(selectors.updateAvatarSubmitButton);
 
 
 const updateAvatarPopup = new PopupWithForm({
-  popupSelector: "modal_update_avatar",
+  popupSelector: selectors.updateAvatarPopup,
   handleFormSubmit: (data) => {
     updateAvatarSubmitButton.textContent = "Saving..."
     api.updateAvatar(data.input_avatar_link)
@@ -262,16 +257,8 @@ const cardPreviewPopup = new PopupWithImage(selectors.imagePreview);
 
 // ------------------------ FORM VALIDATION ---------------------------
 
-const addForm = document.getElementById("form_add_place");
-const profileForm = document.getElementById("form_edit_profile");
-
-const formValidationConfig = {
-  inputSelector: ".form__input",
-  submitButtonSelector: ".form__submit", //# = id, . is clss
-  inactiveButtonClass: "form__submit_disabled", // classes
-  inputErrorClass: "form__input_type_error",
-  errorClass: "form__error_visible",
-};
+const addForm = document.getElementById(selectors.addPlaceForm);
+const profileForm = document.getElementById(selectors.editProfileForm);
 
 const addFormValidator = new FormValidator(formValidationConfig, addForm);
 addFormValidator.enableValidation();
