@@ -29,6 +29,14 @@ function handleApiError(errorMessage) {
   console.error("Triple Ten API Error: ", errorMessage);
 }
 
+// ------------------------ POPUP SETTINGS ---------------------------
+
+
+// handles closing the given popup
+function closePopup(popupEl) {
+  popupEl.close();
+}
+
 // ------------------------ CARD RENDERER ---------------------------
 
 const cardSection = new Section({
@@ -86,7 +94,8 @@ const addCardPopup = new PopupWithForm({
         handleApiError(err);
       })
       .finally(() => {
-        addCardSubmitButton.textContent = "Create"
+        addCardSubmitButton.textContent = "Create";
+        closePopup(addCardPopup);
       })
 
   },
@@ -109,7 +118,10 @@ function handleDeleteCardRequest(card) {
       api.deleteCard(card.getCardInfo().id)
         .catch((err) => {
           handleApiError(err);
-        });
+        })
+        .finally(
+          closePopup(deleteCardConfirmationPopup)
+        );
       card.deleteCard();
     },
   });
@@ -175,7 +187,8 @@ const editProfilePopup = new PopupWithForm({
         handleApiError(err);
       })
       .finally(() => {
-        editProfileSubmitButton.textContent = "Save"
+        editProfileSubmitButton.textContent = "Save";
+        closePopup(editProfilePopup);
       })
 
   },
@@ -224,7 +237,8 @@ const updateAvatarPopup = new PopupWithForm({
         handleApiError(err);
       })
       .finally(() => {
-        updateAvatarSubmitButton.textContent = "Save"
+        updateAvatarSubmitButton.textContent = "Save";
+        closePopup(updateAvatarPopup);
       })
 
   },
