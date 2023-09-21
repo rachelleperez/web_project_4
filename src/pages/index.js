@@ -122,7 +122,7 @@ function handleDeleteCardRequest(card) {
         .then (
           card.deleteCard()
         )
-        .finally (
+        .finally(
           closePopup(deleteCardConfirmationPopup)
         );
     },
