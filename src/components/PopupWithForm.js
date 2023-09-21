@@ -10,7 +10,8 @@ export default class PopupWithForm extends Popup {
 
     this._handleFormSubmit = handleFormSubmit;
 
-    this._inputs = this._popupForm.querySelectorAll(".form__input");
+    this._inputs = this._popupForm.querySelectorAll(".form__input"); //HTML Element
+    this._inputMap = null; // map input_name: input_value
 
     this._handleSubmit = this._handleSubmit.bind(this); // bind to constructor
 
@@ -24,16 +25,21 @@ export default class PopupWithForm extends Popup {
   // handleSubmit = handles submit event | handleFormSubmit = takes action on inputs
   _handleSubmit(evt) {
     evt.preventDefault();
-    this._handleFormSubmit(this._getInputValues()); 
+    this._setInputValues(); // fill in inputMap
+    this._handleFormSubmit(this._inputMap); 
   }
 
-  _getInputValues() {
-    //collects data from all input fields and returns that data as an object
-    const inputMap = {};
-    this._inputs.forEach((input) => {
-      inputMap[input.id] = input.value;
-    });
+  getInputValues() {
     return inputMap;
+  }
+
+  //collects data from all input fields and returns that data as an object
+  _setInputValues() {
+    this._inputMap = {};
+    this._inputs.forEach((input) => {
+      this._inputMap [input.id] = input.value;
+    });
+    
   }
 
   setEventListeners() {
