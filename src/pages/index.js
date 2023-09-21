@@ -116,12 +116,12 @@ function handleDeleteCardRequest(card) {
     handleFormSubmit: () => {
       //console.log(card.constructor === Card);
       api.deleteCard(card.getCardInfo().id)
-        .catch((err) => {
-          handleApiError(err);
-        })
         .then (() => {
           card.deleteCard();
           closePopup(deleteCardConfirmationPopup);
+        })
+        .catch((err) => {
+          handleApiError(err);
         })
     },
   });
