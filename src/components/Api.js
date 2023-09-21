@@ -21,10 +21,10 @@ export default class Api {
                     // });
             }
             // if the server returns an error, reject the promise
-            return Promise.reject(`Error: ${res.status}`);
+            return Promise.reject(`Response Error: ${res.status}`); // throws an error to be caught by .catch in index.js
             })
         .catch((err) => {
-            console.error(err); // log the error to the console
+            throw err; // throws an error to be caught by .catch in index.js
             });
     }
 

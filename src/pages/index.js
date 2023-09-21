@@ -24,6 +24,11 @@ const api = new Api({
   }
 });
 
+// in this project, all API errors handled by the same function. In practice, likely would be different handlers.
+function handleApiError(errorMessage) {
+  console.error("Triple Ten API Error: ", errorMessage);
+}
+
 // ------------------------ CARD RENDERER ---------------------------
 
 const cardSection = new Section({
@@ -55,10 +60,13 @@ function renderCard(data, shouldAppend) {
 
 // ------------------------ FETCH CURRENT CARDS ---------------------------
 
-api.getInitialCards().then((data) => {
+api.getInitialCards()
+  .then((data) => {
     if (typeof data !== "undefined") cardSection.renderItems(data); // only attempt rendering if there is data to display
-  }
-);
+  })
+  .catch((err) => {
+    handleApiError(err);
+  });
 
 
 // ------------------------ NEW CARD ---------------------------
@@ -73,6 +81,9 @@ const addCardPopup = new PopupWithForm({
     api.addCard(dataIn)
       .then((dataOut) => {
         renderCard(dataOut, false)
+      })
+      .catch((err) => {
+        handleApiError(err);
       })
       .finally(() => {
         addCardSubmitButton.textContent = "Create"
@@ -95,7 +106,10 @@ function handleDeleteCardRequest(card) {
     popupSelector: "delete_card_confirmation",
     handleFormSubmit: () => {
       //console.log(card.constructor === Card);
-      api.deleteCard(card.getCardInfo().id);
+      api.deleteCard(card.getCardInfo().id)
+        .catch((err) => {
+          handleApiError(err);
+        });
       card.deleteCard();
     },
   });
@@ -109,11 +123,17 @@ function handleDeleteCardRequest(card) {
 function handleLikeClick(card) {
   // if liked already, unlike in api and make heart empty
   if (card.getCardInfo().isLiked) { // Can the like status be retrieved from API rather than maintain a second version here?
-    api.unlikeCard(card.getCardInfo().id);  
+    api.unlikeCard(card.getCardInfo().id)
+    .catch((err) => {
+      handleApiError(err);
+    });  
   }
   // else = currently unlikes, like in api and fill the heart
   else {
-    api.likeCard(card.getCardInfo().id);
+    api.likeCard(card.getCardInfo().id)
+    .catch((err) => {
+      handleApiError(err);
+    });
   }
 
   card.updateLikeHeart(true); // toggle to alternative color and update isLiked card property
@@ -127,10 +147,13 @@ const currentUserProfile = new UserInfo({
   avatar: "display_profile_avatar"
 })
 
-api.getUserInfo().then((data) => {
+api.getUserInfo()
+  .then((data) => {
     currentUserProfile.setUserInfo(data.name, data.about, data.avatar);
-  }
-);
+  })
+  .catch((err) => {
+    handleApiError(err);
+  });
 
 
 // ------------------------ PROFILE INFO MANAGEMENT ---------------------------
@@ -147,6 +170,9 @@ const editProfilePopup = new PopupWithForm({
           dataIn.name,
           dataIn.about,
         );
+      })
+      .catch((err) => {
+        handleApiError(err);
       })
       .finally(() => {
         editProfileSubmitButton.textContent = "Save"
@@ -193,6 +219,9 @@ const updateAvatarPopup = new PopupWithForm({
     api.updateAvatar(data.input_avatar_link)
       .then(() => {
         currentUserProfile.setAvatar(data.input_avatar_link);
+      })
+      .catch((err) => {
+        handleApiError(err);
       })
       .finally(() => {
         updateAvatarSubmitButton.textContent = "Save"
