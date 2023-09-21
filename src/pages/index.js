@@ -38,18 +38,18 @@ function renderCard(data, shouldAppend) {
       handleImageClick: (imgData) => {
         cardPreviewPopup.open(imgData);
       },
+      handleDeleteCard: () => {
+        handleDeleteCardRequest(card);
+      },
+      handleLikeClick: () => {
+        handleLikeClick(card);
+      }
     },
     selectors.cardTemplate,
   )
   const cardHTML = card.createCard(); // an html element
 
   cardSection.addItem(cardHTML , shouldAppend);
-
-  // listen for delete button click
-  cardHTML.querySelector('.elements_delete-button').addEventListener('click', () => handleDeleteCardRequest(card));
-
-  // listen for like button click
-  cardHTML.querySelector('.elements__like-symbol').addEventListener('click', () => handleLikeClick(card))
 
 }
 

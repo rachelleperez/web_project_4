@@ -4,21 +4,26 @@ export default class Card {
 
 
   // just 1 card
-  constructor ({data, handleImageClick}, cardTemplateSelector) {
+  constructor ({data, handleImageClick, handleDeleteCard, handleLikeClick}, cardTemplateSelector) {
 
     this._name = data.name;
     this._link = data.link;
     this._id = data._id;
     this._isLiked = data.isLiked;
 
-    // to match indx.html
+    // to match index.html
     if (data.name === undefined) {this._name = data.input_place_title;}
     if (data.link === undefined) {this._link = data.input_place_image;}
     
     this._cardTemplate = document.querySelector(cardTemplateSelector);
     this._element = null;
+    this._deleteButton = null;
+    this._likeButton = null;
 
+    // callback functions to be executed in index.js
     this._handleImageClick = handleImageClick;
+    this._handleDeleteCard = handleDeleteCard;
+    this._handleLikeClick = handleLikeClick;
 
   }
 
@@ -38,12 +43,35 @@ export default class Card {
   _setEventListeners (imageCard) {
     imageCard.addEventListener('click', () => this._handleImageClick({link: this._link, name: this._name}))
 
+    // Add click event listener for the delete button
+    this._deleteButton.addEventListener('click', () => this._handleDeleteCard(this));
+
+    // Add click event listener for the like button
+    this._likeButton.addEventListener('click', () => this._handleLikeClick(this));
+
+  }
+
+  // handles delete card request
+  handleDeleteCard() {
+    if (typeof this._handleDeleteCard === 'function') {
+      this._handleDeleteCard(this);
+    }
+  }
+
+  // handles like button click
+  handleLikeClick() {
+    if (typeof this._handleLikeClick === 'function') {
+      this._handleLikeClick(this);
+    }
   }
 
   // create new card
   createCard() {
     
     this._element = this._cardTemplate.content.cloneNode(true).querySelector('.elements__element');
+    this._deleteButton = this._element.querySelector('.elements_delete-button');
+    this._likeButton = this._element.querySelector('.elements__like-symbol');
+    
     const imageCard = this._element.querySelector('.elements__image')
     imageCard.style.backgroundImage = `url('${this._link}')`
     const nameCard = this._element.querySelector('.elements__name')
