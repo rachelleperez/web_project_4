@@ -21,7 +21,8 @@ export const selectors = {
     updateAvatarSubmitButton: "button-update-avatar",
     updateAvatarPopup: "modal_update_avatar",
     addPlaceForm: "form_add_place",
-    editProfileForm: "form_edit_profile"
+    editProfileForm: "form_edit_profile",
+    updateAvatarForm: "form_update_avatar"
 
     
 }

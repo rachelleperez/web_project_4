@@ -102,7 +102,7 @@ const addCardPopup = new PopupWithForm({
 });
 
 addCardButton.addEventListener("click", () => {
-  addFormValidator.clearValidationErrors();
+  clearAllValidationErrors();
   addCardPopup.open();
 });
 
@@ -197,7 +197,7 @@ const editProfilePopup = new PopupWithForm({
 const editProfileButton = document.querySelector(selectors.editProfileButton);
 
 editProfileButton.addEventListener("click", () => {
-  editFormValidator.clearValidationErrors();
+  clearAllValidationErrors();
   prefillProfileForm();
   editProfilePopup.open();
 });
@@ -245,8 +245,7 @@ function prefillAvatarForm() {
 }
 
 updateAvatarButton.addEventListener("click", () => {
-  console.log("avatar pic linked");
-  //editFormValidator.clearValidationErrors();
+  clearAllValidationErrors();
   prefillAvatarForm();
   updateAvatarPopup.open();
 });
@@ -257,22 +256,15 @@ const cardPreviewPopup = new PopupWithImage(selectors.imagePreview);
 
 // ------------------------ FORM VALIDATION ---------------------------
 
-const addForm = document.forms[selectors.addPlaceForm];
-const profileForm = document.forms[selectors.editProfileForm];
+// creates form validator for every form and saves it so formValidators.
+const formValidators = [];
+for (const form of document.forms) {
+  formValidators.push(new FormValidator(formValidationConfig, form));
+}  
 
-const addFormValidator = new FormValidator(formValidationConfig, addForm);
-//addFormValidator.enableValidation();
-
-const editFormValidator = new FormValidator(formValidationConfig, profileForm);
-//editFormValidator.enableValidation();
-
-// 1 - do I need to call enableValidation here, prefer this was within FormValidator?
-// 2 - do I want validation for ALL forms? if not, create array of forms to validate
-// 3 - test how validation looks in new forms?
-// 4 - if all work as expected, change to function that adds validation to all forms
-
-// console.log(document.forms)
-// form_add_place
-// form_update_avatar
-// form_delete_card
-// form_edit_profile
+// clears all existing validation errors.
+function clearAllValidationErrors () {
+  for (const formValidator of formValidators) {
+    formValidator.clearValidationErrors()
+  }  
+}
