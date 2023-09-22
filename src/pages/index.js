@@ -72,9 +72,7 @@ api.getInitialCards()
   .then((data) => {
     if (typeof data !== "undefined") cardSection.renderItems(data); // only attempt rendering if there is data to display
   })
-  .catch((err) => {
-    handleApiError(err);
-  });
+  .catch(handleApiError); // passing as reference
 
 
 // ------------------------ NEW CARD ---------------------------
@@ -91,9 +89,7 @@ const addCardPopup = new PopupWithForm({
         renderCard(dataOut, false);
         closePopup(addCardPopup);
       })
-      .catch((err) => {
-        handleApiError(err);
-      })
+      .catch(handleApiError) // passing as reference
       .finally(() => {
         addCardSubmitButton.textContent = "Create";
       })
@@ -114,13 +110,11 @@ const deleteCardConfirmationPopup = new PopupWithForm({
   handleFormSubmit: () => {
     api.deleteCard(deleteCardConfirmationPopup.card.getCardInfo().id)
       .then(() => {
-        deleteCardConfirmationPopup.card.deleteCard();
+        deleteCardConfirmationPopup.card.deleteCard(); //TODO: comment
         closePopup(deleteCardConfirmationPopup);
       })
-      .catch((err) => {
-        handleApiError(err);
-      })
-  },
+      .catch(handleApiError); // passing as reference
+  }
 });
 
 
@@ -141,9 +135,7 @@ function handleLikeClick(card) {
     .then (
       card.updateLikeHeart(true) // toggle to alternative color and update isLiked card property
     )
-    .catch((err) => {
-      handleApiError(err);
-    });  
+    .catch(handleApiError); // passing as reference
   }
   // else = currently unlikes, like in api and fill the heart
   else {
@@ -151,9 +143,7 @@ function handleLikeClick(card) {
     .then (
       card.updateLikeHeart(true) // toggle to alternative color and update isLiked card property
     )
-    .catch((err) => {
-      handleApiError(err);
-    });
+    .catch(handleApiError); // passing as reference
   }
 
   
@@ -171,9 +161,7 @@ api.getUserInfo()
   .then((data) => {
     currentUserProfile.setUserInfo(data.name, data.about, data.avatar);
   })
-  .catch((err) => {
-    handleApiError(err);
-  });
+  .catch(handleApiError); // passing as reference
 
 
 // ------------------------ PROFILE INFO MANAGEMENT ---------------------------
@@ -192,9 +180,7 @@ const editProfilePopup = new PopupWithForm({
         );
         closePopup(editProfilePopup);
       })
-      .catch((err) => {
-        handleApiError(err);
-      })
+      .catch(handleApiError) // passing as reference
       .finally(() => {
         editProfileSubmitButton.textContent = "Save";
       })
@@ -237,9 +223,7 @@ const updateAvatarPopup = new PopupWithForm({
         currentUserProfile.setAvatar(data.input_avatar_link);
         closePopup(updateAvatarPopup);
       })
-      .catch((err) => {
-        handleApiError(err);
-      })
+      .catch(handleApiError) // passing as reference
       .finally(() => {
         updateAvatarSubmitButton.textContent = "Save";
       })
