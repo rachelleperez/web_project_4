@@ -109,25 +109,26 @@ addCardButton.addEventListener("click", () => {
 // ------------------------ DELETE CARD CONFIRMATION ---------------------------
 
 
+const deleteCardConfirmationPopup = new PopupWithForm({
+  popupSelector: selectors.deleteCardPopup,
+  handleFormSubmit: () => {
+    api.deleteCard(deleteCardConfirmationPopup.card.getCardInfo().id)
+      .then(() => {
+        deleteCardConfirmationPopup.card.deleteCard();
+        closePopup(deleteCardConfirmationPopup);
+      })
+      .catch((err) => {
+        handleApiError(err);
+      })
+  },
+});
+
+
 function handleDeleteCardRequest(card) {
   
-  const deleteCardConfirmationPopup = new PopupWithForm({
-    popupSelector: selectors.deleteCardPopup,
-    handleFormSubmit: () => {
-      //console.log(card.constructor === Card);
-      api.deleteCard(card.getCardInfo().id)
-        .then (() => {
-          card.deleteCard();
-          closePopup(deleteCardConfirmationPopup);
-        })
-        .catch((err) => {
-          handleApiError(err);
-        })
-    },
-  });
+  deleteCardConfirmationPopup.card = card; // setting a card property for the popup instance to be used in handleFormSubmit
 
   deleteCardConfirmationPopup.open();
-
 }
 
 // ------------------------ LIKE BEHAVIOR ---------------------------
