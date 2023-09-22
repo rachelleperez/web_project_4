@@ -127,6 +127,7 @@ function handleDeleteCardRequest(card) {
   });
 
   deleteCardConfirmationPopup.open();
+
 }
 
 // ------------------------ LIKE BEHAVIOR ---------------------------
@@ -136,6 +137,9 @@ function handleLikeClick(card) {
   // if liked already, unlike in api and make heart empty
   if (card.getCardInfo().isLiked) { // Can the like status be retrieved from API rather than maintain a second version here?
     api.unlikeCard(card.getCardInfo().id)
+    .then (
+      card.updateLikeHeart(true) // toggle to alternative color and update isLiked card property
+    )
     .catch((err) => {
       handleApiError(err);
     });  
@@ -143,12 +147,15 @@ function handleLikeClick(card) {
   // else = currently unlikes, like in api and fill the heart
   else {
     api.likeCard(card.getCardInfo().id)
+    .then (
+      card.updateLikeHeart(true) // toggle to alternative color and update isLiked card property
+    )
     .catch((err) => {
       handleApiError(err);
     });
   }
 
-  card.updateLikeHeart(true); // toggle to alternative color and update isLiked card property
+  
 }
 
 // ------------------------ PROFILE INFO STORAGE ---------------------------
