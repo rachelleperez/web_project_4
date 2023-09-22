@@ -70,7 +70,7 @@ function renderCard(data, shouldAppend) {
 
 api.getInitialCards()
   .then((data) => {
-    if (typeof data !== "undefined") cardSection.renderItems(data); // only attempt rendering if there is data to display
+    if (typeof data !== "undefined") cardSection.renderItems // only attempt rendering if there is data to display
   })
   .catch(handleApiError); // passing as reference
 
@@ -85,14 +85,9 @@ const addCardPopup = new PopupWithForm({
   handleFormSubmit: (dataIn) => {
     addCardSubmitButton.textContent = "Saving..."
     api.addCard(dataIn)
-      .then((dataOut) => {
-        renderCard(dataOut, false);
-        closePopup(addCardPopup);
-      })
+      .then(handleAddCardSuccess)
       .catch(handleApiError) // passing as reference
-      .finally(() => {
-        addCardSubmitButton.textContent = "Create";
-      })
+      .finally(addCardSubmitButton.textContent = "Create")
 
   },
 });
@@ -102,6 +97,11 @@ addCardButton.addEventListener("click", () => {
   addCardPopup.open();
 });
 
+function handleAddCardSuccess(data) {
+  renderCard(data, false);
+  closePopup(addCardPopup);
+}
+
 // ------------------------ DELETE CARD CONFIRMATION ---------------------------
 
 
@@ -109,14 +109,14 @@ const deleteCardConfirmationPopup = new PopupWithForm({
   popupSelector: selectors.deleteCardPopup,
   handleFormSubmit: () => {
     api.deleteCard(deleteCardConfirmationPopup.cardId)
-      .then(handleDeleteCardConfirmation)
+      .then(handleDeleteCardSuccess)
       .catch(handleApiError); // passing as reference
   }
 });
 
 // opens popup, ready for deletion request
 function handleDeleteCardRequest(card) {
-  
+
   // setting properties for card in question
   deleteCardConfirmationPopup.card = card; 
   deleteCardConfirmationPopup.cardId = deleteCardConfirmationPopup.card.getCardInfo().id;
@@ -124,7 +124,7 @@ function handleDeleteCardRequest(card) {
   deleteCardConfirmationPopup.open();
 }
 
-function handleDeleteCardConfirmation() {
+function handleDeleteCardSuccess() {
   deleteCardConfirmationPopup.card.deleteCard(); 
   closePopup(deleteCardConfirmationPopup);
 }
@@ -136,21 +136,15 @@ function handleLikeClick(card) {
   // if liked already, unlike in api and make heart empty
   if (card.getCardInfo().isLiked) { // Can the like status be retrieved from API rather than maintain a second version here?
     api.unlikeCard(card.getCardInfo().id)
-    .then (
-      card.updateLikeHeart(true) // toggle to alternative color and update isLiked card property
-    )
+    .then (card.updateLikeHeart) // toggle to alternative color and update isLiked card property
     .catch(handleApiError); // passing as reference
   }
   // else = currently unlikes, like in api and fill the heart
   else {
     api.likeCard(card.getCardInfo().id)
-    .then (
-      card.updateLikeHeart(true) // toggle to alternative color and update isLiked card property
-    )
+    .then (card.updateLikeHeart) // toggle to alternative color and update isLiked card property
     .catch(handleApiError); // passing as reference
-  }
-
-  
+  }  
 }
 
 // ------------------------ PROFILE INFO STORAGE ---------------------------
@@ -162,11 +156,12 @@ const currentUserProfile = new UserInfo({
 })
 
 api.getUserInfo()
-  .then((data) => {
-    currentUserProfile.setUserInfo(data.name, data.about, data.avatar);
-  })
+  .then(handleGetUserInfoSuccess)
   .catch(handleApiError); // passing as reference
 
+function handleGetUserInfoSuccess(data) {
+  currentUserProfile.setUserInfo(data.name, data.about, data.avatar);
+}   
 
 // ------------------------ PROFILE INFO MANAGEMENT ---------------------------
 
@@ -177,20 +172,20 @@ const editProfilePopup = new PopupWithForm({
   handleFormSubmit: (data) => {
     editProfileSubmitButton.textContent = "Saving..."
     api.updateProfile(data)
-      .then((dataIn) => {
-        currentUserProfile.setUserInfo(
-          dataIn.name,
-          dataIn.about,
-        );
-        closePopup(editProfilePopup);
-      })
+      .then(handleUpdateProfileSuccess)
       .catch(handleApiError) // passing as reference
-      .finally(() => {
-        editProfileSubmitButton.textContent = "Save";
-      })
+      .finally(editProfileSubmitButton.textContent = "Save")
 
   },
 });
+
+function handleUpdateProfileSuccess(data) {
+  currentUserProfile.setUserInfo(
+    dataIn.name,
+    dataIn.about,
+  );
+  closePopup(editProfilePopup);
+}
 
 const editProfileButton = document.querySelector(selectors.editProfileButton);
 
@@ -200,7 +195,7 @@ editProfileButton.addEventListener("click", () => {
   editProfilePopup.open();
 });
 
-// To prefill Edit Profile Form
+// prefilling profile
 
 const inputProfileName = document.getElementById(selectors.inputUserName);
 const inputBio = document.getElementById(selectors.inputUserBio);
@@ -223,17 +218,16 @@ const updateAvatarPopup = new PopupWithForm({
   handleFormSubmit: (data) => {
     updateAvatarSubmitButton.textContent = "Saving..."
     api.updateAvatar(data.input_avatar_link)
-      .then(() => {
-        currentUserProfile.setAvatar(data.input_avatar_link);
-        closePopup(updateAvatarPopup);
-      })
+      .then(handleUpdateAvatarSuccess)
       .catch(handleApiError) // passing as reference
-      .finally(() => {
-        updateAvatarSubmitButton.textContent = "Save";
-      })
-
+      .finally(updateAvatarSubmitButton.textContent = "Save")
   },
 });
+
+function handleUpdateAvatarSuccess(data) {
+  currentUserProfile.setAvatar(data.input_avatar_link);
+  closePopup(updateAvatarPopup);
+}
 
 function prefillAvatarForm() {
   const currentUser = currentUserProfile.getUserInfo();

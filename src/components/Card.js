@@ -33,7 +33,7 @@ export default class Card {
   }
 
   // changes color, nothing else.
-  updateLikeHeart(toggleIsLiked) {
+  updateLikeHeart(toggleIsLiked = true) { // default to true, more common scenario
     this._likeButton.classList.toggle("elements__like-symbol_active");
     if (toggleIsLiked) this._isLiked = !this._isLiked;
   }
