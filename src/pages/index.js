@@ -95,6 +95,7 @@ const addCardPopup = new PopupWithForm({
 
 addCardButton.addEventListener("click", () => {
   formValidators.get(selectors.addPlaceForm).clearValidationErrors(); // retrieve correct FormValidator from map
+  formValidators.get(selectors.addPlaceForm).toggleButton();   // starting status should always be disabled
   addCardPopup.open();
 });
 
