@@ -181,8 +181,8 @@ const editProfilePopup = new PopupWithForm({
 
 function handleUpdateProfileSuccess(data) {
   currentUserProfile.setUserInfo(
-    dataIn.name,
-    dataIn.about,
+    data.name,
+    data.about,
   );
   closePopup(editProfilePopup);
 }
