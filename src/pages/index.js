@@ -87,7 +87,8 @@ const addCardPopup = new PopupWithForm({
     api.addCard(dataIn)
       .then(handleAddCardSuccess)
       .catch(handleApiError) // passing as reference
-      .finally(addCardSubmitButton.textContent = "Create")
+      .finally(() => addCardSubmitButton.textContent = "Create")
+
 
   },
 });
@@ -174,8 +175,7 @@ const editProfilePopup = new PopupWithForm({
     api.updateProfile(data)
       .then(handleUpdateProfileSuccess)
       .catch(handleApiError) // passing as reference
-      .finally(editProfileSubmitButton.textContent = "Save")
-
+      .finally(() => editProfileSubmitButton.textContent = "Save")
   },
 });
 
@@ -220,7 +220,7 @@ const updateAvatarPopup = new PopupWithForm({
     api.updateAvatar(data.input_avatar_link)
       .then(handleUpdateAvatarSuccess)
       .catch(handleApiError) // passing as reference
-      .finally(updateAvatarSubmitButton.textContent = "Save")
+      .finally(() => updateAvatarSubmitButton.textContent = "Save")
   },
 });
 
