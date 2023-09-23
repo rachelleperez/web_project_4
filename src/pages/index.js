@@ -70,7 +70,7 @@ function renderCard(data, shouldAppend) {
 
 api.getInitialCards()
   .then((data) => {
-    if (typeof data !== "undefined") cardSection.renderItems // only attempt rendering if there is data to display
+    if (typeof data !== "undefined") cardSection.renderItems(data) // only attempt rendering if there is data to display
   })
   .catch(handleApiError); // passing as reference
 
