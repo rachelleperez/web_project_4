@@ -218,14 +218,14 @@ const updateAvatarPopup = new PopupWithForm({
   handleFormSubmit: (data) => {
     updateAvatarSubmitButton.textContent = "Saving..."
     api.updateAvatar(data.input_avatar_link)
-      .then(handleUpdateAvatarSuccess)
+      .then((dataFromApi) => handleUpdateAvatarSuccess(dataFromApi))
       .catch(handleApiError) // passing as reference
       .finally(() => updateAvatarSubmitButton.textContent = "Save")
   },
 });
 
 function handleUpdateAvatarSuccess(data) {
-  currentUserProfile.setAvatar(data.input_avatar_link);
+  currentUserProfile.setAvatar(data.avatar);
   closePopup(updateAvatarPopup);
 }
 
