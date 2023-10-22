@@ -15,6 +15,8 @@ class FormValidator {
     this._submitButton = this._formElement.querySelector(
       this._submitButtonSelector,
     );
+
+    this._enableValidation();
   }
 
   //done
@@ -77,8 +79,7 @@ class FormValidator {
     });
   }
 
-  //only public function, applies to a specific form now.
-  enableValidation() {
+  _enableValidation() {
     this._formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
     });
